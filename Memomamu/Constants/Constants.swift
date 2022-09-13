@@ -9,9 +9,9 @@ import UIKit
 
 enum Constants {
     enum Color {
-        static let background = UIColor(red: 0x61, green: 0x78, blue: 0xDC, alpha: 1)
-        static let text = UIColor(red: 0xF9, green: 0x95, blue: 0x19, alpha: 1)
-        static let paper = UIColor(red: 0xFC, green: 0xF8, blue: 0xF5, alpha: 1)
+        static let background = UIColor(red: (97/255.0), green: (120/255.0), blue: (220/255.0), alpha: 1)
+        static let text = UIColor(red: (249/255.0), green: (149/255.0), blue: (25/255.0), alpha: 1)
+        static let paper = UIColor(red: (252/255.0), green: (248/255.0), blue: (245/255.0), alpha: 1)
     }
     
     enum Font {

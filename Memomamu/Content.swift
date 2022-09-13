@@ -10,15 +10,15 @@ import RealmSwift
 
 class Content: Object {
     @Persisted var date = Date() // 날짜
-    @Persisted var todoList: List<Todo> // todo리스트
+//    @Persisted var todoList: List<Todo>? // todo리스트
     @Persisted var diary: String?
     
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(date: Date, todoList: List<Todo>, diary: String?) {
+    convenience init(date: Date, diary: String?) {
         self.init()
         self.date = date
-        self.todoList = todoList
+        
         self.diary = diary
     }
 }

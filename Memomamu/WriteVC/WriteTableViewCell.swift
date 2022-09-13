@@ -9,13 +9,13 @@ import UIKit
 
 class WriteTableViewCell: UITableViewCell {
     
-    let checkButton: UIButton = {
+    var checkButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "todoButton-notChecked.jpg"), for: .normal)
         return view
     }()
     
-    let todoLabel: UITextField = {
+    var todoLabel: UITextField = {
         let view = UITextField()
         view.textColor = Constants.Color.background
         view.font = Constants.Font.content
@@ -25,11 +25,14 @@ class WriteTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        backgroundColor = Constants.Color.paper
+        configure()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
     }
     
     func configure() {
