@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0504B428CCBC3C00945FD8 /* PageViewController.swift */; };
 		DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094228C9B32400612BB1 /* AppDelegate.swift */; };
 		DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094428C9B32400612BB1 /* SceneDelegate.swift */; };
 		DE22094728C9B32400612BB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094628C9B32400612BB1 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE0504B428CCBC3C00945FD8 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		DE22093F28C9B32400612BB1 /* Memomamu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memomamu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE22094228C9B32400612BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE22094428C9B32400612BB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				DE22096528C9B94400612BB1 /* WriteViewController.swift */,
 				DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */,
+				DE0504B428CCBC3C00945FD8 /* PageViewController.swift */,
 			);
 			path = WriteVC;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE22094728C9B32400612BB1 /* ViewController.swift in Sources */,
+				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
 				DE22097028C9CBA000612BB1 /* Content.swift in Sources */,
 				DE22096E28C9CB5300612BB1 /* ReusableProtocol.swift in Sources */,
 				DE22096628C9B94400612BB1 /* WriteViewController.swift in Sources */,

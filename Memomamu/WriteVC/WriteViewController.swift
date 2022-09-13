@@ -15,7 +15,7 @@ class WriteViewController: UIViewController {
     
     var viewButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(named: "todayButton"), for: .normal)
+        view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
         return view
     }()
@@ -25,11 +25,12 @@ class WriteViewController: UIViewController {
         view.textColor = Constants.Color.text
         view.text = "17, April"
         view.font = Constants.Font.head
+        view.backgroundColor = .brown
         return view
     }()
     
     var paperView: UIView = {
-        let view = UIView()
+        let view = WriteView()
         
         return view
     }()
@@ -49,23 +50,51 @@ class WriteViewController: UIViewController {
         }
     }
     
+    let vc = PageViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .lightGray
+        
         
         configure()
         setConstraints()
+        addPageVC()
     }
     
     func configure() {
-        [viewButton].forEach {
+        [viewButton, dateLabel].forEach {
             view.addSubview($0)
         }
     }
     
     func setConstraints() {
         viewButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view).offset(62)
-            make.trailingMargin.equalTo(view).offset(30)
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(60)
+            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
+            make.height.width.equalTo(21)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(97)
+            make.centerX.equalTo(view)
+            
+        }
+        
+    }
+    
+    func addPageVC() {
+        addChild(vc)
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+        setPageConstraints()
+    }
+    
+    func setPageConstraints() {
+        vc.view.snp.makeConstraints { make in
+            make.topMargin.equalTo(dateLabel.snp.bottom).offset(66)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(view).multipliedBy(0.63)
         }
         
     }
@@ -74,11 +103,11 @@ class WriteViewController: UIViewController {
 
 extension WriteViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        return UITableViewCell()
     }
 }
 
