@@ -10,6 +10,8 @@
 		DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = DE0314D428D4572700FC9561 /* FSCalendar */; };
 		DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314D628D4574400FC9561 /* CalendarViewController.swift */; };
 		DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314D828D46DEA00FC9561 /* CalendarCell.swift */; };
+		DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314DD28D48C3B00FC9561 /* CardTodoViewController.swift */; };
+		DE0314E028D48C4400FC9561 /* CardDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314DF28D48C4400FC9561 /* CardDiaryViewController.swift */; };
 		DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0504B428CCBC3C00945FD8 /* PageViewController.swift */; };
 		DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EB928D0820300877A49 /* TodoViewController.swift */; };
 		DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		DE0314D628D4574400FC9561 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		DE0314D828D46DEA00FC9561 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		DE0314DD28D48C3B00FC9561 /* CardTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoViewController.swift; sourceTree = "<group>"; };
+		DE0314DF28D48C4400FC9561 /* CardDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDiaryViewController.swift; sourceTree = "<group>"; };
 		DE0504B428CCBC3C00945FD8 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		DE1F8EB928D0820300877A49 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
@@ -70,8 +74,17 @@
 			children = (
 				DE0314D628D4574400FC9561 /* CalendarViewController.swift */,
 				DE0314D828D46DEA00FC9561 /* CalendarCell.swift */,
+				DE0314DD28D48C3B00FC9561 /* CardTodoViewController.swift */,
+				DE0314DF28D48C4400FC9561 /* CardDiaryViewController.swift */,
 			);
 			path = CalendarVC;
+			sourceTree = "<group>";
+		};
+		DE0314DA28D48C0200FC9561 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		DE22093628C9B32400612BB1 = {
@@ -93,6 +106,7 @@
 		DE22094128C9B32400612BB1 /* Memomamu */ = {
 			isa = PBXGroup;
 			children = (
+				DE0314DA28D48C0200FC9561 /* New Group */,
 				DE0314D228D456D200FC9561 /* CalendarVC */,
 				DE7838B028D1AEDB0093F034 /* Utility */,
 				DE22096728C9B94900612BB1 /* WriteVC */,
@@ -224,9 +238,11 @@
 				DE22094728C9B32400612BB1 /* ViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
 				DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */,
+				DE0314E028D48C4400FC9561 /* CardDiaryViewController.swift in Sources */,
 				DE22097028C9CBA000612BB1 /* Content.swift in Sources */,
 				DE22096E28C9CB5300612BB1 /* ReusableProtocol.swift in Sources */,
 				DE22096628C9B94400612BB1 /* WriteViewController.swift in Sources */,
+				DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */,
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
 				DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */,
 				DE22096428C9B49E00612BB1 /* Constants.swift in Sources */,

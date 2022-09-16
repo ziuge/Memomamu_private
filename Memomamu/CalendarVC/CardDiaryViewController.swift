@@ -1,14 +1,14 @@
 //
-//  DiaryViewController.swift
+//  CardDiaryViewController.swift
 //  Memomamu
 //
-//  Created by CHOI on 2022/09/13.
+//  Created by CHOI on 2022/09/16.
 //
 
 import UIKit
 import RealmSwift
 
-class DiaryViewController: UIViewController {
+class CardDiaryViewController: UIViewController {
     
     let localRealm = try! Realm()
     
@@ -62,8 +62,7 @@ class DiaryViewController: UIViewController {
     }
     
     func setConstraints() {
-        
-        let spacing = 16
+        let spacing = 40
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
@@ -73,19 +72,11 @@ class DiaryViewController: UIViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(backgroundView)
-            make.topMargin.equalTo(backgroundView).offset(36)
-        }
-        
-        lineImageView.snp.makeConstraints { make in
-            make.width.equalTo(backgroundView).multipliedBy(0.768)
-            make.centerX.equalTo(backgroundView)
-            make.height.equalTo(1)
-            make.top.equalTo(titleLabel.snp.bottom).offset(19)
-            
+            make.topMargin.equalTo(backgroundView).offset(24)
         }
         
         diaryImageView.snp.makeConstraints { make in
-            make.topMargin.equalTo(lineImageView.snp.bottom).offset(50)
+            make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
             make.height.equalTo(backgroundView.snp.height).multipliedBy(0.42)
             make.width.equalTo(backgroundView.snp.width).multipliedBy(0.77)
             make.centerX.equalTo(backgroundView)

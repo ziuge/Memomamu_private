@@ -12,6 +12,9 @@ class PageViewController: UIPageViewController {
     
     var pageViewControllerList: [UIViewController] = []
     
+    var vc1: UIViewController = TodoViewController()
+    var vc2: UIViewController = DiaryViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,9 +23,9 @@ class PageViewController: UIPageViewController {
     }
     
     func createPageViewController() {
-        let vc1 = TodoViewController()
-        let vc2 = DiaryViewController()
-        pageViewControllerList = [vc1, vc2]
+//        let vc1 = TodoViewController()
+//        let vc2 = DiaryViewController()
+        pageViewControllerList = [self.vc1, self.vc2]
     }
     
     func configurePageViewController() {

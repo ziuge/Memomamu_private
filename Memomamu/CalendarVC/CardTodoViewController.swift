@@ -1,14 +1,14 @@
 //
-//  TodoViewController.swift
+//  CardTodoViewController.swift
 //  Memomamu
 //
-//  Created by CHOI on 2022/09/13.
+//  Created by CHOI on 2022/09/16.
 //
 
 import UIKit
 import RealmSwift
 
-class TodoViewController: UIViewController {
+class CardTodoViewController: UIViewController {
     
     let localRealm = try! Realm()
     
@@ -29,12 +29,10 @@ class TodoViewController: UIViewController {
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = Constants.Color.paper
-        
 //        view.rowHeight = 68
         view.delegate = self
         view.dataSource = self
         view.register(WriteTableViewCell.self, forCellReuseIdentifier: WriteTableViewCell.reuseIdentifier)
-
         return view
     }()
     
@@ -52,6 +50,7 @@ class TodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        view.backgroundColor = Constants.Color.paper
         tableView.reloadData()
         
         configure()
@@ -63,63 +62,49 @@ class TodoViewController: UIViewController {
         [tableView, titleLabel, lineImageView].forEach {
             backgroundView.addSubview($0)
         }
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+        
+        
+        
     }
     
     func setConstraints() {
-        
-        let spacing = 16
+        let spacing = 40
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
-            make.rightMargin.equalTo(spacing)
+            make.leftMargin.equalTo(spacing)
             make.height.equalTo(view.frame.height)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(backgroundView)
-            make.topMargin.equalTo(backgroundView).offset(36)
-        }
-        
-        lineImageView.snp.makeConstraints { make in
-            make.width.equalTo(backgroundView).multipliedBy(0.768)
-            make.centerX.equalTo(backgroundView)
-            make.height.equalTo(1)
-            make.top.equalTo(titleLabel.snp.bottom).offset(19)
-            
+            make.topMargin.equalTo(backgroundView).offset(24)
         }
         
         tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
-            make.topMargin.equalTo(lineImageView.snp.bottom).offset(12)
+            make.topMargin.equalTo(titleLabel.snp.bottom).offset(12)
         }
     }
 
 }
 
-extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
+extension CardTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 1 : 10
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 1 {
-            
-        }
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return UITableViewCell() }
-        
         
         return cell
     }

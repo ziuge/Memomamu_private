@@ -37,6 +37,8 @@ class CalendarViewController: UIViewController {
         calendar.appearance.titleDefaultColor = .white
         calendar.appearance.titleWeekendColor = .white
         calendar.appearance.weekdayTextColor = .white
+        calendar.appearance.selectionColor = Constants.Color.text
+        calendar.appearance.todayColor = Constants.Color.paper.withAlphaComponent(0.4)
         
         calendar.appearance.eventOffset = CGPoint(x: 0, y: -7)
 //        calendar.today = nil // Hide the today circle
@@ -45,8 +47,6 @@ class CalendarViewController: UIViewController {
         
         calendar.swipeToChooseGesture.isEnabled = false // Swipe-To-Choose
         
-//        let scopeGesture = UIPanGestureRecognizer(target: calendar, action: #selector(calendar.handleScopeGesture(_:)));
-//        calendar.addGestureRecognizer(scopeGesture)
         calendar.scope = .month
         calendar.locale = Locale(identifier: "ko_KR")
         
@@ -77,24 +77,22 @@ class CalendarViewController: UIViewController {
         
         makeCalendar()
         
-        self.title = "FSCalendar"
-        // Uncomment this to perform an 'initial-week-scope'
-        // self.calendar.scope = FSCalendarScopeWeek;
-        
         let dates = [
-            self.gregorian.date(byAdding: .day, value: -1, to: Date()),
+//            self.gregorian.date(byAdding: .day, value: -1, to: Date()),
             Date(),
-            self.gregorian.date(byAdding: .day, value: 1, to: Date())
+//            self.gregorian.date(byAdding: .day, value: 1, to: Date())
         ]
         dates.forEach { (date) in
             self.calendar.select(date, scrollToDate: false)
         }
-        // For UITest
         self.calendar.accessibilityIdentifier = "calendar"
         
+        viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
         
         configureUI()
         setConstraints()
+        addPageVC()
+        setPageConstraints()
     }
     
     func configureUI() {
@@ -117,14 +115,37 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
+    func addPageVC() {
+        vc.vc1 = CardTodoViewController()
+        vc.vc2 = CardDiaryViewController()
+        addChild(vc)
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+        setPageConstraints()
+    }
     
+    func setPageConstraints() {
+        vc.view.snp.makeConstraints { make in
+            make.topMargin.equalTo(calendar.snp.bottom).offset(24)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-36)
+        }
+    }
+    
+    @objc func openWrite() {
+        let vc = WriteViewController()
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+    }
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date, "selected!")
+        print(formatter.string(from: date), "selected!")
     }
     
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
