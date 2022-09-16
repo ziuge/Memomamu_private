@@ -15,17 +15,24 @@ class WriteTableViewCell: UITableViewCell {
         return view
     }()
     
-    var todoLabel: UITextField = {
-        let view = UITextField()
+    var todoTextView: UITextView = {
+        let view = UITextView()
         view.textColor = Constants.Color.background
         view.font = Constants.Font.content
-        view.placeholder = "할 일을 작성하세요 :)"
+        view.text = "할 일을 작성하세요 :)"
+        view.isEditable = true
+        view.returnKeyType = .next
+        view.isScrollEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = true
+        view.sizeToFit()
+        view.backgroundColor = .yellow
         return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.paper
+        todoTextView.delegate = self
         configure()
         setConstraints()
     }
@@ -36,7 +43,7 @@ class WriteTableViewCell: UITableViewCell {
     }
     
     func configure() {
-        [checkButton, todoLabel].forEach {
+        [checkButton, todoTextView].forEach {
             contentView.addSubview($0)
         }
     }
@@ -48,11 +55,28 @@ class WriteTableViewCell: UITableViewCell {
             make.height.width.equalTo(26)
         }
         
-        todoLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView)
+        todoTextView.snp.makeConstraints { make in
+//            make.centerY.equalTo(contentView)
+            make.topMargin.equalTo(self).offset(14)
+            make.bottomMargin.equalTo(self).offset(-14)
             make.leadingMargin.equalTo(checkButton.snp.trailing).offset(15)
             make.trailingMargin.equalTo(contentView).offset(-52)
         }
     }
     
+}
+
+extension WriteTableViewCell: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: self.frame.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+        textView.constraints.forEach { (constraint) in
+            if estimatedSize.height <= 68 {
+            } else {
+                if constraint.firstAttribute == .height {
+                    constraint.constant = estimatedSize.height
+                }
+            }
+        }
+    }
 }

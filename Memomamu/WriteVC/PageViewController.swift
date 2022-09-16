@@ -5,7 +5,6 @@
 //  Created by CHOI on 2022/09/10.
 //
 
-import Foundation
 import UIKit
 import RealmSwift
 
@@ -32,6 +31,7 @@ class PageViewController: UIPageViewController {
         
         guard let first = pageViewControllerList.first else { return }
         setViewControllers([first], direction: .forward, animated: true)
+        
     }
 
 }

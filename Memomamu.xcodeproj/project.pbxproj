@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = DE0314D428D4572700FC9561 /* FSCalendar */; };
+		DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314D628D4574400FC9561 /* CalendarViewController.swift */; };
+		DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314D828D46DEA00FC9561 /* CalendarCell.swift */; };
 		DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0504B428CCBC3C00945FD8 /* PageViewController.swift */; };
 		DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EB928D0820300877A49 /* TodoViewController.swift */; };
 		DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */; };
@@ -27,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE0314D628D4574400FC9561 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		DE0314D828D46DEA00FC9561 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		DE0504B428CCBC3C00945FD8 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		DE1F8EB928D0820300877A49 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +56,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE22097528C9CC8000612BB1 /* RealmSwift in Frameworks */,
+				DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */,
 				DE22097328C9CC8000612BB1 /* Realm in Frameworks */,
 				DE22096A28C9BA5600612BB1 /* SnapKit in Frameworks */,
 			);
@@ -59,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE0314D228D456D200FC9561 /* CalendarVC */ = {
+			isa = PBXGroup;
+			children = (
+				DE0314D628D4574400FC9561 /* CalendarViewController.swift */,
+				DE0314D828D46DEA00FC9561 /* CalendarCell.swift */,
+			);
+			path = CalendarVC;
+			sourceTree = "<group>";
+		};
 		DE22093628C9B32400612BB1 = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +93,8 @@
 		DE22094128C9B32400612BB1 /* Memomamu */ = {
 			isa = PBXGroup;
 			children = (
-				DE22096228C9B49500612BB1 /* Constants */,
+				DE0314D228D456D200FC9561 /* CalendarVC */,
+				DE7838B028D1AEDB0093F034 /* Utility */,
 				DE22096728C9B94900612BB1 /* WriteVC */,
 				DE22094228C9B32400612BB1 /* AppDelegate.swift */,
 				DE22094428C9B32400612BB1 /* SceneDelegate.swift */,
@@ -87,8 +103,6 @@
 				DE22094B28C9B32800612BB1 /* Assets.xcassets */,
 				DE22094D28C9B32800612BB1 /* LaunchScreen.storyboard */,
 				DE22095028C9B32800612BB1 /* Info.plist */,
-				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
-				DE22096F28C9CBA000612BB1 /* Content.swift */,
 			);
 			path = Memomamu;
 			sourceTree = "<group>";
@@ -105,12 +119,22 @@
 			isa = PBXGroup;
 			children = (
 				DE22096528C9B94400612BB1 /* WriteViewController.swift */,
-				DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */,
 				DE0504B428CCBC3C00945FD8 /* PageViewController.swift */,
 				DE1F8EB928D0820300877A49 /* TodoViewController.swift */,
+				DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */,
 				DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */,
 			);
 			path = WriteVC;
+			sourceTree = "<group>";
+		};
+		DE7838B028D1AEDB0093F034 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DE22096F28C9CBA000612BB1 /* Content.swift */,
+				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
+				DE22096228C9B49500612BB1 /* Constants */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +157,7 @@
 				DE22096928C9BA5600612BB1 /* SnapKit */,
 				DE22097228C9CC8000612BB1 /* Realm */,
 				DE22097428C9CC8000612BB1 /* RealmSwift */,
+				DE0314D428D4572700FC9561 /* FSCalendar */,
 			);
 			productName = Memomamu;
 			productReference = DE22093F28C9B32400612BB1 /* Memomamu.app */;
@@ -165,6 +190,7 @@
 			packageReferences = (
 				DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DE22097128C9CC8000612BB1 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = DE22094028C9B32400612BB1 /* Products */;
 			projectDirPath = "";
@@ -193,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
 				DE22094728C9B32400612BB1 /* ViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
@@ -203,6 +230,7 @@
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
 				DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */,
 				DE22096428C9B49E00612BB1 /* Constants.swift in Sources */,
+				DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */,
 				DE22096C28C9BAB400612BB1 /* WriteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +453,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -444,6 +480,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DE0314D428D4572700FC9561 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
 		DE22096928C9BA5600612BB1 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */;

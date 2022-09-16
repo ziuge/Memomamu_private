@@ -5,7 +5,6 @@
 //  Created by CHOI on 2022/09/13.
 //
 
-import Foundation
 import UIKit
 import RealmSwift
 
@@ -30,7 +29,8 @@ class TodoViewController: UIViewController {
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = Constants.Color.paper
-        view.rowHeight = 68
+        
+//        view.rowHeight = 68
         view.delegate = self
         view.dataSource = self
         view.register(WriteTableViewCell.self, forCellReuseIdentifier: WriteTableViewCell.reuseIdentifier)
@@ -48,12 +48,15 @@ class TodoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.paper
         tableView.reloadData()
+        
         configure()
         setConstraints()
     }
     
     func configure() {
         view.addSubview(tableView)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
         [titleLabel, lineImageView].forEach {
             view.addSubview($0)
         }
@@ -88,12 +91,27 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return section == 1 ? 1 : 10
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 1 {
+            
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return UITableViewCell() }
+        
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
 }

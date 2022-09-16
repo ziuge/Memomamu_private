@@ -25,7 +25,7 @@ class WriteViewController: UIViewController {
         return view
     }()
 
-    let vc = PageViewController()
+    let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,8 @@ class WriteViewController: UIViewController {
         configure()
         setConstraints()
         addPageVC()
+        
+        viewButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
     }
     
     func configure() {
@@ -69,6 +71,13 @@ class WriteViewController: UIViewController {
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(view).multipliedBy(0.63)
         }
+    }
+    
+    @objc func openCalendar() {
+        let vc = CalendarViewController()
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
     }
     
 }
