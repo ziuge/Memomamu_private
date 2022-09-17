@@ -25,21 +25,21 @@ class WriteTableViewCell: UITableViewCell {
         view.isScrollEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = true
         view.sizeToFit()
-        view.backgroundColor = .yellow
+        view.backgroundColor = .clear
+        view.textContainer.maximumNumberOfLines = 0
         return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.paper
-        todoTextView.delegate = self
+        
         configure()
         setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
     }
     
     func configure() {
@@ -48,35 +48,25 @@ class WriteTableViewCell: UITableViewCell {
         }
     }
     
+    func setData(data: Todo) {
+        todoTextView.text = data.todo
+        checkButton.setImage(UIImage(named: "pencil"), for: .selected)
+    }
+    
     func setConstraints() {
         checkButton.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView)
+            make.top.equalTo(todoTextView.snp.top).offset(4)
+//            make.centerY.equalTo(contentView)
             make.leadingMargin.equalTo(contentView).offset(52)
             make.height.width.equalTo(26)
         }
         
         todoTextView.snp.makeConstraints { make in
-//            make.centerY.equalTo(contentView)
-            make.topMargin.equalTo(self).offset(14)
-            make.bottomMargin.equalTo(self).offset(-14)
+            make.topMargin.equalTo(contentView).offset(4)
+            make.centerY.equalTo(contentView)
             make.leadingMargin.equalTo(checkButton.snp.trailing).offset(15)
             make.trailingMargin.equalTo(contentView).offset(-52)
         }
     }
     
-}
-
-extension WriteTableViewCell: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        let size = CGSize(width: self.frame.width, height: .infinity)
-        let estimatedSize = textView.sizeThatFits(size)
-        textView.constraints.forEach { (constraint) in
-            if estimatedSize.height <= 68 {
-            } else {
-                if constraint.firstAttribute == .height {
-                    constraint.constant = estimatedSize.height
-                }
-            }
-        }
-    }
 }

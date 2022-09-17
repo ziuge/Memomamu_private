@@ -77,9 +77,7 @@ class WriteViewController: UIViewController {
         let vc = CalendarViewController()
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
-        
     }
     
 }
-
 
