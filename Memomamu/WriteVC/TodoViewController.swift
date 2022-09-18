@@ -11,6 +11,12 @@ import RealmSwift
 class TodoViewController: UIViewController {
     
     let localRealm = try! Realm()
+    var todos: Results<Todo>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+//    var todos: [Todo] = [Todo(todo: "하이하이", check: 0, num: 0), Todo(todo: "바이바이", check: 0, num: 1), Todo(todo: "sdfbn", check: 1, num: 2)]
     
     var titleLabel: UILabel = {
         let view = UILabel()
@@ -40,14 +46,6 @@ class TodoViewController: UIViewController {
         view.backgroundColor = Constants.Color.paper
         return view
     }()
-    
-    var contents: Results<Content>! {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    var todos: [Todo] = [Todo(todo: "하이하이", check: 0, num: 0), Todo(todo: "바이바이", check: 0, num: 1), Todo(todo: "sdfbn", check: 1, num: 2)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +91,8 @@ class TodoViewController: UIViewController {
     }
     
     func addCell(num: Int) {
-        todos.append(Todo(todo: "", check: 0, num: num))
+//        todos.append(Todo(todo: "", check: 0, num: num))
+        
     }
 
 }
@@ -144,17 +143,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .blue
             return cell
         }
-        
-//        if indexPath.section == 1 {
-//            cell.checkButton.setImage(UIImage(named: "addTodoButton"), for: .normal)
-//            cell.todoTextView.isHidden = true
-//        } else {
-//
-//        }
-//
-//        cell.todoTextView.delegate = self
-//
-//        return cell
+    
     }
 }
 

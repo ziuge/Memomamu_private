@@ -13,6 +13,8 @@
 		DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314DD28D48C3B00FC9561 /* CardTodoViewController.swift */; };
 		DE0314E028D48C4400FC9561 /* CardDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314DF28D48C4400FC9561 /* CardDiaryViewController.swift */; };
 		DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314E128D495FC00FC9561 /* SortViewController.swift */; };
+		DE0314E628D6BB7800FC9561 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314E528D6BB7800FC9561 /* Repository.swift */; };
+		DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314E828D6BF9A00FC9561 /* TodoEnum.swift */; };
 		DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0504B428CCBC3C00945FD8 /* PageViewController.swift */; };
 		DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EB928D0820300877A49 /* TodoViewController.swift */; };
 		DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */; };
@@ -38,6 +40,8 @@
 		DE0314DD28D48C3B00FC9561 /* CardTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoViewController.swift; sourceTree = "<group>"; };
 		DE0314DF28D48C4400FC9561 /* CardDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDiaryViewController.swift; sourceTree = "<group>"; };
 		DE0314E128D495FC00FC9561 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		DE0314E528D6BB7800FC9561 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		DE0314E828D6BF9A00FC9561 /* TodoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEnum.swift; sourceTree = "<group>"; };
 		DE0504B428CCBC3C00945FD8 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		DE1F8EB928D0820300877A49 /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
 		DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,23 @@
 			path = SortVC;
 			sourceTree = "<group>";
 		};
+		DE0314E328D6BAF300FC9561 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE22096F28C9CBA000612BB1 /* Content.swift */,
+				DE0314E828D6BF9A00FC9561 /* TodoEnum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DE0314E428D6BB4500FC9561 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				DE0314E528D6BB7800FC9561 /* Repository.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		DE22093628C9B32400612BB1 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +130,8 @@
 		DE22094128C9B32400612BB1 /* Memomamu */ = {
 			isa = PBXGroup;
 			children = (
+				DE0314E328D6BAF300FC9561 /* Model */,
+				DE0314E428D6BB4500FC9561 /* Realm */,
 				DE0314DA28D48C0200FC9561 /* SortVC */,
 				DE0314D228D456D200FC9561 /* CalendarVC */,
 				DE7838B028D1AEDB0093F034 /* Utility */,
@@ -147,7 +170,6 @@
 		DE7838B028D1AEDB0093F034 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				DE22096F28C9CBA000612BB1 /* Content.swift */,
 				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
 				DE22096228C9B49500612BB1 /* Constants */,
 			);
@@ -240,6 +262,7 @@
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
 				DE22094728C9B32400612BB1 /* ViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
+				DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */,
 				DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */,
 				DE0314E028D48C4400FC9561 /* CardDiaryViewController.swift in Sources */,
 				DE22097028C9CBA000612BB1 /* Content.swift in Sources */,
@@ -248,6 +271,7 @@
 				DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */,
 				DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */,
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
+				DE0314E628D6BB7800FC9561 /* Repository.swift in Sources */,
 				DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */,
 				DE22096428C9B49E00612BB1 /* Constants.swift in Sources */,
 				DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */,

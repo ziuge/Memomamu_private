@@ -42,7 +42,7 @@ class CardTodoViewController: UIViewController {
         return view
     }()
     
-    var contents: Results<Content>! {
+    var todos: Results<Todo>! {
         didSet {
             tableView.reloadData()
         }
