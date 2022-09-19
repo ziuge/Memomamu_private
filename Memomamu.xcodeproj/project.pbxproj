@@ -20,7 +20,6 @@
 		DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */; };
 		DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094228C9B32400612BB1 /* AppDelegate.swift */; };
 		DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094428C9B32400612BB1 /* SceneDelegate.swift */; };
-		DE22094728C9B32400612BB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094628C9B32400612BB1 /* ViewController.swift */; };
 		DE22094A28C9B32400612BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE22094828C9B32400612BB1 /* Main.storyboard */; };
 		DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE22094B28C9B32800612BB1 /* Assets.xcassets */; };
 		DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE22094D28C9B32800612BB1 /* LaunchScreen.storyboard */; };
@@ -32,6 +31,8 @@
 		DE22097028C9CBA000612BB1 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096F28C9CBA000612BB1 /* Content.swift */; };
 		DE22097328C9CC8000612BB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DE22097228C9CC8000612BB1 /* Realm */; };
 		DE22097528C9CC8000612BB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE22097428C9CC8000612BB1 /* RealmSwift */; };
+		DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */; };
+		DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +49,6 @@
 		DE22093F28C9B32400612BB1 /* Memomamu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memomamu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE22094228C9B32400612BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE22094428C9B32400612BB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DE22094628C9B32400612BB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DE22094928C9B32400612BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE22094B28C9B32800612BB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE22094E28C9B32800612BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,6 +58,7 @@
 		DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteTableViewCell.swift; sourceTree = "<group>"; };
 		DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		DE22096F28C9CBA000612BB1 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */,
 				DE22097528C9CC8000612BB1 /* RealmSwift in Frameworks */,
 				DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */,
 				DE22097328C9CC8000612BB1 /* Realm in Frameworks */,
@@ -138,7 +140,6 @@
 				DE22096728C9B94900612BB1 /* WriteVC */,
 				DE22094228C9B32400612BB1 /* AppDelegate.swift */,
 				DE22094428C9B32400612BB1 /* SceneDelegate.swift */,
-				DE22094628C9B32400612BB1 /* ViewController.swift */,
 				DE22094828C9B32400612BB1 /* Main.storyboard */,
 				DE22094B28C9B32800612BB1 /* Assets.xcassets */,
 				DE22094D28C9B32800612BB1 /* LaunchScreen.storyboard */,
@@ -170,10 +171,19 @@
 		DE7838B028D1AEDB0093F034 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DE8CE76728D87C18008F8319 /* Extensions */,
 				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
 				DE22096228C9B49500612BB1 /* Constants */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		DE8CE76728D87C18008F8319 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +207,7 @@
 				DE22097228C9CC8000612BB1 /* Realm */,
 				DE22097428C9CC8000612BB1 /* RealmSwift */,
 				DE0314D428D4572700FC9561 /* FSCalendar */,
+				DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */,
 			);
 			productName = Memomamu;
 			productReference = DE22093F28C9B32400612BB1 /* Memomamu.app */;
@@ -230,6 +241,7 @@
 				DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DE22097128C9CC8000612BB1 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = DE22094028C9B32400612BB1 /* Products */;
 			projectDirPath = "";
@@ -260,7 +272,6 @@
 			files = (
 				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
-				DE22094728C9B32400612BB1 /* ViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
 				DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */,
 				DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */,
@@ -269,6 +280,7 @@
 				DE22096E28C9CB5300612BB1 /* ReusableProtocol.swift in Sources */,
 				DE22096628C9B94400612BB1 /* WriteViewController.swift in Sources */,
 				DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */,
+				DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */,
 				DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */,
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
 				DE0314E628D6BB7800FC9561 /* Repository.swift in Sources */,
@@ -430,7 +442,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,7 +471,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,6 +533,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -543,6 +563,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE22097128C9CC8000612BB1 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

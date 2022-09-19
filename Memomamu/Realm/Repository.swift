@@ -23,6 +23,13 @@ class Repository: ContentRepositoryType {
         return localRealm.objects(Todo.self).sorted(byKeyPath: "date", ascending: true)
     }
     
+    func fetchDiary(date: String) -> Diary {
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(#function, "Diary!")
+        
+        return localRealm.objects(Diary.self).filter("date == %@", date).first!
+    }
+    
     func addTodo(item: Todo) {
         let item = item
         do {
@@ -35,10 +42,35 @@ class Repository: ContentRepositoryType {
         }
     }
     
+    func addDiary(item: Diary) {
+        print(#function)
+        let item = item
+        do {
+            try localRealm.write({
+                localRealm.add(item)
+                print(#function, "realm success")
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    
     func updateTodo(oldValue: Todo, newValue: String) {
         do {
             try localRealm.write({
                 oldValue.todo = newValue
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    func updateDiary(oldValue: Diary, newValue: String) {
+        print(#function)
+        do {
+            try localRealm.write({
+                oldValue.diary = newValue
             })
         } catch {
             print(error)
@@ -59,6 +91,16 @@ class Repository: ContentRepositoryType {
         do {
             try localRealm.write({
                 localRealm.delete(item)
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    func diaryChanged(item: Diary) {
+        do {
+            try localRealm.write({
+                item.hasChanged.toggle()
             })
         } catch {
             print(error)

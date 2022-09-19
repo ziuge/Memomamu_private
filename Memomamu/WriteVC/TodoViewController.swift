@@ -10,20 +10,34 @@ import RealmSwift
 
 class TodoViewController: UIViewController {
     
-    let localRealm = try! Realm()
+    // MARK: Realm
+    let repository = Repository()
     var todos: Results<Todo>! {
         didSet {
             tableView.reloadData()
         }
     }
-    
-    let repository = Repository()
-    
     func fetchRealm() {
         todos = repository.fetchTodo()
         tableView.reloadData()
     }
     
+    // MARK: DateFormatter
+//    let formatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy. MM. dd."
+//        formatter.locale = Locale(identifier: "ko_KR")
+//        return formatter
+//    }()
+
+//    func changeDate(date: Date) -> String {
+//        return formatter.string(from: date)
+//    }
+    
+    var todayDate: String = ""
+    
+
+    // MARK: UI
     var titleLabel: UILabel = {
         let view = UILabel()
         view.text = "to do list"
@@ -31,20 +45,17 @@ class TodoViewController: UIViewController {
         view.textColor = Constants.Color.background
         return view
     }()
-    
     var lineImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "todoLine")
         return view
     }()
-    
     var editButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
         return view
     }()
-    
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = Constants.Color.paper
@@ -54,26 +65,20 @@ class TodoViewController: UIViewController {
         view.separatorStyle = .none
         return view
     }()
-    
     var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.paper
         return view
     }()
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        todayDate = DateFormatter.dateOnly.string(from: Date())
         fetchRealm()
-        
-        
         configure()
         setConstraints()
         editButton.addTarget(self, action: #selector(editMode), for: .touchUpInside)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     func configure() {
@@ -82,7 +87,6 @@ class TodoViewController: UIViewController {
             backgroundView.addSubview($0)
         }
     }
-    
     func setConstraints() {
         
         let spacing = 16
@@ -128,7 +132,6 @@ class TodoViewController: UIViewController {
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
-    
 }
 
 // MARK: - TableView
@@ -150,7 +153,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(#function, indexPath)
         if indexPath.section == 1 && self.tableView.isEditing == false {
-            repository.addTodo(item: Todo(date: Date(), todo: "\(Int.random(in: 1...100))", check: 0))
+            repository.addTodo(item: Todo(date: todayDate, orderDate: Date() , todo: "\(Int.random(in: 1...100))", check: 0))
             
             fetchRealm()
             
@@ -207,7 +210,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func addTodo() {
         print(#function)
-        repository.addTodo(item: Todo(date: Date(), todo: "\(Int.random(in: 100...999))", check: 0))
+        repository.addTodo(item: Todo(date: todayDate, orderDate: Date(), todo: "\(Int.random(in: 100...999))", check: 0))
         tableView.reloadData()
     }
     
@@ -232,7 +235,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - textView Delegate
-
 extension TodoViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         print(String(describing: textView.text))

@@ -19,8 +19,8 @@ class PageViewController: UIPageViewController {
         super.viewDidLoad()
         
         createPageViewController(vc1: vc1, vc2: vc2)
+        
         configurePageViewController()
-        print(self, view.frame.height)
     }
     
     func createPageViewController(vc1: UIViewController, vc2: UIViewController) {
@@ -37,6 +37,7 @@ class PageViewController: UIPageViewController {
 
 }
 
+// MARK: - PageVC Delegate, DataSource
 extension PageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = pageViewControllerList.firstIndex(of: viewController) else { return nil }

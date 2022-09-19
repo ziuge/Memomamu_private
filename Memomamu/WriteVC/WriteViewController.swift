@@ -10,13 +10,13 @@ import SnapKit
 
 class WriteViewController: UIViewController {
     
+    // MARK: UI
     var viewButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
         return view
     }()
-    
     var dateLabel: UILabel = {
         let view = UILabel()
         view.textColor = Constants.Color.text
@@ -24,7 +24,6 @@ class WriteViewController: UIViewController {
         view.font = Constants.Font.head
         return view
     }()
-    
     var containerView: UIView = {
         let view = UIView()
         return view
@@ -40,7 +39,6 @@ class WriteViewController: UIViewController {
         addPageVC()
         
         viewButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
-
     }
     
     func configure() {
@@ -49,7 +47,6 @@ class WriteViewController: UIViewController {
         }
         
     }
-    
     func setConstraints() {
         viewButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
