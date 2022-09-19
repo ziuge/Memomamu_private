@@ -18,14 +18,13 @@ class PageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createPageViewController()
+        createPageViewController(vc1: vc1, vc2: vc2)
         configurePageViewController()
+        print(self, view.frame.height)
     }
     
-    func createPageViewController() {
-//        let vc1 = TodoViewController()
-//        let vc2 = DiaryViewController()
-        pageViewControllerList = [self.vc1, self.vc2]
+    func createPageViewController(vc1: UIViewController, vc2: UIViewController) {
+        pageViewControllerList = [vc1, vc2]
     }
     
     func configurePageViewController() {
@@ -34,7 +33,6 @@ class PageViewController: UIPageViewController {
         
         guard let first = pageViewControllerList.first else { return }
         setViewControllers([first], direction: .forward, animated: true)
-        
     }
 
 }

@@ -30,6 +30,16 @@ class WriteTableViewCell: UITableViewCell {
         return view
     }()
     
+//    var deleteButton: UIButton = {
+//        let view = UIButton()
+//        view.setImage(UIImage(systemName: "trash"), for: .normal)
+//        view.tintColor = .red
+//        view.isHidden = true
+//        return view
+//    }()
+    
+    var deleteHidden: Bool = true
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.paper
@@ -50,23 +60,27 @@ class WriteTableViewCell: UITableViewCell {
     
     func setData(data: Todo) {
         todoTextView.text = data.todo
-        checkButton.setImage(UIImage(named: "pencil"), for: .selected)
+        checkButton.setImage(UIImage(named: check.unchecked.checkInfo), for: .normal)
     }
     
     func setConstraints() {
         checkButton.snp.makeConstraints { make in
-            make.top.equalTo(todoTextView.snp.top).offset(4)
-//            make.centerY.equalTo(contentView)
-            make.leadingMargin.equalTo(contentView).offset(52)
+            make.top.equalTo(todoTextView.snp.top).offset(8)
+            make.leadingMargin.equalTo(contentView).offset(12)
             make.height.width.equalTo(26)
         }
         
         todoTextView.snp.makeConstraints { make in
-            make.topMargin.equalTo(contentView).offset(4)
+            make.topMargin.equalTo(contentView).offset(8)
             make.centerY.equalTo(contentView)
             make.leadingMargin.equalTo(checkButton.snp.trailing).offset(15)
             make.trailingMargin.equalTo(contentView).offset(-52)
         }
+        
+//        deleteButton.snp.makeConstraints { make in
+//            make.leading.equalTo(todoTextView.snp.trailing)
+//            make.centerY.equalTo(todoTextView)
+//        }
     }
     
 }

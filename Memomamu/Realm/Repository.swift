@@ -6,14 +6,22 @@
 //
 
 import RealmSwift
+import Foundation
 
 protocol ContentRepositoryType {
+    func fetchTodo() -> Results<Todo>
     func addTodo(item: Todo)
     func updateTodo(oldValue: Todo, newValue: String)
+    func checkTodo(item: Todo, status: Int)
 }
 
 class Repository: ContentRepositoryType {
     let localRealm = try! Realm()
+    
+    func fetchTodo() -> Results<Todo> {
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        return localRealm.objects(Todo.self).sorted(byKeyPath: "date", ascending: true)
+    }
     
     func addTodo(item: Todo) {
         let item = item
@@ -37,8 +45,24 @@ class Repository: ContentRepositoryType {
         }
     }
     
-    func checkTodo(item: Todo) {
-//        item.check
+    func checkTodo(item: Todo, status: Int) {
+        do {
+            try localRealm.write({
+                item.check = status
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    func deleteTodo(item: Todo) {
+        do {
+            try localRealm.write({
+                localRealm.delete(item)
+            })
+        } catch {
+            print(error)
+        }
     }
     
 }

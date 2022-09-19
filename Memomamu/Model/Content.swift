@@ -22,14 +22,16 @@ class Diary: Object {
 }
 
 class Todo: Object {
-    @Persisted var todo: String
+    @Persisted var date = Date()
+    @Persisted var todo: String?
     @Persisted var check: Int
-    @Persisted var num: Int
     
-    convenience init(todo: String, check: Int, num: Int) {
+    @Persisted(primaryKey: true) var objectId: ObjectId
+    
+    convenience init(date: Date, todo: String?, check: Int) {
         self.init()
+        self.date = date
         self.todo = todo
         self.check = 0
-        self.num = num
     }
 }

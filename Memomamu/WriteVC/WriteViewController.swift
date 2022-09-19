@@ -24,24 +24,30 @@ class WriteViewController: UIViewController {
         view.font = Constants.Font.head
         return view
     }()
+    
+    var containerView: UIView = {
+        let view = UIView()
+        return view
+    }()
 
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.background
-        
         configure()
         setConstraints()
         addPageVC()
         
         viewButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
+
     }
     
     func configure() {
-        [viewButton, dateLabel].forEach {
+        [containerView, viewButton, dateLabel].forEach {
             view.addSubview($0)
         }
+        
     }
     
     func setConstraints() {
@@ -50,26 +56,32 @@ class WriteViewController: UIViewController {
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
             make.height.width.equalTo(21)
         }
-        
+
         dateLabel.snp.makeConstraints { make in
             make.topMargin.equalTo(view).offset(view.frame.height * 0.12)
             make.centerX.equalTo(view)
         }
         
+        containerView.snp.makeConstraints { make in
+            make.topMargin.equalTo(view).offset(view.frame.height * 0.23)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(view).multipliedBy(0.63)
+        }
     }
     
     func addPageVC() {
         addChild(vc)
-        view.addSubview(vc.view)
+        containerView.addSubview(vc.view)
         vc.didMove(toParent: self)
         setPageConstraints()
     }
     
     func setPageConstraints() {
         vc.view.snp.makeConstraints { make in
-            make.topMargin.equalTo(view).offset(view.frame.height * 0.23)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(view).multipliedBy(0.63)
+            make.top.bottom.leading.trailing.equalTo(containerView)
+//            make.topMargin.equalTo(view).offset(view.frame.height * 0.23)
+//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+//            make.height.equalTo(view).multipliedBy(0.63)
         }
     }
     

@@ -16,7 +16,13 @@ class TodoViewController: UIViewController {
             tableView.reloadData()
         }
     }
-//    var todos: [Todo] = [Todo(todo: "하이하이", check: 0, num: 0), Todo(todo: "바이바이", check: 0, num: 1), Todo(todo: "sdfbn", check: 1, num: 2)]
+    
+    let repository = Repository()
+    
+    func fetchRealm() {
+        todos = repository.fetchTodo()
+        tableView.reloadData()
+    }
     
     var titleLabel: UILabel = {
         let view = UILabel()
@@ -32,12 +38,20 @@ class TodoViewController: UIViewController {
         return view
     }()
     
+    var editButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
+        view.tintColor = Constants.Color.text
+        return view
+    }()
+    
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = Constants.Color.paper
         view.delegate = self
         view.dataSource = self
         view.register(WriteTableViewCell.self, forCellReuseIdentifier: WriteTableViewCell.reuseIdentifier)
+        view.separatorStyle = .none
         return view
     }()
     
@@ -49,15 +63,22 @@ class TodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        
+        fetchRealm()
+        
         
         configure()
         setConstraints()
+        editButton.addTarget(self, action: #selector(editMode), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     func configure() {
         view.addSubview(backgroundView)
-        [tableView, titleLabel, lineImageView].forEach {
+        [tableView, titleLabel, lineImageView, editButton].forEach {
             backgroundView.addSubview($0)
         }
     }
@@ -84,17 +105,30 @@ class TodoViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(19)
         }
         
+        editButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(backgroundView).offset(20)
+            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            make.height.width.equalTo(21)
+        }
+        
         tableView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
+            make.trailing.equalTo(backgroundView)
+            make.leading.equalTo(backgroundView).offset(40)
+//            make.bottom.equalTo(backgroundView.safeAreaLayoutGuide).offset(50)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.48)
             make.topMargin.equalTo(lineImageView.snp.bottom).offset(12)
+        }
+        print(self, tableView.snp.height)
+    }
+    
+    func scrollToBottom(){
+        let lastRowOfIndexPath = self.tableView.numberOfRows(inSection: 0) - 1
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(row: lastRowOfIndexPath, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
     
-    func addCell(num: Int) {
-//        todos.append(Todo(todo: "", check: 0, num: num))
-        
-    }
-
 }
 
 // MARK: - TableView
@@ -106,23 +140,23 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 1 : todos.count
+        if section == 1 {
+            return 1
+        } else {
+            return todos.count
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.section == 1 {
-            addCell(num: todos.count)
-            tableView.reloadData()
+        print(#function, indexPath)
+        if indexPath.section == 1 && self.tableView.isEditing == false {
+            repository.addTodo(item: Todo(date: Date(), todo: "\(Int.random(in: 1...100))", check: 0))
+            
+            fetchRealm()
+            
+        } else {
+            tableView.deselectRow(at: indexPath, animated: false)
         }
-        
-//        if indexPath.section == 1 {
-//            todos.append(Todo(todo: "TODO\(indexPath.row)", check: 0, num: todos.count))
-//            print("todos", todos)
-//            tableView.reloadData()
-//        } else {
-//            print("selected", indexPath.row)
-//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -130,22 +164,74 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(#function, indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return UITableViewCell() }
         
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(addTodo))
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return UITableViewCell() }
-            cell.todoTextView.text = todos[indexPath.row].todo
-            cell.todoTextView.clearsOnInsertion = true
+            cell.setData(data: todos[indexPath.row])
+//            cell.todoTextView.clearsOnInsertion = true
             cell.todoTextView.delegate = self
-            
+            cell.todoTextView.isEditable = true
+            cell.todoTextView.isUserInteractionEnabled = true
+//            cell.todoTextView.removeGestureRecognizer(tap)
             return cell
         } else {
-            let cell = UITableViewCell()
-            cell.backgroundColor = .blue
+            cell.todoTextView.textColor = Constants.Color.background.withAlphaComponent(0.8)
+            cell.checkButton.setImage(UIImage(named: "addTodoButton"), for: .normal)
+            cell.todoTextView.isEditable = false
+            cell.todoTextView.text = "할 일 적으삼"
+//            cell.todoTextView.tag = indexPath.row
+//            cell.todoTextView.isHidden = true
+//            cell.todoTextView.isUserInteractionEnabled = true
+//            cell.todoTextView.addGestureRecognizer(tap)
             return cell
         }
-    
     }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if indexPath == [1, 0] {
+            return .none
+        } else {
+            return .delete
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            print("delete")
+            repository.deleteTodo(item: todos[indexPath.row])
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    @objc func addTodo() {
+        print(#function)
+        repository.addTodo(item: Todo(date: Date(), todo: "\(Int.random(in: 100...999))", check: 0))
+        tableView.reloadData()
+    }
+    
+    @objc func editMode() {
+        if self.tableView.isEditing {
+            self.tableView.setEditing(false, animated: true)
+            
+        } else {
+            self.tableView.setEditing(true, animated: true)
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+//            self.repository.deleteTodo(item: self.todos[indexPath.row])
+//        }
+//        delete.image = UIImage(systemName: "trash")
+//        delete.backgroundColor = .systemRed
+//
+//        return UISwipeActionsConfiguration(actions: [delete])
+//    }
 }
+
+// MARK: - textView Delegate
 
 extension TodoViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
