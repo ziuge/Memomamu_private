@@ -27,6 +27,7 @@ class WriteTableViewCell: UITableViewCell {
         view.sizeToFit()
         view.backgroundColor = .clear
         view.textContainer.maximumNumberOfLines = 0
+        
         return view
     }()
     

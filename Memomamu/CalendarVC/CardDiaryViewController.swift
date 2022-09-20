@@ -17,7 +17,13 @@ class CardDiaryViewController: UIViewController {
     var diary: Diary? = nil
     func fetchRealm() {
         diary = repository.fetchDiary(date: selectedDate)
-        diaryTextView.text = (diary != nil) ? diary!.diary : ""
+        if diary == nil {
+            diaryTextView.text = "to do를 먼저 작성하세요 :("
+            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
+        } else {
+            diaryTextView.text = diary!.diary
+            diaryTextView.textColor = Constants.Color.background
+        }
     }
     
     var titleLabel: UILabel = {
@@ -48,6 +54,8 @@ class CardDiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchRealm()
         
         configure()
         setConstraints()
@@ -90,3 +98,5 @@ class CardDiaryViewController: UIViewController {
     }
     
 }
+
+

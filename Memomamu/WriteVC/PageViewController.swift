@@ -10,6 +10,12 @@ import RealmSwift
 
 class PageViewController: UIPageViewController {
     
+    var selectedDate = DateFormatter.dateOnly.string(from: Date()) {
+        didSet {
+            print(self, selectedDate)
+        }
+    }
+    
     var pageViewControllerList: [UIViewController] = []
     
     var vc1: UIViewController = TodoViewController()
@@ -17,9 +23,7 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         createPageViewController(vc1: vc1, vc2: vc2)
-        
         configurePageViewController()
     }
     

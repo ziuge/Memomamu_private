@@ -10,13 +10,13 @@ import RealmSwift
 
 class DiaryViewController: UIViewController {
     
-    var todayDate: String = DateFormatter.dateOnly.string(from: Date())
+    var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
     // MARK: Realm
     let repository = Repository()
     var diary: Diary? = nil
     func fetchRealm() {
-        diary = repository.fetchDiary(date: todayDate)
+        diary = repository.fetchDiary(date: selectedDate)
         diaryTextView.text = (diary != nil) ? diary!.diary : ""
     }
     
@@ -68,7 +68,7 @@ class DiaryViewController: UIViewController {
         
         if diary == nil {
             print("==diary is nil")
-            repository.addDiary(item: Diary(date: todayDate, diary: ""))
+            repository.addDiary(item: Diary(date: selectedDate, diary: ""))
             fetchRealm()
         }
         

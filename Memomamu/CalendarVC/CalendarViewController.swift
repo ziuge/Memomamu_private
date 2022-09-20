@@ -11,17 +11,12 @@ import FSCalendar
 class CalendarViewController: UIViewController {
     
     fileprivate let gregorian = Calendar(identifier: .gregorian)
-    fileprivate let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
     fileprivate weak var calendar: FSCalendar!
     
     func makeCalendar() {
         print(#function)
-        let spacing = 28
-        let calendar = FSCalendar(frame: CGRect(x: spacing, y: Int(self.view.frame.height * 0.23), width: Int(self.view.frame.width) - (spacing * 2), height: 300))
+        let spacing = 36
+        let calendar = FSCalendar(frame: CGRect(x: spacing, y: Int(self.view.frame.height * 0.15), width: Int(self.view.frame.width) - (spacing * 2), height: Int(self.view.frame.height * 0.4)))
         calendar.dataSource = self
         calendar.delegate = self
         view.addSubview(calendar)
@@ -30,43 +25,41 @@ class CalendarViewController: UIViewController {
         calendar.calendarHeaderView.backgroundColor = .clear
         calendar.calendarWeekdayView.backgroundColor = .clear
         calendar.appearance.eventSelectionColor = UIColor.white
-        calendar.appearance.headerDateFormat = "M월"
+        calendar.appearance.headerDateFormat = "MMMM"
         calendar.appearance.headerTitleColor = Constants.Color.text
         calendar.appearance.headerTitleAlignment = .center
+        calendar.appearance.headerTitleFont = Constants.Font.title
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
         calendar.appearance.titleDefaultColor = .white
         calendar.appearance.titleWeekendColor = .white
         calendar.appearance.weekdayTextColor = .white
         calendar.appearance.selectionColor = Constants.Color.text
         calendar.appearance.todayColor = Constants.Color.paper.withAlphaComponent(0.4)
+        calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
+        calendar.appearance.titleFont = Constants.Font.content
         
         calendar.appearance.eventOffset = CGPoint(x: 0, y: -7)
-//        calendar.today = nil // Hide the today circle
         calendar.register(CalendarCell.self, forCellReuseIdentifier: "cell")
 //        calendar.clipsToBounds = true // Remove top/bottom line
         
         calendar.swipeToChooseGesture.isEnabled = false // Swipe-To-Choose
         
         calendar.scope = .month
-        calendar.locale = Locale(identifier: "ko_KR")
         
         calendar.scrollEnabled = true
         calendar.scrollDirection = .horizontal
         calendar.placeholderType = .none
-        
     }
-    
     var viewButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
         return view
     }()
-    
     var dateLabel: UILabel = {
         let view = UILabel()
         view.textColor = Constants.Color.text
-        view.text = "17, April"
+        view.text = "September"
         view.font = Constants.Font.head
         return view
     }()
@@ -90,7 +83,7 @@ class CalendarViewController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = Constants.Color.background
-        [viewButton, dateLabel].forEach {
+        [viewButton].forEach {
             view.addSubview($0)
         }
     }
@@ -101,24 +94,28 @@ class CalendarViewController: UIViewController {
             make.height.width.equalTo(21)
         }
         
-        dateLabel.snp.makeConstraints { make in
-            make.topMargin.equalTo(view).offset(view.frame.height * 0.12)
-            make.centerX.equalTo(view)
-        }
+//        dateLabel.snp.makeConstraints { make in
+//            make.topMargin.equalTo(view).offset(view.frame.height * 0.12)
+//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+//            make.centerX.equalTo(view)
+//        }
     }
     
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    let vc1 = CardTodoViewController()
+    let vc2 = CardDiaryViewController()
     
     func addPageVC() {
-        vc.vc1 = CardTodoViewController()
-        vc.vc2 = CardDiaryViewController()
+//        vc.view.backgroundColor = .magenta
+        vc.vc1 = vc1
+        vc.vc2 = vc2
         addChild(vc)
         view.addSubview(vc.view)
         vc.didMove(toParent: self)
         setPageConstraints()
     }
-    
     func setPageConstraints() {
+        vc.view.backgroundColor = .magenta
         vc.view.snp.makeConstraints { make in
             make.topMargin.equalTo(calendar.snp.bottom).offset(24)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -137,7 +134,13 @@ class CalendarViewController: UIViewController {
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(formatter.string(from: date), "selected!")
+        let date = DateFormatter.dateOnly.string(from: date)
+        print(date, "selected!")
+        vc.configurePageViewController()
+        vc1.selectedDate = date
+        vc1.fetchRealm()
+        vc2.selectedDate = date
+        vc2.fetchRealm()
     }
     
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {

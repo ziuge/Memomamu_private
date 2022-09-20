@@ -10,7 +10,7 @@ import RealmSwift
 
 class TodoViewController: UIViewController {
     
-    var todayDate: String = DateFormatter.dateOnly.string(from: Date())
+    var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
     // MARK: Realm
     let repository = Repository()
@@ -20,7 +20,7 @@ class TodoViewController: UIViewController {
         }
     }
     func fetchRealm() {
-        todos = repository.fetchTodo(date: todayDate)
+        todos = repository.fetchTodo(date: selectedDate)
         tableView.reloadData()
     }
     
@@ -136,12 +136,9 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function, indexPath)
         if indexPath.section == 1 && self.tableView.isEditing == false {
-            repository.addTodo(item: Todo(date: todayDate, orderDate: Date() , todo: "\(Int.random(in: 1...100))", check: 0))
-            
+            repository.addTodo(item: Todo(date: selectedDate, orderDate: Date() , todo: "\(Int.random(in: 1...100))", check: 0))
             fetchRealm()
-            
         } else {
             tableView.deselectRow(at: indexPath, animated: false)
         }
@@ -163,12 +160,13 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.todoTextView.isEditable = true
             cell.todoTextView.isUserInteractionEnabled = true
 //            cell.todoTextView.removeGestureRecognizer(tap)
+//            cell.todoTextView.done
             return cell
         } else {
             cell.todoTextView.textColor = Constants.Color.background.withAlphaComponent(0.8)
             cell.checkButton.setImage(UIImage(named: "addTodoButton"), for: .normal)
             cell.todoTextView.isEditable = false
-            cell.todoTextView.text = "할 일 적으삼"
+            cell.todoTextView.text = "할 일을 작성하세요 :)"
 //            cell.todoTextView.tag = indexPath.row
 //            cell.todoTextView.isHidden = true
 //            cell.todoTextView.isUserInteractionEnabled = true
@@ -195,7 +193,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func addTodo() {
         print(#function)
-        repository.addTodo(item: Todo(date: todayDate, orderDate: Date(), todo: "\(Int.random(in: 100...999))", check: 0))
+        repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "\(Int.random(in: 100...999))", check: 0))
         tableView.reloadData()
     }
     
@@ -231,4 +229,12 @@ extension TodoViewController: UITextViewDelegate {
             UIView.setAnimationsEnabled(true)
         }
     }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let pointInTable = textView.convert(textView.bounds.origin, to: self.tableView)
+        guard let textViewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else { return }
+        repository.updateTodo(oldValue: todos[textViewIndexPath.row], newValue: textView.text)
+    }
+    
 }
+
