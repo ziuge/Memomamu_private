@@ -10,6 +10,8 @@ import RealmSwift
 
 class TodoViewController: UIViewController {
     
+    var todayDate: String = DateFormatter.dateOnly.string(from: Date())
+    
     // MARK: Realm
     let repository = Repository()
     var todos: Results<Todo>! {
@@ -18,25 +20,10 @@ class TodoViewController: UIViewController {
         }
     }
     func fetchRealm() {
-        todos = repository.fetchTodo()
+        todos = repository.fetchTodo(date: todayDate)
         tableView.reloadData()
     }
     
-    // MARK: DateFormatter
-//    let formatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy. MM. dd."
-//        formatter.locale = Locale(identifier: "ko_KR")
-//        return formatter
-//    }()
-
-//    func changeDate(date: Date) -> String {
-//        return formatter.string(from: date)
-//    }
-    
-    var todayDate: String = ""
-    
-
     // MARK: UI
     var titleLabel: UILabel = {
         let view = UILabel()
@@ -74,7 +61,6 @@ class TodoViewController: UIViewController {
     // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        todayDate = DateFormatter.dateOnly.string(from: Date())
         fetchRealm()
         configure()
         setConstraints()
@@ -135,7 +121,6 @@ class TodoViewController: UIViewController {
 }
 
 // MARK: - TableView
-
 extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -237,8 +222,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - textView Delegate
 extension TodoViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        print(String(describing: textView.text))
-        
         let contentSize = textView.sizeThatFits(CGSize(width: textView.bounds.width, height: .infinity))
         if textView.bounds.height != contentSize.height {
             tableView.contentOffset.y += contentSize.height - textView.bounds.height

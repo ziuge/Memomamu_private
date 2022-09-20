@@ -10,26 +10,31 @@ import RealmSwift
 
 class CardTodoViewController: UIViewController {
     
-    let localRealm = try! Realm()
+    var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
+    
+    // MARK: Realm
+    let repository = Repository()
+    var todos: Results<Todo>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    var diary: Diary? = nil
+    
+    func fetchRealm() {
+        todos = repository.fetchTodo(date: selectedDate)
+    }
     
     var titleLabel: UILabel = {
         let view = UILabel()
         view.text = "to do list"
-        view.font = Constants.Font.title
+        view.font = Constants.Font.cardTitle
         view.textColor = Constants.Color.background
         return view
     }()
-    
-    var lineImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "todoLine")
-        return view
-    }()
-    
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = Constants.Color.paper
-//        view.rowHeight = 68
         view.delegate = self
         view.dataSource = self
         view.register(WriteTableViewCell.self, forCellReuseIdentifier: WriteTableViewCell.reuseIdentifier)
@@ -42,15 +47,10 @@ class CardTodoViewController: UIViewController {
         return view
     }()
     
-    var todos: Results<Todo>! {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = Constants.Color.paper
         tableView.reloadData()
         
         configure()
@@ -59,15 +59,12 @@ class CardTodoViewController: UIViewController {
     
     func configure() {
         view.addSubview(backgroundView)
-        [tableView, titleLabel, lineImageView].forEach {
+        [tableView, titleLabel].forEach {
             backgroundView.addSubview($0)
         }
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
-        
-        
-        
     }
     
     func setConstraints() {

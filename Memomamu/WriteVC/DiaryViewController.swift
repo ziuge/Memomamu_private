@@ -10,15 +10,15 @@ import RealmSwift
 
 class DiaryViewController: UIViewController {
     
+    var todayDate: String = DateFormatter.dateOnly.string(from: Date())
+    
     // MARK: Realm
     let repository = Repository()
-    var diary: Diary = Diary(date: "", diary: "", hasChanged: false)
+    var diary: Diary? = nil
     func fetchRealm() {
-        diary = repository.fetchDiary(date: DateFormatter.dateOnly.string(from: Date()))
-        diaryTextView.text = diary.diary
+        diary = repository.fetchDiary(date: todayDate)
+        diaryTextView.text = (diary != nil) ? diary!.diary : ""
     }
-    
-    var todayDate: String = ""
     
     // MARK: UI
     var titleLabel: UILabel = {
@@ -64,12 +64,14 @@ class DiaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if diary.date == "" && diary.diary == "" {
-            print("==diary is nil")
-            repository.addDiary(item: Diary(date: DateFormatter.dateOnly.string(from: Date()), diary: "", hasChanged: false))
-            
-        }
         fetchRealm()
+        
+        if diary == nil {
+            print("==diary is nil")
+            repository.addDiary(item: Diary(date: todayDate, diary: ""))
+            fetchRealm()
+        }
+        
         print("diary is:", diary)
         
         diaryTextView.delegate = self
@@ -132,7 +134,7 @@ class DiaryViewController: UIViewController {
     
     @objc func saveButtonClicked() {
         print(#function)
-        repository.updateDiary(oldValue: diary, newValue: diaryTextView.text)
+        repository.updateDiary(oldValue: diary!, newValue: diaryTextView.text)
         fetchRealm()
     }
     
@@ -144,25 +146,21 @@ class DiaryViewController: UIViewController {
 // MARK: - textView Delegate
 extension DiaryViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if diary.hasChanged == false {
+        if diaryTextView.text == "오늘 하루를 작성해보세요 :)                                                       " {
             diaryTextView.text = ""
+            diaryTextView.textColor = Constants.Color.background
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if diaryTextView.text == "" {
-            diaryTextView.text = "오늘 하루를 작성해보세요 :)"
-            repository.diaryChanged(item: diary)
+            diaryTextView.text = "오늘 하루를 작성해보세요 :)                                                       "
+            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
         } else {
             saveButtonClicked()
         }
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        if diary.hasChanged == false {
-            repository.diaryChanged(item: diary)
-        } else if diary.hasChanged == true && diary.diary == "" {
-            repository.diaryChanged(item: diary)
-        }
     }
 }

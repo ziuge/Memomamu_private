@@ -20,7 +20,7 @@ class WriteViewController: UIViewController {
     var dateLabel: UILabel = {
         let view = UILabel()
         view.textColor = Constants.Color.text
-        view.text = "17, April"
+        view.text = DateFormatter.titleDate.string(from: Date())
         view.font = Constants.Font.head
         return view
     }()
@@ -76,9 +76,6 @@ class WriteViewController: UIViewController {
     func setPageConstraints() {
         vc.view.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(containerView)
-//            make.topMargin.equalTo(view).offset(view.frame.height * 0.23)
-//            make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-//            make.height.equalTo(view).multipliedBy(0.63)
         }
     }
     

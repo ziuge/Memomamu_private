@@ -10,37 +10,36 @@ import RealmSwift
 
 class CardDiaryViewController: UIViewController {
     
-    let localRealm = try! Realm()
+    var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
+    
+    // MARK: Realm
+    let repository = Repository()
+    var diary: Diary? = nil
+    func fetchRealm() {
+        diary = repository.fetchDiary(date: selectedDate)
+        diaryTextView.text = (diary != nil) ? diary!.diary : ""
+    }
     
     var titleLabel: UILabel = {
         let view = UILabel()
         view.text = "diary"
-        view.font = Constants.Font.title
+        view.font = Constants.Font.cardTitle
         view.textColor = Constants.Color.background
         return view
     }()
-    
-    var lineImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "todoLine")
-        return view
-    }()
-    
     var diaryImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "diaryTextViewBox")
         return view
     }()
-    
     var diaryTextView: UITextView = {
         let view = UITextView()
         view.text = "오늘 하루를 작성해보세요 :)"
         view.font = Constants.Font.content
-        view.textColor = Constants.Color.background
+        view.textColor = Constants.Color.background.withAlphaComponent(0.6)
         view.backgroundColor = .clear
         return view
     }()
-    
     var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.paper
@@ -56,11 +55,10 @@ class CardDiaryViewController: UIViewController {
     
     func configure() {
         view.addSubview(backgroundView)
-        [titleLabel, lineImageView, diaryImageView, diaryTextView].forEach {
+        [titleLabel, diaryImageView, diaryTextView].forEach {
             backgroundView.addSubview($0)
         }
     }
-    
     func setConstraints() {
         let spacing = 40
         

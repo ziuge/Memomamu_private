@@ -9,7 +9,7 @@ import RealmSwift
 import Foundation
 
 protocol ContentRepositoryType {
-    func fetchTodo() -> Results<Todo>
+    func fetchTodo(date: String) -> Results<Todo>
     func addTodo(item: Todo)
     func updateTodo(oldValue: Todo, newValue: String)
     func checkTodo(item: Todo, status: Int)
@@ -18,16 +18,18 @@ protocol ContentRepositoryType {
 class Repository: ContentRepositoryType {
     let localRealm = try! Realm()
     
-    func fetchTodo() -> Results<Todo> {
+    func fetchTodo(date: String) -> Results<Todo> {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        return localRealm.objects(Todo.self).sorted(byKeyPath: "date", ascending: true)
+        return localRealm.objects(Todo.self).sorted(byKeyPath: "orderDate", ascending: true).filter("date == %@", date)
     }
     
-    func fetchDiary(date: String) -> Diary {
+    func fetchDiary(date: String) -> Diary? {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         print(#function, "Diary!")
         
-        return localRealm.objects(Diary.self).filter("date == %@", date).first!
+        guard let diary = localRealm.objects(Diary.self).filter("date == %@", date).first else { return nil }
+        
+        return diary
     }
     
     func addTodo(item: Todo) {
@@ -43,7 +45,6 @@ class Repository: ContentRepositoryType {
     }
     
     func addDiary(item: Diary) {
-        print(#function)
         let item = item
         do {
             try localRealm.write({
@@ -91,16 +92,6 @@ class Repository: ContentRepositoryType {
         do {
             try localRealm.write({
                 localRealm.delete(item)
-            })
-        } catch {
-            print(error)
-        }
-    }
-    
-    func diaryChanged(item: Diary) {
-        do {
-            try localRealm.write({
-                item.hasChanged.toggle()
             })
         } catch {
             print(error)

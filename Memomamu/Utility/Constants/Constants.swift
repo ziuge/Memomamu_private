@@ -17,6 +17,7 @@ enum Constants {
     enum Font {
         static let head = UIFont.systemFont(ofSize: 24, weight: .heavy)
         static let title = UIFont.systemFont(ofSize: 20, weight: .bold)
+        static let cardTitle = UIFont.systemFont(ofSize: 18, weight: .medium)
         static let content = UIFont.systemFont(ofSize: 15, weight: .medium)
         static let button = UIFont.systemFont(ofSize: 15, weight: .medium)
     }

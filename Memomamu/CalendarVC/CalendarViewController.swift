@@ -76,15 +76,8 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         
         makeCalendar()
-        
-        let dates = [
-//            self.gregorian.date(byAdding: .day, value: -1, to: Date()),
-            Date(),
-//            self.gregorian.date(byAdding: .day, value: 1, to: Date())
-        ]
-        dates.forEach { (date) in
-            self.calendar.select(date, scrollToDate: false)
-        }
+
+        self.calendar.select(Date(), scrollToDate: false)
         self.calendar.accessibilityIdentifier = "calendar"
         
         viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
@@ -101,7 +94,6 @@ class CalendarViewController: UIViewController {
             view.addSubview($0)
         }
     }
-    
     func setConstraints() {
         viewButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
@@ -138,7 +130,6 @@ class CalendarViewController: UIViewController {
         let vc = WriteViewController()
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
-        
     }
 }
 
