@@ -37,6 +37,7 @@
 		DEDD8F5228D9A21700464FA7 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5128D9A21700464FA7 /* Observable.swift */; };
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
+		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		DEDD8F5128D9A21700464FA7 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
+		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				DE22094128C9B32400612BB1 /* Memomamu */,
+				DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */,
 				DE22094028C9B32400612BB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */,
 				DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */,
+				DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */,
 				DE22094A28C9B32400612BB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

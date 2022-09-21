@@ -77,7 +77,9 @@ class WriteTableViewCell: UITableViewCell {
         configure()
         setConstraints()
         checkButton.addTarget(self, action: #selector(showCheckStatusChangeButton), for: .touchUpInside)
-//        finishedButton.addTarget(self, action: #selector(changeCheck), for: .touchUpInside)
+        finishedButton.addTarget(self, action: #selector(changeCheck), for: .touchUpInside)
+        delayedButton.addTarget(self, action: #selector(changeCheckDelayed), for: .touchUpInside)
+        unfinishedButton.addTarget(self, action: #selector(changeCheckUnfinished), for: .touchUpInside)
 //        CheckStatusButtonView().finishedButton.addTarget(self, action: #selector(checkFinished), for: .touchUpInside)
     }
     
@@ -95,7 +97,17 @@ class WriteTableViewCell: UITableViewCell {
     let checkList = ["unchecked", "finished", "delayed", "unfinished"]
     @objc func changeCheck() {
         print(#function)
+        checkButton.setImage(UIImage(named: "finished.jpg"), for: .normal)
+        changeCheckView.isHidden = false
+    }
+    
+    @objc func changeCheckDelayed() {
         checkButton.setImage(UIImage(named: "delayed.jpg"), for: .normal)
+        changeCheckView.isHidden = false
+    }
+    
+    @objc func changeCheckUnfinished() {
+        checkButton.setImage(UIImage(named: "unfinished.jpg"), for: .normal)
         changeCheckView.isHidden = false
     }
     
