@@ -35,6 +35,8 @@
 		DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */; };
 		DEDD8F5028D996B900464FA7 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F4F28D996B900464FA7 /* Date+Extension.swift */; };
 		DEDD8F5228D9A21700464FA7 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5128D9A21700464FA7 /* Observable.swift */; };
+		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
+		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
 		DEDD8F4F28D996B900464FA7 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DEDD8F5128D9A21700464FA7 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
+		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 				DE1F8EB928D0820300877A49 /* TodoViewController.swift */,
 				DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */,
 				DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */,
+				DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */,
+				DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */,
 			);
 			path = WriteVC;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
+				DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */,
 				DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */,
 				DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */,
 				DE0314E028D48C4400FC9561 /* CardDiaryViewController.swift in Sources */,
@@ -288,6 +295,7 @@
 				DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */,
 				DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */,
 				DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */,
+				DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */,
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
 				DE0314E628D6BB7800FC9561 /* Repository.swift in Sources */,
 				DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */,

@@ -6,21 +6,12 @@
 //
 
 enum check: Int {
-    case unchecked = 0
-    case finished = 1
-    case delayed = 2
-    case unfinished = 3
+    case unchecked
+    case finished
+    case delayed
+    case unfinished
     
     var checkInfo: String {
-        switch self {
-        case .unchecked:
-            return "todoButton-unchecked"
-        case.finished:
-            return "todoButton-checked-orange"
-        case .delayed:
-            return "todoButton-delayed"
-        case .unfinished:
-            return "todoButton-unfinished"
-        }
+        String(describing: self)
     }
 }

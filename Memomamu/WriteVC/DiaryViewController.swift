@@ -129,7 +129,6 @@ class DiaryViewController: UIViewController {
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-36)
             make.height.width.equalTo(21)
         }
-
     }
     
     @objc func saveButtonClicked() {

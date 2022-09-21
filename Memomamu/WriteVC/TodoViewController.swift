@@ -118,6 +118,7 @@ class TodoViewController: UIViewController {
             self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
     }
+
 }
 
 // MARK: - TableView
@@ -141,6 +142,14 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             fetchRealm()
         } else {
             tableView.deselectRow(at: indexPath, animated: false)
+            tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return  }
+        if cell.changeCheckView.isHidden == false {
+            cell.showCheckStatusChangeButton()
         }
     }
     
@@ -161,6 +170,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.todoTextView.isUserInteractionEnabled = true
 //            cell.todoTextView.removeGestureRecognizer(tap)
 //            cell.todoTextView.done
+            cell.changeCheckView.isHidden = false
             return cell
         } else {
             cell.todoTextView.textColor = Constants.Color.background.withAlphaComponent(0.8)
@@ -171,6 +181,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
 //            cell.todoTextView.isHidden = true
 //            cell.todoTextView.isUserInteractionEnabled = true
 //            cell.todoTextView.addGestureRecognizer(tap)
+            cell.changeCheckView.isHidden = true
             return cell
         }
     }
@@ -189,6 +200,10 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             repository.deleteTodo(item: todos[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    @objc func changeCheck() {
+        
     }
     
     @objc func addTodo() {
