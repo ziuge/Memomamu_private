@@ -63,6 +63,11 @@ class CardTodoViewController: UIViewController {
         view.backgroundColor = .clear
         return view
     }()
+    var clickButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .clear
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +75,7 @@ class CardTodoViewController: UIViewController {
         
         configure()
         setConstraints()
+        clickButton.addTarget(self, action: #selector(goTodo), for: .touchUpInside)
     }
     
     func configure() {
@@ -77,12 +83,17 @@ class CardTodoViewController: UIViewController {
         [tableView, titleLabel, todoNilLabel].forEach {
             backgroundView.addSubview($0)
         }
+        view.addSubview(clickButton)
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
     }
     func setConstraints() {
         let spacing = 40
+        
+        clickButton.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalTo(backgroundView)
+        }
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
@@ -98,8 +109,9 @@ class CardTodoViewController: UIViewController {
         
         tableView.snp.makeConstraints { make in
             make.leading.equalTo(backgroundView).offset(30)
-            make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
+            make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide).offset(-24)
             make.topMargin.equalTo(titleLabel.snp.bottom).offset(26)
+//            make.bottom.equalTo(backgroundView).offset(300)
         }
         
         todoNilLabel.snp.makeConstraints { make in
@@ -110,6 +122,12 @@ class CardTodoViewController: UIViewController {
         }
     }
 
+    @objc func goTodo() {
+        let vc = WriteViewController()
+        vc.selectedDate = self.selectedDate
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
 }
 
 extension CardTodoViewController: UITableViewDelegate, UITableViewDataSource {

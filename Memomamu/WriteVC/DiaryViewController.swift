@@ -17,7 +17,7 @@ class DiaryViewController: UIViewController {
     var diary: Diary? = nil
     func fetchRealm() {
         diary = repository.fetchDiary(date: selectedDate)
-        diaryTextView.text = (diary != nil) ? diary!.diary : "오늘 하루를 작성해보세요 :)"
+        diaryTextView.text = (diary != nil) ? diary!.diary : "오늘 하루를 작성해보세요 :)                                                       "
     }
     
     // MARK: UI
@@ -40,7 +40,7 @@ class DiaryViewController: UIViewController {
     }()
     var diaryTextView: UITextView = {
         let view = UITextView()
-        view.text = "오늘 하루를 작성해보세요 :)"
+        view.text = "오늘 하루를 작성해보세요 :)                                                       "
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
         view.backgroundColor = .clear
@@ -69,8 +69,11 @@ class DiaryViewController: UIViewController {
         if diary == nil {
             repository.addDiary(item: Diary(date: selectedDate, diary: ""))
             fetchRealm()
+            
         }
-        
+        if diaryTextView.text == "" {
+            diaryTextView.text = "오늘 하루를 작성해보세요 :)                                                       "
+        }
         diaryTextView.delegate = self
         
         configure()

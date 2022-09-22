@@ -40,15 +40,20 @@ class CardDiaryViewController: UIViewController {
     }()
     var diaryTextView: UITextView = {
         let view = UITextView()
-        view.text = "오늘 하루를 작성해보세요 :)"
+        view.text = "오늘 하루를 작성해보세요 :)                                                       "
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
-        view.backgroundColor = .magenta
+        view.backgroundColor = .clear
         return view
     }()
     var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.paper
+        return view
+    }()
+    var clickButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -59,6 +64,7 @@ class CardDiaryViewController: UIViewController {
         
         configure()
         setConstraints()
+        clickButton.addTarget(self, action: #selector(goTodo), for: .touchUpInside)
     }
     
     func configure() {
@@ -66,9 +72,14 @@ class CardDiaryViewController: UIViewController {
         [titleLabel, diaryImageView, diaryTextView].forEach {
             backgroundView.addSubview($0)
         }
+        view.addSubview(clickButton)
     }
     func setConstraints() {
         let spacing = 40
+        
+        clickButton.snp.makeConstraints { make in
+            make.top.bottom.leading.trailing.equalTo(backgroundView)
+        }
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
@@ -97,6 +108,12 @@ class CardDiaryViewController: UIViewController {
 
     }
     
+    @objc func goTodo() {
+        let vc = WriteViewController()
+        vc.selectedDate = self.selectedDate
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
 }
 
 

@@ -10,10 +10,12 @@ import SnapKit
 
 class WriteViewController: UIViewController {
     
+    var selectedDate = DateFormatter.dateOnly.string(from: Date())
+    
     // MARK: UI
     var viewButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
+        view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
         return view
     }()
@@ -37,17 +39,35 @@ class WriteViewController: UIViewController {
         view.titleLabel?.font = Constants.Font.content
         return view
     }()
-
-    let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.background
+        
+        let rawDate = stringToDate(string: selectedDate)
+        dateLabel.text = dateToString(date: rawDate)
         configure()
         setConstraints()
         addPageVC()
         
         viewButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
+    }
+    
+    func stringToDate(string: String) -> Date {
+        let selectedDate = string
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy. MM. dd."
+        formatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        let date = formatter.date(from: selectedDate)!
+        return date
+    }
+    
+    func dateToString(date: Date) -> String {
+        let date = date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d, MMMM"
+        let string = formatter.string(from: date)
+        return string
     }
     
     func configure() {
@@ -82,9 +102,18 @@ class WriteViewController: UIViewController {
         }
     }
     
+    let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    let vc1 = TodoViewController()
+    let vc2 = DiaryViewController()
+    
     func addPageVC() {
+        vc1.selectedDate = selectedDate
+        vc2.selectedDate = selectedDate
+        vc.vc1 = vc1
+        vc.vc2 = vc2
         addChild(vc)
         containerView.addSubview(vc.view)
+        vc.selectedDate = selectedDate
         vc.didMove(toParent: self)
         setPageConstraints()
     }

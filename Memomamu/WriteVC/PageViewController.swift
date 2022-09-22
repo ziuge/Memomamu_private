@@ -10,11 +10,7 @@ import RealmSwift
 
 class PageViewController: UIPageViewController {
     
-    var selectedDate = DateFormatter.dateOnly.string(from: Date()) {
-        didSet {
-            print(self, selectedDate)
-        }
-    }
+    var selectedDate = DateFormatter.dateOnly.string(from: Date())
     
     var pageViewControllerList: [UIViewController] = []
     
@@ -23,11 +19,13 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         createPageViewController(vc1: vc1, vc2: vc2)
         configurePageViewController()
     }
     
     func createPageViewController(vc1: UIViewController, vc2: UIViewController) {
+        
         pageViewControllerList = [vc1, vc2]
     }
     

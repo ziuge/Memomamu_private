@@ -71,13 +71,6 @@ class CalendarViewController: UIViewController {
         view.tintColor = Constants.Color.text
         return view
     }()
-//    var dateLabel: UILabel = {
-//        let view = UILabel()
-//        view.textColor = Constants.Color.text
-//        view.text = "September"
-//        view.font = Constants.Font.head
-//        return view
-//    }()
     
     override func viewDidLoad() {
         print(#function, self)
@@ -109,12 +102,6 @@ class CalendarViewController: UIViewController {
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
             make.height.width.equalTo(21)
         }
-        
-//        dateLabel.snp.makeConstraints { make in
-//            make.topMargin.equalTo(view).offset(view.frame.height * 0.12)
-//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
-//            make.centerX.equalTo(view)
-//        }
     }
 //
 //    func setData(date: Date) {
@@ -175,7 +162,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         if todos!.filter("date == %@", selectedDate).count != 0 {
             nums += 1
         }
-        if diaries!.filter("date == %@", selectedDate).count != 0 {
+        if diaries!.filter("date == %@", selectedDate).count >= 1 {
             nums += 1
         }
         

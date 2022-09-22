@@ -105,7 +105,7 @@ class TodoViewController: UIViewController {
             make.trailing.equalTo(backgroundView)
             make.leading.equalTo(backgroundView).offset(40)
 //            make.bottom.equalTo(backgroundView.safeAreaLayoutGuide).offset(50)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.48)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.43)
             make.topMargin.equalTo(lineImageView.snp.bottom).offset(26)
         }
     }
@@ -135,29 +135,14 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.section == 1 && self.tableView.isEditing == false {
-//            repository.addTodo(item: Todo(date: selectedDate, orderDate: Date() , todo: "\(Int.random(in: 1...100))", check: 0))
-//            fetchRealm()
-//        } else {
-//            tableView.deselectRow(at: indexPath, animated: false)
-//            tableView.reloadData()
-//        }
-//    }
-    
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return  }
-//        if cell.changeCheckView.isHidden == false {
-//            cell.showCheckStatusChangeButton()
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return UITableViewCell() }
+        
+        cell.checkButton.isEnabled = true
         
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(addTodo))
         if indexPath.section == 0 {
@@ -179,9 +164,13 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.unfinishedButton.tag = indexPath.row
             cell.unfinishedButton.addTarget(self, action: #selector(changeCheckUnfinished(sender:)), for: .touchUpInside)
             
+            cell.changeCheckView.isHidden = false
+            
             let checkList = ["unchecked", "finished", "delayed", "unfinished"]
             let checkNum = todos[indexPath.row].check
             cell.checkButton.setImage(UIImage(named: checkList[checkNum]), for: .normal)
+            cell.checkButton.tag = indexPath.row
+            cell.checkButton.addTarget(self, action: #selector(showChangeCheck(sender:)), for: .touchUpInside)
             
             cell.clickButton.isHidden = true
             
@@ -217,6 +206,16 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             repository.deleteTodo(item: todos[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    
+    @objc func showChangeCheck(sender: UIButton) {
+        tableView.reloadData()
+        
+        let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
+        cell.changeCheckView.isHidden.toggle()
+        
+//        let index: [IndexPath] = [[0, sender.tag]]
+//        tableView.reloadRows(at: index, with: .none)
     }
     
     @objc func changeCheck(sender: UIButton) {
@@ -287,6 +286,7 @@ extension TodoViewController: UITextViewDelegate {
         guard let textViewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else { return }
         let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as! WriteTableViewCell
         cell.changeCheckView.isHidden = false
+        cell.checkButton.isEnabled = false
     }
 
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -294,7 +294,7 @@ extension TodoViewController: UITextViewDelegate {
         guard let textViewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else { return }
         
         let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as! WriteTableViewCell
-        if cell.todoTextView.text == "" {
+        if cell.todoTextView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             repository.deleteTodo(item: todos[textViewIndexPath.row])
         } else {
             repository.updateTodo(oldValue: todos[textViewIndexPath.row], newValue: textView.text)
