@@ -16,7 +16,7 @@ class CalendarViewController: UIViewController {
     func makeCalendar() {
         print(#function)
         let spacing = 36
-        let calendar = FSCalendar(frame: CGRect(x: spacing, y: Int(self.view.frame.height * 0.15), width: Int(self.view.frame.width) - (spacing * 2), height: Int(self.view.frame.height * 0.4)))
+        let calendar = FSCalendar(frame: CGRect(x: spacing, y: Int(self.view.frame.height * 0.12), width: Int(self.view.frame.width) - (spacing * 2), height: Int(self.view.frame.height * 0.4)))
         calendar.dataSource = self
         calendar.delegate = self
         view.addSubview(calendar)
@@ -28,11 +28,15 @@ class CalendarViewController: UIViewController {
         calendar.appearance.headerDateFormat = "MMMM"
         calendar.appearance.headerTitleColor = Constants.Color.text
         calendar.appearance.headerTitleAlignment = .center
-        calendar.appearance.headerTitleFont = Constants.Font.title
+        calendar.appearance.headerTitleFont = Constants.Font.head
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        calendar.headerHeight = 60
+        calendar.appearance.headerTitleOffset = CGPoint(x: 0, y: -18)
+        
         calendar.appearance.titleDefaultColor = .white
         calendar.appearance.titleWeekendColor = .white
-        calendar.appearance.weekdayTextColor = .white
+        calendar.appearance.weekdayTextColor = Constants.Color.text
+        calendar.appearance.weekdayFont = Constants.Font.content
         calendar.appearance.selectionColor = Constants.Color.text
         calendar.appearance.todayColor = Constants.Color.paper.withAlphaComponent(0.4)
         calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
@@ -89,7 +93,7 @@ class CalendarViewController: UIViewController {
     }
     func setConstraints() {
         viewButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.07)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
             make.height.width.equalTo(21)
         }
@@ -106,7 +110,6 @@ class CalendarViewController: UIViewController {
     let vc2 = CardDiaryViewController()
     
     func addPageVC() {
-//        vc.view.backgroundColor = .magenta
         vc.vc1 = vc1
         vc.vc2 = vc2
         addChild(vc)
@@ -115,7 +118,6 @@ class CalendarViewController: UIViewController {
         setPageConstraints()
     }
     func setPageConstraints() {
-        vc.view.backgroundColor = .magenta
         vc.view.snp.makeConstraints { make in
             make.topMargin.equalTo(calendar.snp.bottom).offset(24)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -136,6 +138,9 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let date = DateFormatter.dateOnly.string(from: date)
         print(date, "selected!")
+        addPageVC()
+        
+        vc.createPageViewController(vc1: vc1, vc2: vc2)
         vc.configurePageViewController()
         vc1.selectedDate = date
         vc1.fetchRealm()

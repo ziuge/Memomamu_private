@@ -67,6 +67,16 @@ class Repository: ContentRepositoryType {
         }
     }
     
+    func updateTodoCheck(oldValue: Todo, newValue: Int) {
+        do {
+            try localRealm.write({
+                oldValue.check = newValue
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
     func updateDiary(oldValue: Diary, newValue: String) {
         print(#function)
         do {

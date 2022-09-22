@@ -36,7 +36,7 @@ class PageViewController: UIPageViewController {
         dataSource = self
         
         guard let first = pageViewControllerList.first else { return }
-        setViewControllers([first], direction: .forward, animated: true)
+        setViewControllers([first], direction: .forward, animated: false)
     }
 
 }

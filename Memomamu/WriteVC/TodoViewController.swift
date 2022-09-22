@@ -106,9 +106,8 @@ class TodoViewController: UIViewController {
             make.leading.equalTo(backgroundView).offset(40)
 //            make.bottom.equalTo(backgroundView.safeAreaLayoutGuide).offset(50)
             make.height.equalTo(backgroundView.snp.height).multipliedBy(0.48)
-            make.topMargin.equalTo(lineImageView.snp.bottom).offset(12)
+            make.topMargin.equalTo(lineImageView.snp.bottom).offset(26)
         }
-        print(self, tableView.snp.height)
     }
     
     func scrollToBottom(){
@@ -136,22 +135,22 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && self.tableView.isEditing == false {
-            repository.addTodo(item: Todo(date: selectedDate, orderDate: Date() , todo: "\(Int.random(in: 1...100))", check: 0))
-            fetchRealm()
-        } else {
-            tableView.deselectRow(at: indexPath, animated: false)
-            tableView.reloadData()
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexPath.section == 1 && self.tableView.isEditing == false {
+//            repository.addTodo(item: Todo(date: selectedDate, orderDate: Date() , todo: "\(Int.random(in: 1...100))", check: 0))
+//            fetchRealm()
+//        } else {
+//            tableView.deselectRow(at: indexPath, animated: false)
+//            tableView.reloadData()
+//        }
+//    }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return  }
-        if cell.changeCheckView.isHidden == false {
-            cell.showCheckStatusChangeButton()
-        }
-    }
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return  }
+//        if cell.changeCheckView.isHidden == false {
+//            cell.showCheckStatusChangeButton()
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -168,9 +167,25 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.todoTextView.delegate = self
             cell.todoTextView.isEditable = true
             cell.todoTextView.isUserInteractionEnabled = true
+            cell.todoTextView.textColor = Constants.Color.background
 //            cell.todoTextView.removeGestureRecognizer(tap)
-//            cell.todoTextView.done
-            cell.changeCheckView.isHidden = false
+//            cell.changeCheckView.isHidden = false
+            
+            cell.selectionStyle = .none
+            
+            cell.finishedButton.tag = indexPath.row
+            cell.finishedButton.addTarget(self, action: #selector(changeCheck(sender:)), for: .touchUpInside)
+            cell.delayedButton.tag = indexPath.row
+            cell.delayedButton.addTarget(self, action: #selector(changeCheckDelayed(sender:)), for: .touchUpInside)
+            cell.unfinishedButton.tag = indexPath.row
+            cell.unfinishedButton.addTarget(self, action: #selector(changeCheckUnfinished(sender:)), for: .touchUpInside)
+            
+            let checkList = ["unchecked", "finished", "delayed", "unfinished"]
+            let checkNum = todos[indexPath.row].check
+            cell.checkButton.setImage(UIImage(named: checkList[checkNum]), for: .normal)
+            
+            cell.clickButton.isHidden = true
+            
             return cell
         } else {
             cell.todoTextView.textColor = Constants.Color.background.withAlphaComponent(0.8)
@@ -181,7 +196,10 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
 //            cell.todoTextView.isHidden = true
 //            cell.todoTextView.isUserInteractionEnabled = true
 //            cell.todoTextView.addGestureRecognizer(tap)
-            cell.changeCheckView.isHidden = true
+            cell.selectionStyle = .none
+            cell.changeCheckView.isHidden = false
+            cell.clickButton.isHidden = false
+            cell.clickButton.addTarget(self, action: #selector(addTodo), for: .touchUpInside)
             return cell
         }
     }
@@ -202,20 +220,40 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    @objc func changeCheck() {
-        
+    @objc func changeCheck(sender: UIButton) {
+        repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 1)
+        let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
+        cell.changeCheckView.isHidden = false
+        fetchRealm()
+    }
+    
+    @objc func changeCheckDelayed(sender: UIButton) {
+        repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 2)
+        let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
+        cell.changeCheckView.isHidden = false
+        fetchRealm()
+    }
+    
+    @objc func changeCheckUnfinished(sender: UIButton) {
+        repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 3)
+        let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
+        cell.changeCheckView.isHidden = false
+        fetchRealm()
     }
     
     @objc func addTodo() {
         print(#function)
-        repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "\(Int.random(in: 100...999))", check: 0))
-        tableView.reloadData()
+        repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "", check: 0))
+        fetchRealm()
+//        let cell = tableView.cellForRow(at: [0, 0])!
+        let index = IndexPath(row: todos.count - 1, section: 0)
+        let cell: WriteTableViewCell = self.tableView.cellForRow(at: index) as! WriteTableViewCell
+        cell.todoTextView.becomeFirstResponder()
     }
     
     @objc func editMode() {
         if self.tableView.isEditing {
             self.tableView.setEditing(false, animated: true)
-            
         } else {
             self.tableView.setEditing(true, animated: true)
         }
@@ -244,11 +282,25 @@ extension TodoViewController: UITextViewDelegate {
             UIView.setAnimationsEnabled(true)
         }
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let pointInTable = textView.convert(textView.bounds.origin, to: self.tableView)
+        guard let textViewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else { return }
+        let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as! WriteTableViewCell
+        cell.changeCheckView.isHidden = false
+    }
 
     func textViewDidEndEditing(_ textView: UITextView) {
         let pointInTable = textView.convert(textView.bounds.origin, to: self.tableView)
         guard let textViewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else { return }
-        repository.updateTodo(oldValue: todos[textViewIndexPath.row], newValue: textView.text)
+        
+        let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as! WriteTableViewCell
+        if cell.todoTextView.text == "" {
+            repository.deleteTodo(item: todos[textViewIndexPath.row])
+        } else {
+            repository.updateTodo(oldValue: todos[textViewIndexPath.row], newValue: textView.text)
+        }
+        fetchRealm()
     }
     
 }

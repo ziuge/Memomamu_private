@@ -38,6 +38,7 @@
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
+		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
+		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				DE0314D628D4574400FC9561 /* CalendarViewController.swift */,
 				DE0314D828D46DEA00FC9561 /* CalendarCell.swift */,
 				DE0314DD28D48C3B00FC9561 /* CardTodoViewController.swift */,
+				DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */,
 				DE0314DF28D48C4400FC9561 /* CardDiaryViewController.swift */,
 			);
 			path = CalendarVC;
@@ -304,6 +307,7 @@
 				DE0314E628D6BB7800FC9561 /* Repository.swift in Sources */,
 				DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */,
 				DE22096428C9B49E00612BB1 /* Constants.swift in Sources */,
+				DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */,
 				DEDD8F5228D9A21700464FA7 /* Observable.swift in Sources */,
 				DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */,
 				DEDD8F5028D996B900464FA7 /* Date+Extension.swift in Sources */,

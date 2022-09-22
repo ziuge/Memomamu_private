@@ -15,15 +15,11 @@ enum Constants {
     }
     
     enum Font {
-//        static let head = UIFont.systemFont(ofSize: 24, weight: .heavy)
         static let head = UIFont(name: "DungGeunMo", size: 24)
-//        static let title = UIFont.systemFont(ofSize: 20, weight: .bold)
         static let title = UIFont(name: "DungGeunMo", size: 20)
-//        static let cardTitle = UIFont.systemFont(ofSize: 18, weight: .medium)
         static let cardTitle = UIFont(name: "DungGeunMo", size: 18)
-//        static let content = UIFont.systemFont(ofSize: 15, weight: .medium)
         static let content = UIFont(name: "DungGeunMo", size: 15)
-//        static let button = UIFont.systemFont(ofSize: 15, weight: .medium)
         static let button = UIFont(name: "DungGeunMo", size: 15)
+        static let smallContent = UIFont(name: "DungGeunMo", size: 14)
     }
 }

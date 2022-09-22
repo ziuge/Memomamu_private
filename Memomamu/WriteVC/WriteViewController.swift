@@ -28,6 +28,15 @@ class WriteViewController: UIViewController {
         let view = UIView()
         return view
     }()
+    var clearButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = Constants.Color.text.withAlphaComponent(0.6)
+        view.layer.cornerRadius = 15
+        view.setTitle("clear!!", for: .normal)
+        view.setTitleColor(Constants.Color.background, for: .normal)
+        view.titleLabel?.font = Constants.Font.content
+        return view
+    }()
 
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     
@@ -42,7 +51,7 @@ class WriteViewController: UIViewController {
     }
     
     func configure() {
-        [containerView, viewButton, dateLabel].forEach {
+        [containerView, viewButton, dateLabel, clearButton].forEach {
             view.addSubview($0)
         }
         
@@ -55,14 +64,21 @@ class WriteViewController: UIViewController {
         }
 
         dateLabel.snp.makeConstraints { make in
-            make.topMargin.equalTo(view).offset(view.frame.height * 0.12)
+            make.topMargin.equalTo(view).offset(view.frame.height * 0.08)
             make.centerX.equalTo(view)
         }
         
         containerView.snp.makeConstraints { make in
-            make.topMargin.equalTo(view).offset(view.frame.height * 0.23)
+            make.topMargin.equalTo(view).offset(view.frame.height * 0.18)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(view).multipliedBy(0.63)
+            make.height.equalTo(view).multipliedBy(0.60)
+        }
+        
+        clearButton.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width).multipliedBy(0.32)
+            make.height.equalTo(28)
+            make.centerX.equalTo(view)
+            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-40)
         }
     }
     

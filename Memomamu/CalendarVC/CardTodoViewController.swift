@@ -45,7 +45,8 @@ class CardTodoViewController: UIViewController {
         view.backgroundColor = Constants.Color.paper
         view.delegate = self
         view.dataSource = self
-        view.register(WriteTableViewCell.self, forCellReuseIdentifier: WriteTableViewCell.reuseIdentifier)
+        view.register(CardTodoTableVIewCell.self, forCellReuseIdentifier: CardTodoTableVIewCell.reuseIdentifier)
+        view.separatorStyle = .none
         return view
     }()
     var backgroundView: UIView = {
@@ -96,9 +97,9 @@ class CardTodoViewController: UIViewController {
         }
         
         tableView.snp.makeConstraints { make in
-            make.leading.equalTo(backgroundView).offset(36)
+            make.leading.equalTo(backgroundView).offset(30)
             make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
-            make.topMargin.equalTo(titleLabel.snp.bottom).offset(12)
+            make.topMargin.equalTo(titleLabel.snp.bottom).offset(26)
         }
         
         todoNilLabel.snp.makeConstraints { make in
@@ -123,11 +124,9 @@ extension CardTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return UITableViewCell() }
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CardTodoTableVIewCell.reuseIdentifier, for: indexPath) as? CardTodoTableVIewCell else { return UITableViewCell() }
         cell.todoTextView.isEditable = false
         cell.setData(data: todos[indexPath.row])
-        
         return cell
     }
     
