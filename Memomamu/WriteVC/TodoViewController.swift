@@ -157,7 +157,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(#function, indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WriteTableViewCell.reuseIdentifier, for: indexPath) as? WriteTableViewCell else { return UITableViewCell() }
         
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(addTodo))

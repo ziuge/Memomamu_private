@@ -67,11 +67,9 @@ class DiaryViewController: UIViewController {
         fetchRealm()
         
         if diary == nil {
-            print("==diary is nil")
             repository.addDiary(item: Diary(date: selectedDate, diary: ""))
             fetchRealm()
         }
-
         
         diaryTextView.delegate = self
         

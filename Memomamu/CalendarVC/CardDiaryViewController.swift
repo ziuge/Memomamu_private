@@ -35,7 +35,7 @@ class CardDiaryViewController: UIViewController {
     }()
     var diaryImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "diaryTextViewBox")
+        view.image = UIImage(named: "cardDiaryTextViewBox")
         return view
     }()
     var diaryTextView: UITextView = {
@@ -43,7 +43,7 @@ class CardDiaryViewController: UIViewController {
         view.text = "오늘 하루를 작성해보세요 :)"
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
-        view.backgroundColor = .clear
+        view.backgroundColor = .magenta
         return view
     }()
     var backgroundView: UIView = {
@@ -82,15 +82,15 @@ class CardDiaryViewController: UIViewController {
         }
         
         diaryImageView.snp.makeConstraints { make in
-            make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.42)
-            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.77)
+            make.topMargin.equalTo(titleLabel.snp.bottom).offset(24)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.26)
+            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.78)
             make.centerX.equalTo(backgroundView)
         }
         
         diaryTextView.snp.makeConstraints { make in
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.38)
-            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.67)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.24)
+            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.68)
             make.centerX.equalTo(diaryImageView)
             make.centerY.equalTo(diaryImageView)
         }

@@ -18,6 +18,14 @@ protocol ContentRepositoryType {
 class Repository: ContentRepositoryType {
     let localRealm = try! Realm()
     
+    func fetchEveryTodo() -> Results<Todo> {
+        return localRealm.objects(Todo.self)
+    }
+    
+    func fetchEveryDiary() -> Results<Diary> {
+        return localRealm.objects(Diary.self)
+    }
+    
     func fetchTodo(date: String) -> Results<Todo> {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         return localRealm.objects(Todo.self).sorted(byKeyPath: "orderDate", ascending: true).filter("date == %@", date)
