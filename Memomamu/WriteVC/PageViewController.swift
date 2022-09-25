@@ -22,6 +22,7 @@ class PageViewController: UIPageViewController {
         
         createPageViewController(vc1: vc1, vc2: vc2)
         configurePageViewController()
+        
     }
     
     func createPageViewController(vc1: UIViewController, vc2: UIViewController) {

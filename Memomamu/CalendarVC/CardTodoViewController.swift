@@ -57,6 +57,7 @@ class CardTodoViewController: UIViewController {
     var todoNilLabel: UILabel = {
         let view = UILabel()
         view.text = "할 일을 작성하세요 :)"
+        view.textAlignment = .center
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
         view.isHidden = true
@@ -115,7 +116,7 @@ class CardTodoViewController: UIViewController {
         }
         
         todoNilLabel.snp.makeConstraints { make in
-            make.leading.equalTo(backgroundView).offset(36)
+            make.leading.equalTo(backgroundView.safeAreaLayoutGuide)
             make.trailing.equalTo(backgroundView.safeAreaLayoutGuide)
 //            make.topMargin.equalTo(titleLabel.snp.bottom).offset(40)
             make.centerY.equalTo(backgroundView)

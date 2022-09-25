@@ -38,6 +38,8 @@
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
+		DEE0569F28E087AF00E9C59C /* SortDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569E28E087AF00E9C59C /* SortDateView.swift */; };
+		DEE056A128E087BD00E9C59C /* SortCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE056A028E087BD00E9C59C /* SortCardContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
+		DEE0569E28E087AF00E9C59C /* SortDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDateView.swift; sourceTree = "<group>"; };
+		DEE056A028E087BD00E9C59C /* SortCardContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCardContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				DE0314E128D495FC00FC9561 /* SortViewController.swift */,
+				DEE0569E28E087AF00E9C59C /* SortDateView.swift */,
+				DEE056A028E087BD00E9C59C /* SortCardContainerView.swift */,
 			);
 			path = SortVC;
 			sourceTree = "<group>";
@@ -145,10 +151,10 @@
 			isa = PBXGroup;
 			children = (
 				DE0314E328D6BAF300FC9561 /* Model */,
+				DE7838B028D1AEDB0093F034 /* Utility */,
 				DE0314E428D6BB4500FC9561 /* Realm */,
 				DE0314DA28D48C0200FC9561 /* SortVC */,
 				DE0314D228D456D200FC9561 /* CalendarVC */,
-				DE7838B028D1AEDB0093F034 /* Utility */,
 				DE22096728C9B94900612BB1 /* WriteVC */,
 				DE22094228C9B32400612BB1 /* AppDelegate.swift */,
 				DE22094428C9B32400612BB1 /* SceneDelegate.swift */,
@@ -289,6 +295,7 @@
 				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
+				DEE0569F28E087AF00E9C59C /* SortDateView.swift in Sources */,
 				DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */,
 				DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */,
 				DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */,
@@ -307,6 +314,7 @@
 				DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */,
 				DEDD8F5228D9A21700464FA7 /* Observable.swift in Sources */,
 				DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */,
+				DEE056A128E087BD00E9C59C /* SortCardContainerView.swift in Sources */,
 				DE22096C28C9BAB400612BB1 /* WriteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +465,7 @@
 				DEVELOPMENT_TEAM = DV7XBU83N5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "메모마무";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -486,6 +495,7 @@
 				DEVELOPMENT_TEAM = DV7XBU83N5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "메모마무";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

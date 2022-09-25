@@ -25,22 +25,43 @@ class SortViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let view = UITableView()
-        view.backgroundColor = Constants.Color.paper
         view.delegate = self
         view.dataSource = self
+        view.backgroundColor = .magenta
         return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Constants.Color.background
+        
+        configure()
+        setConstraints()
     }
     
     func configure() {
-        
+        [viewButton, calendarButton, tableView].forEach {
+            view.addSubview($0)
+        }
     }
     
     func setConstraints() {
+        viewButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
+            make.height.width.equalTo(21)
+        }
         
+        calendarButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
+            make.height.width.equalTo(21)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.08)
+            make.bottom.equalTo(view)
+        }
     }
     
 }

@@ -72,6 +72,13 @@ class CalendarViewController: UIViewController {
         return view
     }()
     
+    var sortButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
+        view.tintColor = Constants.Color.text
+        return view
+    }()
+    
     override func viewDidLoad() {
         print(#function, self)
         super.viewDidLoad()
@@ -83,6 +90,7 @@ class CalendarViewController: UIViewController {
         self.calendar.accessibilityIdentifier = "calendar"
         
         viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
+        sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
         
         configureUI()
         setConstraints()
@@ -92,7 +100,7 @@ class CalendarViewController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = Constants.Color.background
-        [viewButton].forEach {
+        [viewButton, sortButton].forEach {
             view.addSubview($0)
         }
     }
@@ -100,6 +108,12 @@ class CalendarViewController: UIViewController {
         viewButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
+            make.height.width.equalTo(21)
+        }
+        
+        sortButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
             make.height.width.equalTo(21)
         }
     }
@@ -135,6 +149,12 @@ class CalendarViewController: UIViewController {
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
+    
+    @objc func openSort() {
+        let vc = SortViewController()
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
 }
 
 // MARK: - CalendarVC Delegate, DataSource
@@ -162,10 +182,13 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         if todos!.filter("date == %@", selectedDate).count != 0 {
             nums += 1
         }
-        if diaries!.filter("date == %@", selectedDate).count >= 1 {
-            nums += 1
+        if diaries!.filter("date == %@", selectedDate).count != 0 {
+            if diaries!.filter("date == %@", selectedDate).first?.diary == "" {
+                return nums
+            } else {
+                nums += 1
+            }
         }
-        
         return nums
     }
 
@@ -176,7 +199,12 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
             colors.append(Constants.Color.text)
         }
         if diaries!.filter("date == %@", selectedDate).count != 0 {
-            colors.append(Constants.Color.point)
+            if diaries!.filter("date == %@", selectedDate).first?.diary == "" {
+                return colors
+            } else {
+                colors.append(Constants.Color.point)
+            }
+            
         }
         return colors
     }

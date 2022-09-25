@@ -144,16 +144,11 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.checkButton.isEnabled = true
         
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(addTodo))
         if indexPath.section == 0 {
             cell.setData(data: todos[indexPath.row])
-//            cell.todoTextView.clearsOnInsertion = true
             cell.todoTextView.delegate = self
             cell.todoTextView.isEditable = true
-            cell.todoTextView.isUserInteractionEnabled = true
             cell.todoTextView.textColor = Constants.Color.background
-//            cell.todoTextView.removeGestureRecognizer(tap)
-//            cell.changeCheckView.isHidden = false
             
             cell.selectionStyle = .none
             
@@ -180,10 +175,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.checkButton.setImage(UIImage(named: "addTodoButton"), for: .normal)
             cell.todoTextView.isEditable = false
             cell.todoTextView.text = "할 일을 작성하세요 :)"
-//            cell.todoTextView.tag = indexPath.row
-//            cell.todoTextView.isHidden = true
-//            cell.todoTextView.isUserInteractionEnabled = true
-//            cell.todoTextView.addGestureRecognizer(tap)
+            cell.todoTextView.tag = indexPath.row
             cell.selectionStyle = .none
             cell.changeCheckView.isHidden = false
             cell.clickButton.isHidden = false
@@ -213,9 +205,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden.toggle()
-        
-//        let index: [IndexPath] = [[0, sender.tag]]
-//        tableView.reloadRows(at: index, with: .none)
     }
     
     @objc func changeCheck(sender: UIButton) {
@@ -257,15 +246,15 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
-//            self.repository.deleteTodo(item: self.todos[indexPath.row])
-//        }
-//        delete.image = UIImage(systemName: "trash")
-//        delete.backgroundColor = .systemRed
-//
-//        return UISwipeActionsConfiguration(actions: [delete])
-//    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+            self.repository.deleteTodo(item: self.todos[indexPath.row])
+        }
+        delete.image = UIImage(systemName: "trash")
+        delete.backgroundColor = .systemRed
+
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
 }
 
 // MARK: - textView Delegate
@@ -284,7 +273,7 @@ extension TodoViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         let pointInTable = textView.convert(textView.bounds.origin, to: self.tableView)
         guard let textViewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else { return }
-        let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as! WriteTableViewCell
+        guard let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as? WriteTableViewCell else { return }
         cell.changeCheckView.isHidden = false
         cell.checkButton.isEnabled = false
     }
@@ -293,7 +282,7 @@ extension TodoViewController: UITextViewDelegate {
         let pointInTable = textView.convert(textView.bounds.origin, to: self.tableView)
         guard let textViewIndexPath = self.tableView.indexPathForRow(at: pointInTable) else { return }
         
-        let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as! WriteTableViewCell
+        guard let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as? WriteTableViewCell else { return }
         if cell.todoTextView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             repository.deleteTodo(item: todos[textViewIndexPath.row])
         } else {
@@ -304,3 +293,8 @@ extension TodoViewController: UITextViewDelegate {
     
 }
 
+
+// MARK: Gesture Recognizer
+extension TodoViewController: UIGestureRecognizerDelegate {
+    
+}

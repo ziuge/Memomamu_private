@@ -15,6 +15,12 @@ class WriteViewController: UIViewController {
     // MARK: UI
     var viewButton: UIButton = {
         let view = UIButton()
+        view.setImage(UIImage(systemName: "calendar"), for: .normal)
+        view.tintColor = Constants.Color.text
+        return view
+    }()
+    var sortButton: UIButton = {
+        let view = UIButton()
         view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
         return view
@@ -71,7 +77,7 @@ class WriteViewController: UIViewController {
     }
     
     func configure() {
-        [containerView, viewButton, dateLabel, clearButton].forEach {
+        [containerView, viewButton, dateLabel, clearButton, sortButton].forEach {
             view.addSubview($0)
         }
         
@@ -80,6 +86,11 @@ class WriteViewController: UIViewController {
         viewButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
+            make.height.width.equalTo(21)
+        }
+        sortButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
             make.height.width.equalTo(21)
         }
 

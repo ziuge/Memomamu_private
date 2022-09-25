@@ -17,10 +17,15 @@ class CardDiaryViewController: UIViewController {
     var diary: Diary? = nil
     func fetchRealm() {
         diary = repository.fetchDiary(date: selectedDate)
-        if diary == nil {
-            diaryTextView.text = "to do를 먼저 작성하세요 :("
-            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
+        if diary?.diary == nil || diary?.diary == "" {
+            print("no diary!!!", diary?.diary)
+            diaryNilLabel.isHidden = false
+//            diaryImageView.isHidden = true
+            diaryTextView.isHidden = true
         } else {
+            print("yes diary!!!", diary?.diary)
+            diaryNilLabel.isHidden = true
+            diaryTextView.isHidden = false
             diaryTextView.text = diary!.diary
             diaryTextView.textColor = Constants.Color.background
         }
@@ -51,6 +56,16 @@ class CardDiaryViewController: UIViewController {
         view.backgroundColor = Constants.Color.paper
         return view
     }()
+    var diaryNilLabel: UILabel = {
+        let view = UILabel()
+        view.text = "to do를 먼저 작성하세요 :("
+        view.textAlignment = .center
+        view.font = Constants.Font.content
+        view.textColor = Constants.Color.background.withAlphaComponent(0.6)
+        view.isHidden = true
+        view.backgroundColor = .clear
+        return view
+    }()
     var clickButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .clear
@@ -59,7 +74,6 @@ class CardDiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchRealm()
         
         configure()
@@ -69,7 +83,7 @@ class CardDiaryViewController: UIViewController {
     
     func configure() {
         view.addSubview(backgroundView)
-        [titleLabel, diaryImageView, diaryTextView].forEach {
+        [titleLabel, diaryImageView, diaryTextView, diaryNilLabel].forEach {
             backgroundView.addSubview($0)
         }
         view.addSubview(clickButton)
@@ -106,6 +120,10 @@ class CardDiaryViewController: UIViewController {
             make.centerY.equalTo(diaryImageView)
         }
 
+        diaryNilLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(diaryImageView)
+            make.centerY.equalTo(diaryImageView).offset(-8)
+        }
     }
     
     @objc func goTodo() {

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,17 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="gnU-T1-Sjl">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame" translatesAutoresizingMaskIntoConstraints="NO" id="uY3-Nr-j90">
+                                <rect key="frame" x="117" y="362" width="180" height="112"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="jzb-f3-JWJ"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.38039215686274508" green="0.47058823529411764" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gnU-T1-Sjl" secondAttribute="trailing" id="3VQ-qi-fwV"/>
-                            <constraint firstItem="gnU-T1-Sjl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6Hv-Hm-Ywa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gnU-T1-Sjl" secondAttribute="bottom" id="cZS-6t-M7w"/>
-                            <constraint firstItem="gnU-T1-Sjl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jmI-pe-f9o"/>
+                            <constraint firstItem="uY3-Nr-j90" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OG9-ha-c8N"/>
+                            <constraint firstItem="uY3-Nr-j90" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="veD-Fy-jYJ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home" width="375" height="812"/>
+        <image name="Frame" width="191" height="112"/>
     </resources>
 </document>
