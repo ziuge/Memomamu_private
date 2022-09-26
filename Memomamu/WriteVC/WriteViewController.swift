@@ -77,7 +77,7 @@ class WriteViewController: UIViewController {
     }
     
     func configure() {
-        [containerView, viewButton, dateLabel, clearButton, sortButton].forEach {
+        [containerView, viewButton, dateLabel].forEach {
             view.addSubview($0)
         }
         
@@ -88,11 +88,11 @@ class WriteViewController: UIViewController {
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
             make.height.width.equalTo(21)
         }
-        sortButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
-            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
-            make.height.width.equalTo(21)
-        }
+//        sortButton.snp.makeConstraints { make in
+//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+//            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
+//            make.height.width.equalTo(21)
+//        }
 
         dateLabel.snp.makeConstraints { make in
             make.topMargin.equalTo(view).offset(view.frame.height * 0.08)
@@ -102,15 +102,16 @@ class WriteViewController: UIViewController {
         containerView.snp.makeConstraints { make in
             make.topMargin.equalTo(view).offset(view.frame.height * 0.18)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(view).multipliedBy(0.60)
+//            make.height.equalTo(view).multipliedBy(0.60)
+            make.bottom.equalTo(view)
         }
         
-        clearButton.snp.makeConstraints { make in
-            make.width.equalTo(view.snp.width).multipliedBy(0.32)
-            make.height.equalTo(28)
-            make.centerX.equalTo(view)
-            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-40)
-        }
+//        clearButton.snp.makeConstraints { make in
+//            make.width.equalTo(view.snp.width).multipliedBy(0.32)
+//            make.height.equalTo(28)
+//            make.centerX.equalTo(view)
+//            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-40)
+//        }
     }
     
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
@@ -140,6 +141,5 @@ class WriteViewController: UIViewController {
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
-    
 }
 

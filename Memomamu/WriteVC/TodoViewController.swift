@@ -12,6 +12,9 @@ class TodoViewController: UIViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
+    var checkClearButtonClosure: ((_ data: Bool) -> Void)?
+    let checkModel = CheckModel()
+    
     // MARK: Realm
     let repository = Repository()
     var todos: Results<Todo>! {
@@ -57,10 +60,20 @@ class TodoViewController: UIViewController {
         view.backgroundColor = Constants.Color.paper
         return view
     }()
+    var clearButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = Constants.Color.text.withAlphaComponent(0.6)
+        view.layer.cornerRadius = 15
+        view.setTitle("clear!!", for: .normal)
+        view.setTitleColor(Constants.Color.background, for: .normal)
+        view.titleLabel?.font = Constants.Font.content
+        return view
+    }()
     
     // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Constants.Color.background
         fetchRealm()
         configure()
         setConstraints()
@@ -69,7 +82,7 @@ class TodoViewController: UIViewController {
     
     func configure() {
         view.addSubview(backgroundView)
-        [tableView, titleLabel, lineImageView, editButton].forEach {
+        [tableView, titleLabel, lineImageView, editButton, clearButton].forEach {
             backgroundView.addSubview($0)
         }
     }
@@ -79,8 +92,8 @@ class TodoViewController: UIViewController {
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
-            make.rightMargin.equalTo(spacing)
-            make.height.equalTo(view.frame.height)
+            make.height.equalTo(view.snp.height).multipliedBy(0.76)
+            make.top.trailing.equalTo(view)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -104,19 +117,25 @@ class TodoViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.trailing.equalTo(backgroundView)
             make.leading.equalTo(backgroundView).offset(40)
-//            make.bottom.equalTo(backgroundView.safeAreaLayoutGuide).offset(50)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.43)
-            make.topMargin.equalTo(lineImageView.snp.bottom).offset(26)
+            make.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
+            make.top.equalTo(lineImageView.snp.bottom)
+        }
+        
+        clearButton.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width).multipliedBy(0.32)
+            make.height.equalTo(28)
+            make.centerX.equalTo(view)
+            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-50)
         }
     }
     
-    func scrollToBottom(){
-        let lastRowOfIndexPath = self.tableView.numberOfRows(inSection: 0) - 1
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(row: lastRowOfIndexPath, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
-    }
+//    func scrollToBottom(){
+//        let lastRowOfIndexPath = self.tableView.numberOfRows(inSection: 0) - 1
+//        DispatchQueue.main.async {
+//            let indexPath = IndexPath(row: lastRowOfIndexPath, section: 0)
+//            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+//        }
+//    }
 
 }
 
@@ -200,11 +219,33 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+            self.repository.deleteTodo(item: self.todos[indexPath.row])
+        }
+        delete.image = UIImage(systemName: "trash")
+        delete.backgroundColor = .systemRed
+
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    // MARK: Change Check
+    
     @objc func showChangeCheck(sender: UIButton) {
         tableView.reloadData()
         
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden.toggle()
+
+        
+//        var checkClear = true
+//        todos.forEach { item in
+//            if item.check != 0 {
+//                checkClear = false
+//            }
+//        }
+        
+//        self.checkClearButtonClosure?(checkClear)
     }
     
     @objc func changeCheck(sender: UIButton) {
@@ -246,15 +287,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
-            self.repository.deleteTodo(item: self.todos[indexPath.row])
-        }
-        delete.image = UIImage(systemName: "trash")
-        delete.backgroundColor = .systemRed
-
-        return UISwipeActionsConfiguration(actions: [delete])
-    }
 }
 
 // MARK: - textView Delegate

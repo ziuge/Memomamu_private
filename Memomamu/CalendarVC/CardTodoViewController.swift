@@ -110,7 +110,7 @@ class CardTodoViewController: UIViewController {
         
         tableView.snp.makeConstraints { make in
             make.leading.equalTo(backgroundView).offset(30)
-            make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide).offset(-24)
+            make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
             make.topMargin.equalTo(titleLabel.snp.bottom).offset(26)
 //            make.bottom.equalTo(backgroundView).offset(300)
         }

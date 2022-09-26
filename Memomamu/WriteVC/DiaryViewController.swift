@@ -59,6 +59,15 @@ class DiaryViewController: UIViewController {
         view.tintColor = Constants.Color.background
         return view
     }()
+    var clearButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = Constants.Color.text
+        view.layer.cornerRadius = 15
+        view.setTitle("finish!!", for: .normal)
+        view.setTitleColor(Constants.Color.background, for: .normal)
+        view.titleLabel?.font = Constants.Font.content
+        return view
+    }()
     
     // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -83,7 +92,7 @@ class DiaryViewController: UIViewController {
     
     func configure() {
         view.addSubview(backgroundView)
-        [titleLabel, lineImageView, diaryImageView, diaryTextView, saveButton].forEach {
+        [titleLabel, lineImageView, diaryImageView, diaryTextView, saveButton, clearButton].forEach {
             backgroundView.addSubview($0)
         }
     }
@@ -93,8 +102,8 @@ class DiaryViewController: UIViewController {
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
-            make.rightMargin.equalTo(-spacing)
-            make.height.equalTo(view.frame.height)
+            make.height.equalTo(view.snp.height).multipliedBy(0.76)
+            make.top.leading.equalTo(view)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -107,18 +116,17 @@ class DiaryViewController: UIViewController {
             make.centerX.equalTo(backgroundView)
             make.height.equalTo(1)
             make.top.equalTo(titleLabel.snp.bottom).offset(19)
-            
         }
         
         diaryImageView.snp.makeConstraints { make in
             make.topMargin.equalTo(lineImageView.snp.bottom).offset(50)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.42)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.64)
             make.width.equalTo(backgroundView.snp.width).multipliedBy(0.77)
             make.centerX.equalTo(backgroundView)
         }
         
         diaryTextView.snp.makeConstraints { make in
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.38)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.62)
             make.width.equalTo(backgroundView.snp.width).multipliedBy(0.67)
             make.centerX.equalTo(diaryImageView)
             make.centerY.equalTo(diaryImageView)
@@ -128,6 +136,13 @@ class DiaryViewController: UIViewController {
             make.topMargin.equalTo(backgroundView).offset(20)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-36)
             make.height.width.equalTo(21)
+        }
+        
+        clearButton.snp.makeConstraints { make in
+            make.width.equalTo(view.snp.width).multipliedBy(0.32)
+            make.height.equalTo(28)
+            make.centerX.equalTo(view)
+            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-50)
         }
     }
     

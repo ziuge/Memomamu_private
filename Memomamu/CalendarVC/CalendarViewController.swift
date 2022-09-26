@@ -100,7 +100,7 @@ class CalendarViewController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = Constants.Color.background
-        [viewButton, sortButton].forEach {
+        [viewButton].forEach {
             view.addSubview($0)
         }
     }
@@ -111,11 +111,11 @@ class CalendarViewController: UIViewController {
             make.height.width.equalTo(21)
         }
         
-        sortButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
-            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
-            make.height.width.equalTo(21)
-        }
+//        sortButton.snp.makeConstraints { make in
+//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+//            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
+//            make.height.width.equalTo(21)
+//        }
     }
 //
 //    func setData(date: Date) {

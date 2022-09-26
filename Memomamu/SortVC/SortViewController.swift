@@ -37,6 +37,9 @@ class SortViewController: UIViewController {
         
         configure()
         setConstraints()
+        
+        viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
+        calendarButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
     }
     
     func configure() {
@@ -62,6 +65,18 @@ class SortViewController: UIViewController {
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.08)
             make.bottom.equalTo(view)
         }
+    }
+    
+    @objc func openWrite() {
+        let vc = WriteViewController()
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
+    
+    @objc func openCalendar() {
+        let vc = CalendarViewController()
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
 }
