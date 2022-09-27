@@ -59,13 +59,14 @@ class DiaryViewController: UIViewController {
         view.tintColor = Constants.Color.background
         return view
     }()
-    var clearButton: UIButton = {
+    var finishButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = Constants.Color.text
         view.layer.cornerRadius = 15
         view.setTitle("finish!!", for: .normal)
         view.setTitleColor(Constants.Color.background, for: .normal)
         view.titleLabel?.font = Constants.Font.content
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -88,11 +89,12 @@ class DiaryViewController: UIViewController {
         configure()
         setConstraints()
         saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
+        finishButton.addTarget(self, action: #selector(finishButtonClicked), for: .touchUpInside)
     }
     
     func configure() {
         view.addSubview(backgroundView)
-        [titleLabel, lineImageView, diaryImageView, diaryTextView, saveButton, clearButton].forEach {
+        [titleLabel, lineImageView, diaryImageView, diaryTextView, saveButton, finishButton].forEach {
             backgroundView.addSubview($0)
         }
     }
@@ -138,7 +140,7 @@ class DiaryViewController: UIViewController {
             make.height.width.equalTo(21)
         }
         
-        clearButton.snp.makeConstraints { make in
+        finishButton.snp.makeConstraints { make in
             make.width.equalTo(view.snp.width).multipliedBy(0.32)
             make.height.equalTo(28)
             make.centerX.equalTo(view)
@@ -150,6 +152,10 @@ class DiaryViewController: UIViewController {
         print(#function)
         repository.updateDiary(oldValue: diary!, newValue: diaryTextView.text)
         fetchRealm()
+    }
+    
+    @objc func finishButtonClicked() {
+        print("finish!")
     }
     
     func setData(data: Diary) {

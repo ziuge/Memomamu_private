@@ -22,11 +22,9 @@ class PageViewController: UIPageViewController {
         
         createPageViewController(vc1: vc1, vc2: vc2)
         configurePageViewController()
-        
     }
     
     func createPageViewController(vc1: UIViewController, vc2: UIViewController) {
-        
         pageViewControllerList = [vc1, vc2]
     }
     
@@ -37,7 +35,6 @@ class PageViewController: UIPageViewController {
         guard let first = pageViewControllerList.first else { return }
         setViewControllers([first], direction: .forward, animated: false)
     }
-
 }
 
 // MARK: - PageVC Delegate, DataSource

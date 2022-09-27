@@ -12,9 +12,6 @@ class TodoViewController: UIViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
-    var checkClearButtonClosure: ((_ data: Bool) -> Void)?
-    let checkModel = CheckModel()
-    
     // MARK: Realm
     let repository = Repository()
     var todos: Results<Todo>! {
@@ -22,6 +19,7 @@ class TodoViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
     func fetchRealm() {
         todos = repository.fetchTodo(date: selectedDate)
         tableView.reloadData()
@@ -60,15 +58,6 @@ class TodoViewController: UIViewController {
         view.backgroundColor = Constants.Color.paper
         return view
     }()
-    var clearButton: UIButton = {
-        let view = UIButton()
-        view.backgroundColor = Constants.Color.text.withAlphaComponent(0.6)
-        view.layer.cornerRadius = 15
-        view.setTitle("clear!!", for: .normal)
-        view.setTitleColor(Constants.Color.background, for: .normal)
-        view.titleLabel?.font = Constants.Font.content
-        return view
-    }()
     
     // MARK: viewDidLoad
     override func viewDidLoad() {
@@ -82,7 +71,7 @@ class TodoViewController: UIViewController {
     
     func configure() {
         view.addSubview(backgroundView)
-        [tableView, titleLabel, lineImageView, editButton, clearButton].forEach {
+        [tableView, titleLabel, lineImageView, editButton].forEach {
             backgroundView.addSubview($0)
         }
     }
@@ -120,13 +109,7 @@ class TodoViewController: UIViewController {
             make.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
             make.top.equalTo(lineImageView.snp.bottom)
         }
-        
-        clearButton.snp.makeConstraints { make in
-            make.width.equalTo(view.snp.width).multipliedBy(0.32)
-            make.height.equalTo(28)
-            make.centerX.equalTo(view)
-            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-50)
-        }
+
     }
     
 //    func scrollToBottom(){
@@ -236,16 +219,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden.toggle()
-
-        
-//        var checkClear = true
-//        todos.forEach { item in
-//            if item.check != 0 {
-//                checkClear = false
-//            }
-//        }
-        
-//        self.checkClearButtonClosure?(checkClear)
     }
     
     @objc func changeCheck(sender: UIButton) {
@@ -273,7 +246,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         print(#function)
         repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "", check: 0))
         fetchRealm()
-//        let cell = tableView.cellForRow(at: [0, 0])!
         let index = IndexPath(row: todos.count - 1, section: 0)
         let cell: WriteTableViewCell = self.tableView.cellForRow(at: index) as! WriteTableViewCell
         cell.todoTextView.becomeFirstResponder()
@@ -324,7 +296,6 @@ extension TodoViewController: UITextViewDelegate {
     }
     
 }
-
 
 // MARK: Gesture Recognizer
 extension TodoViewController: UIGestureRecognizerDelegate {
