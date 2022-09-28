@@ -17,6 +17,13 @@ class SortViewController: UIViewController {
     var content: [Any] = []
     var dates: [String] = []
     
+    var emptyLabel: UILabel = {
+        let view = UILabel()
+        view.text = "할 일을 추가해주세요 ;("
+        view.textColor = Constants.Color.text
+        return view
+    }()
+    
     func fetchEverything() {
         todos = repository.fetchEveryTodo().sorted(byKeyPath: "date", ascending: true)
         diaries = repository.fetchEveryDiary().sorted(byKeyPath: "date", ascending: true)
@@ -67,7 +74,7 @@ class SortViewController: UIViewController {
     }
     
     func configure() {
-        [calendarButton, tableView].forEach {
+        [emptyLabel, calendarButton, tableView].forEach {
             view.addSubview($0)
         }
     }
@@ -83,6 +90,11 @@ class SortViewController: UIViewController {
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.12)
             make.trailing.leading.equalTo(view)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(90)
+        }
+        
+        emptyLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.centerY.equalTo(view.safeAreaLayoutGuide)
         }
         
 //        backgroundShadow.snp.makeConstraints { make in
@@ -130,7 +142,6 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectedDate = date
         cell.setDate(date: date)
         cell.addPageVC(date: date, cell: cell)
-        
         
 //        addPageVC(date: diaries![indexPath.row].date, cell: cell)
         

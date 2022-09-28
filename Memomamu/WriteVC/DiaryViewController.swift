@@ -42,7 +42,7 @@ class DiaryViewController: UIViewController {
         let view = UITextView()
         view.text = "오늘 하루를 작성해보세요 :)                                                       "
         view.font = Constants.Font.content
-        view.textColor = Constants.Color.background.withAlphaComponent(0.6)
+        view.textColor = Constants.Color.background
         view.backgroundColor = .clear
         view.isScrollEnabled = true
         
@@ -51,22 +51,6 @@ class DiaryViewController: UIViewController {
     var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.paper
-        return view
-    }()
-    var saveButton: UIButton = {
-        let view = UIButton()
-        view.setImage(UIImage(systemName: "pencil"), for: .normal)
-        view.tintColor = Constants.Color.background
-        return view
-    }()
-    var finishButton: UIButton = {
-        let view = UIButton()
-        view.backgroundColor = Constants.Color.text
-        view.layer.cornerRadius = 15
-        view.setTitle("finish!!", for: .normal)
-        view.setTitleColor(Constants.Color.background, for: .normal)
-        view.titleLabel?.font = Constants.Font.content
-        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -78,23 +62,23 @@ class DiaryViewController: UIViewController {
         
         if diary == nil {
             repository.addDiary(item: Diary(date: selectedDate, diary: ""))
+            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
             fetchRealm()
             
         }
-        if diaryTextView.text == "" {
+        if diaryTextView.text == "" || diaryTextView.text == "오늘 하루를 작성해보세요 :)                                                       " {
             diaryTextView.text = "오늘 하루를 작성해보세요 :)                                                       "
+            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
         }
         diaryTextView.delegate = self
         
         configure()
         setConstraints()
-        saveButton.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
-        finishButton.addTarget(self, action: #selector(finishButtonClicked), for: .touchUpInside)
     }
     
     func configure() {
         view.addSubview(backgroundView)
-        [titleLabel, lineImageView, diaryImageView, diaryTextView, saveButton, finishButton].forEach {
+        [titleLabel, lineImageView, diaryImageView, diaryTextView].forEach {
             backgroundView.addSubview($0)
         }
     }
@@ -132,19 +116,6 @@ class DiaryViewController: UIViewController {
             make.width.equalTo(backgroundView.snp.width).multipliedBy(0.67)
             make.centerX.equalTo(diaryImageView)
             make.centerY.equalTo(diaryImageView)
-        }
-        
-        saveButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(backgroundView).offset(20)
-            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-36)
-            make.height.width.equalTo(21)
-        }
-        
-        finishButton.snp.makeConstraints { make in
-            make.width.equalTo(view.snp.width).multipliedBy(0.32)
-            make.height.equalTo(28)
-            make.centerX.equalTo(view)
-            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-50)
         }
     }
     

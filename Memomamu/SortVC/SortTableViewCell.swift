@@ -21,8 +21,6 @@ class SortTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.background
         
-//        contentView.addSubview(vc.view)
-        
         configure()
         setConstraints()
         
@@ -37,14 +35,17 @@ class SortTableViewCell: UITableViewCell {
         let selectedDate = string
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy. MM. dd."
-        formatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        formatter.timeZone = NSTimeZone(name: "KST") as TimeZone?
+        formatter.locale = Locale(identifier: "en_US")
         let date = formatter.date(from: selectedDate)!
         return date
     }
     func dateToString(date: Date) -> String {
         let date = date
         let formatter = DateFormatter()
-        formatter.dateFormat = #"d, \#nMMMM"#
+        formatter.dateFormat = #"d, \#nMMM"#
+        formatter.timeZone = NSTimeZone(name: "KST") as TimeZone?
+        formatter.locale = Locale(identifier: "en_US")
         let string = formatter.string(from: date)
         return string
     }
@@ -63,7 +64,7 @@ class SortTableViewCell: UITableViewCell {
     func setConstraints() {
         dateView.snp.makeConstraints { make in
             make.top.leading.bottom.equalTo(contentView)
-            make.width.equalTo(contentView.snp.width).multipliedBy(0.3)
+            make.width.equalTo(contentView.snp.width).multipliedBy(0.26)
         }
 
         containerView.snp.makeConstraints { make in

@@ -37,6 +37,7 @@ class CalendarViewController: UIViewController {
         calendar.calendarWeekdayView.backgroundColor = .clear
         calendar.appearance.eventSelectionColor = UIColor.white
         calendar.appearance.headerDateFormat = "MMMM"
+        calendar.locale = Locale(identifier: "en_US")
         calendar.appearance.headerTitleColor = Constants.Color.text
         calendar.appearance.headerTitleAlignment = .center
         calendar.appearance.headerTitleFont = Constants.Font.head
@@ -170,13 +171,16 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         if todos!.filter("date == %@", selectedDate).count != 0 {
             nums += 1
         }
-        if diaries!.filter("date == %@", selectedDate).count != 0 {
+        if diaries!.filter("date == %@", selectedDate).first?.diary == nil {
+            return nums
+        } else {
             if diaries!.filter("date == %@", selectedDate).first?.diary == "" {
                 return nums
             } else {
                 nums += 1
             }
         }
+        
         return nums
     }
 
@@ -186,14 +190,17 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         if todos!.filter("date == %@", selectedDate).count != 0 {
             colors.append(Constants.Color.text)
         }
-        if diaries!.filter("date == %@", selectedDate).count != 0 {
+        
+        if diaries!.filter("date == %@", selectedDate).first?.diary == nil {
+            return colors
+        } else {
             if diaries!.filter("date == %@", selectedDate).first?.diary == "" {
                 return colors
             } else {
                 colors.append(Constants.Color.point)
             }
-            
         }
+
         return colors
     }
 

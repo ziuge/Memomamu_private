@@ -63,7 +63,7 @@ class SortCardTodoTableViewCell: UITableViewCell {
     func setConstraints() {
         checkButton.snp.makeConstraints { make in
             make.topMargin.equalTo(contentView)
-            make.leadingMargin.equalTo(contentView)
+            make.leading.equalTo(contentView)
             make.height.width.equalTo(14)
         }
         

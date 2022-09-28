@@ -43,7 +43,7 @@ class SortCardDiaryViewController: UIViewController {
     var diaryTextView: UITextView = {
         let view = UITextView()
         view.text = "오늘 하루를 작성해보세요 :)                                                       "
-        view.font = Constants.Font.content
+        view.font = Constants.Font.smallContent
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
         view.backgroundColor = .clear
         return view
@@ -55,9 +55,9 @@ class SortCardDiaryViewController: UIViewController {
     }()
     var diaryNilLabel: UILabel = {
         let view = UILabel()
-        view.text = "to do를 먼저 작성하세요 :("
+        view.text = "오늘 하루를 작성해보세요 :)"
         view.textAlignment = .center
-        view.font = Constants.Font.content
+        view.font = Constants.Font.smallContent
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
         view.isHidden = true
         view.backgroundColor = .clear
@@ -102,23 +102,26 @@ class SortCardDiaryViewController: UIViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.leftMargin.equalTo(backgroundView).offset(12)
-            make.topMargin.equalTo(backgroundView).offset(12)
+            make.topMargin.equalTo(backgroundView).offset(22)
         }
         
         diaryImageView.snp.makeConstraints { make in
-            make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.8)
+            make.topMargin.equalTo(titleLabel.snp.bottom).offset(22)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.7)
 //            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.9)
             make.leftMargin.equalTo(backgroundView).offset(12)
-            make.rightMargin.equalTo(backgroundView).offset(-12)
-            make.centerX.equalTo(backgroundView)
+            make.rightMargin.equalTo(backgroundView).offset(-18)
+//            make.centerX.equalTo(backgroundView)
         }
         
         diaryTextView.snp.makeConstraints { make in
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.74)
-            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.88)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.54)
+//            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.88)
             make.centerX.equalTo(diaryImageView)
-            make.centerY.equalTo(diaryImageView)
+//            make.centerY.equalTo(diaryImageView)
+            make.top.bottom.equalTo(diaryImageView)
+            make.leading.equalTo(diaryImageView.snp.leading).offset(2)
+            make.trailing.equalTo(diaryImageView.snp.trailing).offset(-2)
         }
 
         diaryNilLabel.snp.makeConstraints { make in

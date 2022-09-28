@@ -46,7 +46,7 @@ class SortCardTodoViewController: UIViewController {
         let view = UILabel()
         view.text = "할 일을 작성하세요 :)"
         view.textAlignment = .center
-        view.font = Constants.Font.content
+        view.font = Constants.Font.smallContent
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
         view.isHidden = true
         view.backgroundColor = .clear
@@ -65,6 +65,7 @@ class SortCardTodoViewController: UIViewController {
         view.dataSource = self
         view.register(SortCardTodoTableViewCell.self, forCellReuseIdentifier: SortCardTodoTableViewCell.reuseIdentifier)
         view.separatorStyle = .none
+        view.contentInset = UIEdgeInsets(top: 6, left: 0, bottom: 0, right: 0)
         return view
     }()
     
@@ -107,12 +108,12 @@ class SortCardTodoViewController: UIViewController {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.leftMargin.equalTo(backgroundView).offset(12)
-            make.topMargin.equalTo(backgroundView).offset(12)
+            make.leftMargin.equalTo(backgroundView).offset(18)
+            make.topMargin.equalTo(backgroundView).offset(22)
         }
         
         tableView.snp.makeConstraints { make in
-            make.leading.equalTo(backgroundView).offset(12)
+            make.leading.equalTo(backgroundView).offset(18)
             make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
             make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
 //            make.bottom.equalTo(backgroundView).offset(300)

@@ -11,14 +11,16 @@ extension DateFormatter {
     static let dateOnly: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy. MM. dd."
-        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.timeZone = NSTimeZone(name: "KST") as TimeZone?
         return formatter
     }()
     
     static let titleDate: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "d, MMMM"
-//        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.timeZone = NSTimeZone(name: "KST") as TimeZone?
         return formatter
     }()
 }

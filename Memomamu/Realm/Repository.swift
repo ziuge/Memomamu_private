@@ -41,6 +41,7 @@ class Repository: ContentRepositoryType {
     }
     
     func addTodo(item: Todo) {
+        print(#function)
         let item = item
         do {
             try localRealm.write({
@@ -53,6 +54,7 @@ class Repository: ContentRepositoryType {
     }
     
     func addDiary(item: Diary) {
+        print(#function)
         let item = item
         do {
             try localRealm.write({

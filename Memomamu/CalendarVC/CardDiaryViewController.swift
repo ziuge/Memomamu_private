@@ -56,7 +56,7 @@ class CardDiaryViewController: UIViewController {
     }()
     var diaryNilLabel: UILabel = {
         let view = UILabel()
-        view.text = "to do를 먼저 작성하세요 :("
+        view.text = "오늘 하루를 작성해보세요 :)"
         view.textAlignment = .center
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)

@@ -19,12 +19,12 @@ class SortDateView: UIView {
     let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.background
-        view.layer.borderWidth = 0
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 8, height: 0)
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 0.0
+//        view.layer.borderWidth = 0
+//        view.layer.masksToBounds = false
+//        view.layer.shadowColor = UIColor.black.cgColor
+//        view.layer.shadowOffset = CGSize(width: 8, height: 0)
+//        view.layer.shadowOpacity = 0.3
+//        view.layer.shadowRadius = 0.0
         return view
     }()
     
@@ -47,8 +47,8 @@ class SortDateView: UIView {
     
     func setConstraints() {
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(4)
-            make.leading.equalTo(self).offset(16)
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(12)
+            make.leading.equalTo(self).offset(36)
         }
         backgroundView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)

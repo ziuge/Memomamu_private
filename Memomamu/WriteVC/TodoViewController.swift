@@ -40,7 +40,7 @@ class TodoViewController: UIViewController {
     }()
     var editButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
+        view.setImage(UIImage(systemName: "minus.square"), for: .normal)
         view.tintColor = Constants.Color.text
         return view
     }()
@@ -203,7 +203,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            print("delete")
             repository.deleteTodo(item: todos[indexPath.row])
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
@@ -253,6 +252,10 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func addTodo() {
         print(#function)
         repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "", check: 0, color: 0))
+        if repository.fetchDiary(date: selectedDate) == nil {
+            repository.addDiary(item: Diary(date: selectedDate, diary: nil))
+        }
+        
         fetchRealm()
         let index = IndexPath(row: todos.count - 1, section: 0)
         let cell: WriteTableViewCell = self.tableView.cellForRow(at: index) as! WriteTableViewCell
