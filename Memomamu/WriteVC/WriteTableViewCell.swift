@@ -105,6 +105,9 @@ class WriteTableViewCell: UITableViewCell {
     
     func setData(data: Todo) {
         todoTextView.text = data.todo
+        todoTextView.setLineAndLetterSpacing(data.todo!)
+        todoTextView.font = Constants.Font.content
+        todoTextView.textColor = Constants.Color.background
         if checkList[data.check] == "finished" {
             checkButton.setImage(UIImage(named: "finished-\(data.color)"), for: .normal)
         } else {

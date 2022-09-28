@@ -45,6 +45,7 @@ class SortViewController: UIViewController {
         view.register(SortTableViewCell.self, forCellReuseIdentifier: SortTableViewCell.reuseIdentifier)
         view.separatorStyle = .none
         view.rowHeight = 280
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     

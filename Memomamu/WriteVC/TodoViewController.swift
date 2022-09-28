@@ -82,7 +82,7 @@ class TodoViewController: UIViewController {
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
-            make.height.equalTo(view.snp.height).multipliedBy(0.76)
+            make.height.equalTo(view.snp.height).multipliedBy(0.85)
             make.top.trailing.equalTo(view)
         }
         

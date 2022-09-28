@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftUI
 
 class DiaryViewController: UIViewController {
     
@@ -18,6 +19,11 @@ class DiaryViewController: UIViewController {
     func fetchRealm() {
         diary = repository.fetchDiary(date: selectedDate)
         diaryTextView.text = (diary != nil) ? diary!.diary : "오늘 하루를 작성해보세요 :)                                                       "
+        
+        guard let diaryText = diary?.diary else { return }
+        diaryTextView.setLineAndLetterSpacing(diaryText)
+        diaryTextView.font = Constants.Font.content
+        diaryTextView.textColor = Constants.Color.background
     }
     
     // MARK: UI
@@ -41,11 +47,12 @@ class DiaryViewController: UIViewController {
     var diaryTextView: UITextView = {
         let view = UITextView()
         view.text = "오늘 하루를 작성해보세요 :)                                                       "
+        view.setLineAndLetterSpacing(view.text)
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background
         view.backgroundColor = .clear
         view.isScrollEnabled = true
-        
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     var backgroundView: UIView = {
@@ -57,7 +64,6 @@ class DiaryViewController: UIViewController {
     // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchRealm()
         
         if diary == nil {
@@ -88,7 +94,7 @@ class DiaryViewController: UIViewController {
         
         backgroundView.snp.makeConstraints { make in
             make.width.equalTo(Int(view.frame.width) - spacing)
-            make.height.equalTo(view.snp.height).multipliedBy(0.76)
+            make.height.equalTo(view.snp.height).multipliedBy(0.85)
             make.top.leading.equalTo(view)
         }
         
@@ -105,15 +111,17 @@ class DiaryViewController: UIViewController {
         }
         
         diaryImageView.snp.makeConstraints { make in
-            make.topMargin.equalTo(lineImageView.snp.bottom).offset(50)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.64)
+            make.topMargin.equalTo(lineImageView.snp.bottom).offset(40)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.72)
+//            make.bottom.equalTo(backgroundView.snp.bottom).offset(60)
             make.width.equalTo(backgroundView.snp.width).multipliedBy(0.77)
             make.centerX.equalTo(backgroundView)
         }
         
         diaryTextView.snp.makeConstraints { make in
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.62)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.68)
             make.width.equalTo(backgroundView.snp.width).multipliedBy(0.67)
+//            make.top.bottom.equalTo(diaryImageView)
             make.centerX.equalTo(diaryImageView)
             make.centerY.equalTo(diaryImageView)
         }
