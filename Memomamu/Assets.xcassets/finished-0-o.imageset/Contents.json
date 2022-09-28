@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Rectangle 76.png",
+      "filename" : "todoButton-checked-orange.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Rectangle 76@2x.png",
+      "filename" : "todoButton-checked-orange@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Rectangle 76@3x.png",
+      "filename" : "todoButton-checked-orange@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

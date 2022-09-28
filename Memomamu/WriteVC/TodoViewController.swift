@@ -168,9 +168,9 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             let color = todos[indexPath.row].color
             
             if checkList[check] == "finished" {
-                cell.checkButton.setImage(UIImage(named: "finished-\(color)"), for: .normal)
-            } else {
-                cell.checkButton.setImage(UIImage(named: checkList[check]), for: .normal)
+                cell.checkButton.setImage(UIImage(named: "finished-\(color)-o"), for: .normal)
+            } else if checkList[check] != "unchecked" {
+                cell.checkButton.setImage(UIImage(named: "\(checkList[check])-o"), for: .normal)
             }
 //            cell.checkButton.setImage(UIImage(named: checkList[checkNum]), for: .normal)
             cell.checkButton.tag = indexPath.row

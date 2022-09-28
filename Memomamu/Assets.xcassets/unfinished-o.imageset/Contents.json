@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Rectangle 76.png",
+      "filename" : "todoButton-unfinished.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Rectangle 76@2x.png",
+      "filename" : "todoButton-unfinished@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Rectangle 76@3x.png",
+      "filename" : "todoButton-unfinished@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
