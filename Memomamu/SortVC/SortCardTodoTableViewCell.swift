@@ -1,14 +1,13 @@
 //
-//  CardTodoTableVIewCell.swift
+//  SortCardTodoTableViewCell.swift
 //  Memomamu
 //
-//  Created by CHOI on 2022/09/22.
+//  Created by CHOI on 2022/09/28.
 //
 
 import UIKit
 
-class CardTodoTableVIewCell: UITableViewCell {
-    
+class SortCardTodoTableViewCell: UITableViewCell {
     let checkList = ["unchecked", "finished", "delayed", "unfinished"]
 
     var checkButton: UIButton = {
@@ -38,6 +37,7 @@ class CardTodoTableVIewCell: UITableViewCell {
         
         configure()
         setConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +53,7 @@ class CardTodoTableVIewCell: UITableViewCell {
         }
         
     }
-    
+
     func configure() {
         [checkButton, todoTextView].forEach {
             contentView.addSubview($0)
@@ -63,18 +63,15 @@ class CardTodoTableVIewCell: UITableViewCell {
     func setConstraints() {
         checkButton.snp.makeConstraints { make in
             make.topMargin.equalTo(contentView)
-            make.leadingMargin.equalTo(contentView).offset(6)
+            make.leadingMargin.equalTo(contentView)
             make.height.width.equalTo(14)
         }
         
         todoTextView.snp.makeConstraints { make in
             make.topMargin.equalTo(contentView).offset(-8)
             make.bottomMargin.equalTo(contentView)
-//            make.centerY.equalTo(contentView)
-//            make.top.equalTo(checkButton.snp.top)
             make.leadingMargin.equalTo(checkButton.snp.trailing).offset(15)
-            make.trailingMargin.equalTo(contentView).offset(-52)
+            make.trailingMargin.equalTo(contentView).offset(-15)
         }
     }
 }
-

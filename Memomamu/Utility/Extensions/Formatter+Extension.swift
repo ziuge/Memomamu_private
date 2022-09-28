@@ -21,5 +21,4 @@ extension DateFormatter {
 //        formatter.locale = Locale(identifier: "ko_KR")
         return formatter
     }()
-    
 }

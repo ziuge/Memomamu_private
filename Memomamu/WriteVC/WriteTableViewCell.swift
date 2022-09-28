@@ -101,34 +101,35 @@ class WriteTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let checkList = ["unchecked", "finished", "delayed", "unfinished"]
+    
     func setData(data: Todo) {
         todoTextView.text = data.todo
-        checkButton.setImage(UIImage(named: checkList[data.check]), for: .normal)
+        if checkList[data.check] == "finished" {
+            checkButton.setImage(UIImage(named: "finished-\(data.color)"), for: .normal)
+        } else {
+            checkButton.setImage(UIImage(named: checkList[data.check]), for: .normal)
+        }
+        
     }
-    
-    var completionHandler: (() -> Void)? = nil
-    
-    let checkList = ["unchecked", "finished", "delayed", "unfinished"]
+
 //    @objc func changeCheck() {
 //        print(#function)
 //        checkButton.setImage(UIImage(named: "finished.jpg"), for: .normal)
 //        changeCheckView.isHidden = false
 //    }
-//
 //    @objc func changeCheckDelayed() {
 //        checkButton.setImage(UIImage(named: "delayed.jpg"), for: .normal)
 //        changeCheckView.isHidden = false
 //    }
-//
 //    @objc func changeCheckUnfinished() {
 //        checkButton.setImage(UIImage(named: "unfinished.jpg"), for: .normal)
 //        changeCheckView.isHidden = false
 //    }
-//
+
     @objc func showCheckStatusChangeButton() {
         changeCheckView.isHidden.toggle()
     }
-    
     
     var status: String = "unchecked"
     

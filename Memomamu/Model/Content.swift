@@ -26,14 +26,16 @@ class Todo: Object {
     @Persisted var orderDate: Date // 순서 변경을 위한 날짜 데이터 받아오기
     @Persisted var todo: String?
     @Persisted var check: Int
+    @Persisted var color: Int
     
     @Persisted(primaryKey: true) var objectId: ObjectId
     
-    convenience init(date: String, orderDate: Date, todo: String?, check: Int) {
+    convenience init(date: String, orderDate: Date, todo: String?, check: Int, color: Int) {
         self.init()
         self.date = date
         self.orderDate = orderDate
         self.todo = todo
         self.check = 0
+        self.color = 0
     }
 }

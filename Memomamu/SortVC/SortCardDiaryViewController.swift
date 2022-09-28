@@ -1,14 +1,13 @@
 //
-//  CardDiaryViewController.swift
+//  SortCardDiaryViewController.swift
 //  Memomamu
 //
-//  Created by CHOI on 2022/09/16.
+//  Created by CHOI on 2022/09/27.
 //
 
 import UIKit
-import RealmSwift
 
-class CardDiaryViewController: UIViewController {
+class SortCardDiaryViewController: UIViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
@@ -19,7 +18,6 @@ class CardDiaryViewController: UIViewController {
         diary = repository.fetchDiary(date: selectedDate)
         if diary?.diary == nil || diary?.diary == "" {
             diaryNilLabel.isHidden = false
-//            diaryImageView.isHidden = true
             diaryTextView.isHidden = true
         } else {
             diaryNilLabel.isHidden = true
@@ -34,6 +32,7 @@ class CardDiaryViewController: UIViewController {
         view.text = "diary"
         view.font = Constants.Font.cardTitle
         view.textColor = Constants.Color.background
+        view.textAlignment = .left
         return view
     }()
     var diaryImageView: UIImageView = {
@@ -87,33 +86,37 @@ class CardDiaryViewController: UIViewController {
         view.addSubview(clickButton)
     }
     func setConstraints() {
-        let spacing = 40
+        let spacing = 12
         
         clickButton.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(backgroundView)
         }
         
         backgroundView.snp.makeConstraints { make in
-            make.width.equalTo(Int(view.frame.width) - spacing)
+//            make.width.equalTo(view.snp.width).multipliedBy(0.9)
+            make.left.equalTo(view.safeAreaLayoutGuide)
             make.rightMargin.equalTo(-spacing)
-            make.height.equalTo(view.frame.height)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(backgroundView)
-            make.topMargin.equalTo(backgroundView).offset(24)
+            make.leftMargin.equalTo(backgroundView).offset(12)
+            make.topMargin.equalTo(backgroundView).offset(12)
         }
         
         diaryImageView.snp.makeConstraints { make in
-            make.topMargin.equalTo(titleLabel.snp.bottom).offset(24)
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.26)
-            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.78)
+            make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.8)
+//            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.9)
+            make.leftMargin.equalTo(backgroundView).offset(12)
+            make.rightMargin.equalTo(backgroundView).offset(-12)
             make.centerX.equalTo(backgroundView)
         }
         
         diaryTextView.snp.makeConstraints { make in
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.24)
-            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.68)
+            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.74)
+            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.88)
             make.centerX.equalTo(diaryImageView)
             make.centerY.equalTo(diaryImageView)
         }
@@ -131,5 +134,3 @@ class CardDiaryViewController: UIViewController {
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }
-
-

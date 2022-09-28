@@ -51,6 +51,7 @@ class TodoViewController: UIViewController {
         view.dataSource = self
         view.register(WriteTableViewCell.self, forCellReuseIdentifier: WriteTableViewCell.reuseIdentifier)
         view.separatorStyle = .none
+        view.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         return view
     }()
     var backgroundView: UIView = {
@@ -109,7 +110,6 @@ class TodoViewController: UIViewController {
             make.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
             make.top.equalTo(lineImageView.snp.bottom)
         }
-
     }
     
 //    func scrollToBottom(){
@@ -164,8 +164,15 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.changeCheckView.isHidden = false
             
             let checkList = ["unchecked", "finished", "delayed", "unfinished"]
-            let checkNum = todos[indexPath.row].check
-            cell.checkButton.setImage(UIImage(named: checkList[checkNum]), for: .normal)
+            let check = todos[indexPath.row].check
+            let color = todos[indexPath.row].color
+            
+            if checkList[check] == "finished" {
+                cell.checkButton.setImage(UIImage(named: "finished-\(color)"), for: .normal)
+            } else {
+                cell.checkButton.setImage(UIImage(named: checkList[check]), for: .normal)
+            }
+//            cell.checkButton.setImage(UIImage(named: checkList[checkNum]), for: .normal)
             cell.checkButton.tag = indexPath.row
             cell.checkButton.addTarget(self, action: #selector(showChangeCheck(sender:)), for: .touchUpInside)
             
@@ -223,6 +230,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func changeCheck(sender: UIButton) {
         repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 1)
+        repository.updateTodoColor(oldValue: todos[sender.tag], newValue: Int.random(in: 0...11))
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden = false
         fetchRealm()
@@ -244,7 +252,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func addTodo() {
         print(#function)
-        repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "", check: 0))
+        repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "", check: 0, color: 0))
         fetchRealm()
         let index = IndexPath(row: todos.count - 1, section: 0)
         let cell: WriteTableViewCell = self.tableView.cellForRow(at: index) as! WriteTableViewCell

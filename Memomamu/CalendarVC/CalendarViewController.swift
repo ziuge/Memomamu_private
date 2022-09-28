@@ -65,12 +65,12 @@ class CalendarViewController: UIViewController {
         calendar.scrollDirection = .horizontal
         calendar.placeholderType = .none
     }
-    var viewButton: UIButton = {
-        let view = UIButton()
-        view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
-        view.tintColor = Constants.Color.text
-        return view
-    }()
+//    var viewButton: UIButton = {
+//        let view = UIButton()
+//        view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
+//        view.tintColor = Constants.Color.text
+//        return view
+//    }()
     
     var sortButton: UIButton = {
         let view = UIButton()
@@ -89,7 +89,7 @@ class CalendarViewController: UIViewController {
         self.calendar.select(Date(), scrollToDate: false)
         self.calendar.accessibilityIdentifier = "calendar"
         
-        viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
+//        viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
         sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
         
         configureUI()
@@ -100,29 +100,17 @@ class CalendarViewController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = Constants.Color.background
-        [viewButton].forEach {
+        [sortButton].forEach {
             view.addSubview($0)
         }
     }
     func setConstraints() {
-        viewButton.snp.makeConstraints { make in
+        sortButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
             make.height.width.equalTo(21)
         }
-        
-//        sortButton.snp.makeConstraints { make in
-//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
-//            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
-//            make.height.width.equalTo(21)
-//        }
     }
-//
-//    func setData(date: Date) {
-//        let selectedDate = DateFormatter.dateOnly.string(from: date)
-//        var todos: Results<Todo>! = repository.fetchTodo(date: selectedDate)
-//        var diary: Diary? = repository.fetchDiary(date: selectedDate)
-//    }
     
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     let vc1 = CardTodoViewController()
@@ -144,11 +132,11 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    @objc func openWrite() {
-        let vc = WriteViewController()
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
+//    @objc func openWrite() {
+//        let vc = WriteViewController()
+//        UIApplication.shared.windows.first?.rootViewController = vc
+//        UIApplication.shared.windows.first?.makeKeyAndVisible()
+//    }
     
     @objc func openSort() {
         let vc = SortViewController()

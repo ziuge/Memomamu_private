@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE01626D28E2E4470067A46D /* SortDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01626C28E2E4470067A46D /* SortDateView.swift */; };
+		DE01626F28E2E5D50067A46D /* SortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01626E28E2E5D50067A46D /* SortTableViewCell.swift */; };
+		DE01627228E32CFC0067A46D /* SortCardTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01627128E32CFC0067A46D /* SortCardTodoViewController.swift */; };
+		DE01627428E32D1B0067A46D /* SortCardDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01627328E32D1B0067A46D /* SortCardDiaryViewController.swift */; };
+		DE01627728E3DC200067A46D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DE01627628E3DC200067A46D /* Realm */; };
+		DE01627928E3DC200067A46D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE01627828E3DC200067A46D /* RealmSwift */; };
+		DE01627B28E428910067A46D /* SortCardTodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE01627A28E428910067A46D /* SortCardTodoTableViewCell.swift */; };
 		DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = DE0314D428D4572700FC9561 /* FSCalendar */; };
 		DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314D628D4574400FC9561 /* CalendarViewController.swift */; };
 		DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0314D828D46DEA00FC9561 /* CalendarCell.swift */; };
@@ -29,8 +36,6 @@
 		DE22096C28C9BAB400612BB1 /* WriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */; };
 		DE22096E28C9CB5300612BB1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */; };
 		DE22097028C9CBA000612BB1 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096F28C9CBA000612BB1 /* Content.swift */; };
-		DE22097328C9CC8000612BB1 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DE22097228C9CC8000612BB1 /* Realm */; };
-		DE22097528C9CC8000612BB1 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE22097428C9CC8000612BB1 /* RealmSwift */; };
 		DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */; };
 		DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */; };
 		DEBF1B7F28E17A6D00C54001 /* CheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF1B7E28E17A6D00C54001 /* CheckModel.swift */; };
@@ -39,11 +44,14 @@
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
-		DEE0569F28E087AF00E9C59C /* SortDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569E28E087AF00E9C59C /* SortDateView.swift */; };
-		DEE056A128E087BD00E9C59C /* SortCardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE056A028E087BD00E9C59C /* SortCardContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DE01626C28E2E4470067A46D /* SortDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDateView.swift; sourceTree = "<group>"; };
+		DE01626E28E2E5D50067A46D /* SortTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortTableViewCell.swift; sourceTree = "<group>"; };
+		DE01627128E32CFC0067A46D /* SortCardTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCardTodoViewController.swift; sourceTree = "<group>"; };
+		DE01627328E32D1B0067A46D /* SortCardDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCardDiaryViewController.swift; sourceTree = "<group>"; };
+		DE01627A28E428910067A46D /* SortCardTodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCardTodoTableViewCell.swift; sourceTree = "<group>"; };
 		DE0314D628D4574400FC9561 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		DE0314D828D46DEA00FC9561 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		DE0314DD28D48C3B00FC9561 /* CardTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoViewController.swift; sourceTree = "<group>"; };
@@ -73,8 +81,6 @@
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
-		DEE0569E28E087AF00E9C59C /* SortDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDateView.swift; sourceTree = "<group>"; };
-		DEE056A028E087BD00E9C59C /* SortCardContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCardContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +89,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */,
-				DE22097528C9CC8000612BB1 /* RealmSwift in Frameworks */,
 				DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */,
-				DE22097328C9CC8000612BB1 /* Realm in Frameworks */,
+				DE01627728E3DC200067A46D /* Realm in Frameworks */,
+				DE01627928E3DC200067A46D /* RealmSwift in Frameworks */,
 				DE22096A28C9BA5600612BB1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,8 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				DE0314E128D495FC00FC9561 /* SortViewController.swift */,
-				DEE0569E28E087AF00E9C59C /* SortDateView.swift */,
-				DEE056A028E087BD00E9C59C /* SortCardContainerView.swift */,
+				DE01626E28E2E5D50067A46D /* SortTableViewCell.swift */,
+				DE01626C28E2E4470067A46D /* SortDateView.swift */,
+				DE01627128E32CFC0067A46D /* SortCardTodoViewController.swift */,
+				DE01627A28E428910067A46D /* SortCardTodoTableViewCell.swift */,
+				DE01627328E32D1B0067A46D /* SortCardDiaryViewController.swift */,
 			);
 			path = SortVC;
 			sourceTree = "<group>";
@@ -228,10 +237,10 @@
 			name = Memomamu;
 			packageProductDependencies = (
 				DE22096928C9BA5600612BB1 /* SnapKit */,
-				DE22097228C9CC8000612BB1 /* Realm */,
-				DE22097428C9CC8000612BB1 /* RealmSwift */,
 				DE0314D428D4572700FC9561 /* FSCalendar */,
 				DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */,
+				DE01627628E3DC200067A46D /* Realm */,
+				DE01627828E3DC200067A46D /* RealmSwift */,
 			);
 			productName = Memomamu;
 			productReference = DE22093F28C9B32400612BB1 /* Memomamu.app */;
@@ -263,9 +272,9 @@
 			mainGroup = DE22093628C9B32400612BB1;
 			packageReferences = (
 				DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				DE22097128C9CC8000612BB1 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = DE22094028C9B32400612BB1 /* Products */;
 			projectDirPath = "";
@@ -295,11 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE01627228E32CFC0067A46D /* SortCardTodoViewController.swift in Sources */,
 				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
-				DEE0569F28E087AF00E9C59C /* SortDateView.swift in Sources */,
 				DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */,
+				DE01627B28E428910067A46D /* SortCardTodoTableViewCell.swift in Sources */,
 				DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */,
 				DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */,
 				DE0314E028D48C4400FC9561 /* CardDiaryViewController.swift in Sources */,
@@ -308,6 +318,8 @@
 				DE22096628C9B94400612BB1 /* WriteViewController.swift in Sources */,
 				DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */,
 				DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */,
+				DE01626D28E2E4470067A46D /* SortDateView.swift in Sources */,
+				DE01627428E32D1B0067A46D /* SortCardDiaryViewController.swift in Sources */,
 				DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */,
 				DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */,
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
@@ -315,10 +327,10 @@
 				DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */,
 				DE22096428C9B49E00612BB1 /* Constants.swift in Sources */,
 				DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */,
+				DE01626F28E2E5D50067A46D /* SortTableViewCell.swift in Sources */,
 				DEDD8F5228D9A21700464FA7 /* Observable.swift in Sources */,
 				DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */,
 				DEBF1B7F28E17A6D00C54001 /* CheckModel.swift in Sources */,
-				DEE056A128E087BD00E9C59C /* SortCardContainerView.swift in Sources */,
 				DE22096C28C9BAB400612BB1 /* WriteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +559,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.30.0;
+			};
+		};
 		DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
@@ -563,14 +583,6 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		DE22097128C9CC8000612BB1 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
 		DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -582,6 +594,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DE01627628E3DC200067A46D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		DE01627828E3DC200067A46D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		DE0314D428D4572700FC9561 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */;
@@ -591,16 +613,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		DE22097228C9CC8000612BB1 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DE22097128C9CC8000612BB1 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		DE22097428C9CC8000612BB1 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DE22097128C9CC8000612BB1 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

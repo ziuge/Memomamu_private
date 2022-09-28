@@ -19,12 +19,12 @@ class WriteViewController: UIViewController {
         view.tintColor = Constants.Color.text
         return view
     }()
-    var sortButton: UIButton = {
-        let view = UIButton()
-        view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
-        view.tintColor = Constants.Color.text
-        return view
-    }()
+//    var sortButton: UIButton = {
+//        let view = UIButton()
+//        view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
+//        view.tintColor = Constants.Color.text
+//        return view
+//    }()
     var dateLabel: UILabel = {
         let view = UILabel()
         view.textColor = Constants.Color.text
@@ -68,7 +68,7 @@ class WriteViewController: UIViewController {
     }
     
     func configure() {
-        [containerView, viewButton, dateLabel, sortButton].forEach {
+        [containerView, viewButton, dateLabel].forEach {
             view.addSubview($0)
         }
         
@@ -80,11 +80,11 @@ class WriteViewController: UIViewController {
             make.height.width.equalTo(21)
         }
         
-        sortButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
-            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
-            make.height.width.equalTo(21)
-        }
+//        sortButton.snp.makeConstraints { make in
+//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
+//            make.trailingMargin.equalTo(viewButton.snp.leadingMargin).offset(-25)
+//            make.height.width.equalTo(21)
+//        }
 
         dateLabel.snp.makeConstraints { make in
             make.topMargin.equalTo(view).offset(view.frame.height * 0.08)

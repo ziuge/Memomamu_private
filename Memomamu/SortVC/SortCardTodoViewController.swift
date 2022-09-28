@@ -1,14 +1,14 @@
 //
-//  CardTodoViewController.swift
+//  SortCardTodoViewController.swift
 //  Memomamu
 //
-//  Created by CHOI on 2022/09/16.
+//  Created by CHOI on 2022/09/27.
 //
 
 import UIKit
 import RealmSwift
 
-class CardTodoViewController: UIViewController {
+class SortCardTodoViewController: UIViewController {
     
     var selectedDate = DateFormatter.dateOnly.string(from: Date())
     
@@ -20,8 +20,9 @@ class CardTodoViewController: UIViewController {
         }
     }
     
-    func fetchRealm() {
-        todos = repository.fetchTodo(date: selectedDate)
+    func fetchRealm(date: String) {
+        print(#function, date)
+        todos = repository.fetchTodo(date: date)
         tableView.reloadData()
         if todos.count == 0 {
             todoNilLabel.isHidden = false
@@ -32,25 +33,13 @@ class CardTodoViewController: UIViewController {
         }
     }
     
+    // MARK: UI
     var titleLabel: UILabel = {
         let view = UILabel()
         view.text = "to do list"
         view.font = Constants.Font.cardTitle
         view.textColor = Constants.Color.background
-        return view
-    }()
-    lazy var tableView: UITableView = {
-        let view = UITableView()
-        view.backgroundColor = Constants.Color.paper
-        view.delegate = self
-        view.dataSource = self
-        view.register(CardTodoTableVIewCell.self, forCellReuseIdentifier: CardTodoTableVIewCell.reuseIdentifier)
-        view.separatorStyle = .none
-        return view
-    }()
-    var backgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = Constants.Color.paper
+        view.textAlignment = .left
         return view
     }()
     var todoNilLabel: UILabel = {
@@ -63,6 +52,22 @@ class CardTodoViewController: UIViewController {
         view.backgroundColor = .clear
         return view
     }()
+    var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Constants.Color.paper
+        return view
+    }()
+    
+    lazy var tableView: UITableView = {
+        let view = UITableView()
+        view.backgroundColor = Constants.Color.paper
+        view.delegate = self
+        view.dataSource = self
+        view.register(SortCardTodoTableViewCell.self, forCellReuseIdentifier: SortCardTodoTableViewCell.reuseIdentifier)
+        view.separatorStyle = .none
+        return view
+    }()
+    
     var clickButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .clear
@@ -71,7 +76,7 @@ class CardTodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchRealm()
+        fetchRealm(date: selectedDate)
         
         configure()
         setConstraints()
@@ -84,33 +89,32 @@ class CardTodoViewController: UIViewController {
             backgroundView.addSubview($0)
         }
         view.addSubview(clickButton)
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
     }
+    
     func setConstraints() {
-        let spacing = 40
+        let spacing = 12
         
         clickButton.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(backgroundView)
         }
         
         backgroundView.snp.makeConstraints { make in
-            make.width.equalTo(Int(view.frame.width) - spacing)
+//            make.width.equalTo(view.snp.width).multipliedBy(0.9)
             make.leftMargin.equalTo(spacing)
-//            make.height.equalTo(view.frame.height * 0.28)
-            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.right.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(backgroundView)
-            make.topMargin.equalTo(backgroundView).offset(24)
+            make.leftMargin.equalTo(backgroundView).offset(12)
+            make.topMargin.equalTo(backgroundView).offset(12)
         }
         
         tableView.snp.makeConstraints { make in
-            make.leading.equalTo(backgroundView).offset(30)
+            make.leading.equalTo(backgroundView).offset(12)
             make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
-            make.topMargin.equalTo(titleLabel.snp.bottom).offset(26)
+            make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
 //            make.bottom.equalTo(backgroundView).offset(300)
         }
         
@@ -121,38 +125,29 @@ class CardTodoViewController: UIViewController {
             make.centerY.equalTo(backgroundView)
         }
     }
-
-    @objc func goTodo() {
-        print("gotodo")
+    
+    @objc func goTodo(sender: UIButton) {
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
-//        let nav = UINavigationController(rootViewController: self)
-//        nav.pushViewController(vc, animated: true)
-        
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
 }
 
-extension CardTodoViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+extension SortCardTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SortCardTodoTableViewCell.reuseIdentifier, for: indexPath) as? SortCardTodoTableViewCell else { return UITableViewCell() }
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CardTodoTableVIewCell.reuseIdentifier, for: indexPath) as? CardTodoTableVIewCell else { return UITableViewCell() }
+        print("=======", todos[indexPath.row].todo)
         cell.todoTextView.isEditable = false
         cell.setData(data: todos[indexPath.row])
+        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
