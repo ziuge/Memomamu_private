@@ -48,6 +48,7 @@ class WriteTableViewCell: UITableViewCell {
         view.setTitleColor(Constants.Color.paper, for: .normal)
         view.setTitle("완료", for: .normal)
         view.titleLabel?.font = Constants.Font.content
+        
         return view
     }()
     let delayedButton: UIButton = {
@@ -63,6 +64,14 @@ class WriteTableViewCell: UITableViewCell {
         view.backgroundColor = Constants.Color.background.withAlphaComponent(0.7)
         view.setTitleColor(Constants.Color.paper, for: .normal)
         view.setTitle("미완료", for: .normal)
+        view.titleLabel?.font = Constants.Font.content
+        return view
+    }()
+    let deleteButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = Constants.Color.text
+        view.setTitleColor(Constants.Color.paper, for: .normal)
+        view.setTitle("삭제", for: .normal)
         view.titleLabel?.font = Constants.Font.content
         return view
     }()
@@ -86,7 +95,7 @@ class WriteTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = Constants.Color.paper
+        backgroundColor = .clear
         
         configure()
         setConstraints()
@@ -116,20 +125,6 @@ class WriteTableViewCell: UITableViewCell {
         
     }
 
-//    @objc func changeCheck() {
-//        print(#function)
-//        checkButton.setImage(UIImage(named: "finished.jpg"), for: .normal)
-//        changeCheckView.isHidden = false
-//    }
-//    @objc func changeCheckDelayed() {
-//        checkButton.setImage(UIImage(named: "delayed.jpg"), for: .normal)
-//        changeCheckView.isHidden = false
-//    }
-//    @objc func changeCheckUnfinished() {
-//        checkButton.setImage(UIImage(named: "unfinished.jpg"), for: .normal)
-//        changeCheckView.isHidden = false
-//    }
-
     @objc func showCheckStatusChangeButton() {
         changeCheckView.isHidden.toggle()
     }
@@ -141,7 +136,7 @@ class WriteTableViewCell: UITableViewCell {
     }
     
     func configure() {
-        [checkButton, todoTextView, finishedButton, delayedButton, unfinishedButton, changeCheckView, clickButton].forEach {
+        [checkButton, todoTextView, finishedButton, delayedButton, unfinishedButton, deleteButton, changeCheckView, clickButton].forEach {
             contentView.addSubview($0)
         }
     }
@@ -152,7 +147,7 @@ class WriteTableViewCell: UITableViewCell {
         }
         
         checkButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(contentView).offset(6)
+            make.topMargin.equalTo(contentView).offset(8)
             make.leadingMargin.equalTo(contentView).offset(12)
             make.height.width.equalTo(26)
         }
@@ -169,8 +164,8 @@ class WriteTableViewCell: UITableViewCell {
         changeCheckView.snp.makeConstraints { make in
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(todoTextView.snp.leading)
-            make.height.equalTo(32)
-            make.width.equalTo(160)
+            make.height.equalTo(26)
+            make.width.equalTo(208)
         }
 
         finishedButton.snp.makeConstraints { make in
@@ -192,6 +187,13 @@ class WriteTableViewCell: UITableViewCell {
             make.width.equalTo(54)
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(delayedButton.snp.trailing).offset(8)
+        }
+        
+        deleteButton.snp.makeConstraints { make in
+            make.height.equalTo(26)
+            make.width.equalTo(40)
+            make.top.equalTo(todoTextView.snp.bottom)
+            make.leading.equalTo(unfinishedButton.snp.trailing).offset(8)
         }
         
 //        delete button ... swipe gesture 해결하고 나서 할 것!

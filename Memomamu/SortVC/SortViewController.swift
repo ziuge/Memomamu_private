@@ -10,6 +10,8 @@ import RealmSwift
 
 class SortViewController: UIViewController {
     
+    var arrIndexPath = [IndexPath]()
+    
     // MARK: Realm
     let repository = Repository()
     var todos: Results<Todo>?
@@ -53,9 +55,9 @@ class SortViewController: UIViewController {
     var backgroundShadow: UIView = {
         let view = UIView()
         view.backgroundColor = .magenta
-        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowColor = UIColor.darkGray.cgColor
         view.layer.shadowOffset = CGSize(width: 8, height: 0)
-        view.layer.opacity = 0.3
+        view.layer.opacity = 0.2
         view.layer.shadowRadius = 3.0
         return view
     }()
@@ -91,7 +93,7 @@ class SortViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.12)
             make.trailing.leading.equalTo(view)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(90)
+            make.bottom.equalTo(view)
         }
         
         emptyLabel.snp.makeConstraints { make in
@@ -170,10 +172,18 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
 //    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.alpha = 0.0
-        UIView.animate(withDuration: 0.3, delay: 0.05 * Double(indexPath.row), animations: {
-              cell.alpha = 1
-        })
+        if arrIndexPath.contains(indexPath) == false {
+            cell.alpha = 0
+            let transform = CATransform3DTranslate(CATransform3DIdentity, 0, 80, 0)
+            cell.layer.transform = transform
+            
+            UIView.animate(withDuration: 0.5, delay: 0.08 * Double(indexPath.row), usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                cell.alpha = 1
+                cell.layer.transform = CATransform3DIdentity
+            })
+            
+            arrIndexPath.append(indexPath)
+        }
     }
 
 }

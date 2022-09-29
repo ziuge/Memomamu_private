@@ -12,6 +12,11 @@ class SortTableViewCell: UITableViewCell {
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
     var dateView = SortDateView()
+    var bottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Constants.Color.background
+        return view
+    }()
     var containerView: UIView = {
         let view = UIView()
         return view
@@ -72,6 +77,10 @@ class SortTableViewCell: UITableViewCell {
             make.leading.equalTo(dateView.snp.trailing)
             make.trailing.equalTo(contentView)
         }
+        
+//        bottomView.snp.makeConstraints { make in
+//            make.top.leading.bottom.trailing.equalTo(contentView)
+//        }
     }
     
     override func layoutSubviews() {

@@ -111,7 +111,7 @@ class DiaryViewController: UIViewController {
         }
         
         diaryImageView.snp.makeConstraints { make in
-            make.topMargin.equalTo(lineImageView.snp.bottom).offset(40)
+            make.topMargin.equalTo(lineImageView.snp.bottom).offset(36)
             make.height.equalTo(backgroundView.snp.height).multipliedBy(0.72)
 //            make.bottom.equalTo(backgroundView.snp.bottom).offset(60)
             make.width.equalTo(backgroundView.snp.width).multipliedBy(0.77)

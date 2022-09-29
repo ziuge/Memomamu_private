@@ -116,6 +116,7 @@ class SortCardTodoViewController: UIViewController {
             make.leading.equalTo(backgroundView).offset(18)
             make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
             make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
+//            make.bottomMargin.equalTo(backgroundView).offset(20)
 //            make.bottom.equalTo(backgroundView).offset(300)
         }
         

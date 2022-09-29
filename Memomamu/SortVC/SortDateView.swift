@@ -22,9 +22,9 @@ class SortDateView: UIView {
         view.layer.borderWidth = 0
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 8, height: -2)
+        view.layer.shadowOffset = CGSize(width: 8, height: 1)
         view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 4.0
+        view.layer.shadowRadius = 2.0
         return view
     }()
     

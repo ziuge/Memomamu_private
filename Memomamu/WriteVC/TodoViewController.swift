@@ -11,6 +11,7 @@ import RealmSwift
 class TodoViewController: UIViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
+    var arrIndexPath = [IndexPath]()
     
     // MARK: Realm
     let repository = Repository()
@@ -67,12 +68,12 @@ class TodoViewController: UIViewController {
         fetchRealm()
         configure()
         setConstraints()
-        editButton.addTarget(self, action: #selector(editMode), for: .touchUpInside)
+//        editButton.addTarget(self, action: #selector(editMode), for: .touchUpInside)
     }
     
     func configure() {
         view.addSubview(backgroundView)
-        [tableView, titleLabel, lineImageView, editButton].forEach {
+        [tableView, titleLabel, lineImageView].forEach {
             backgroundView.addSubview($0)
         }
     }
@@ -98,11 +99,11 @@ class TodoViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(19)
         }
         
-        editButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(backgroundView).offset(20)
-            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-20)
-            make.height.width.equalTo(21)
-        }
+//        editButton.snp.makeConstraints { make in
+//            make.topMargin.equalTo(backgroundView).offset(20)
+//            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-20)
+//            make.height.width.equalTo(21)
+//        }
         
         tableView.snp.makeConstraints { make in
             make.trailing.equalTo(backgroundView)
@@ -156,10 +157,13 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.finishedButton.tag = indexPath.row
             cell.finishedButton.addTarget(self, action: #selector(changeCheck(sender:)), for: .touchUpInside)
+            
             cell.delayedButton.tag = indexPath.row
             cell.delayedButton.addTarget(self, action: #selector(changeCheckDelayed(sender:)), for: .touchUpInside)
             cell.unfinishedButton.tag = indexPath.row
             cell.unfinishedButton.addTarget(self, action: #selector(changeCheckUnfinished(sender:)), for: .touchUpInside)
+            cell.deleteButton.tag = indexPath.row
+            cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender:)), for: .touchUpInside)
             
             cell.changeCheckView.isHidden = false
             
@@ -193,36 +197,49 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath == [1, 0] {
-            return .none
-        } else {
-            return .delete
-        }
-    }
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+//        if indexPath == [1, 0] {
+//            return .none
+//        } else {
+//            return .delete
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == UITableViewCell.EditingStyle.delete {
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//            repository.deleteTodo(item: todos[indexPath.row])
+//        }
+//    }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            repository.deleteTodo(item: todos[indexPath.row])
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
-            self.repository.deleteTodo(item: self.todos[indexPath.row])
-        }
-        delete.image = UIImage(systemName: "trash")
-        delete.backgroundColor = .systemRed
-
-        return UISwipeActionsConfiguration(actions: [delete])
-    }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
+//            self.repository.deleteTodo(item: self.todos[indexPath.row])
+//        }
+//        delete.image = UIImage(systemName: "trash")
+//        delete.backgroundColor = .systemRed
+//
+//        return UISwipeActionsConfiguration(actions: [delete])
+//    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.alpha = 0.0
-        UIView.animate(withDuration: 0.3, delay: 0.05 * Double(indexPath.row), animations: {
-              cell.alpha = 1
-        })
+        
+        if arrIndexPath.contains(indexPath) == false {
+            cell.alpha = 0
+            let transform = CATransform3DTranslate(CATransform3DIdentity, 40, 0, 0)
+            cell.layer.transform = transform
+            
+            UIView.animate(withDuration: 0.5, delay: 0.03 * Double(indexPath.row + (indexPath.section * 8)), usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                cell.alpha = 1
+                cell.layer.transform = CATransform3DIdentity
+            })
+            
+//            UIView.animate(withDuration: 0.5, delay: 0.05 * Double(indexPath.row), animations: {
+//                  cell.alpha = 1
+//            })
+            
+            arrIndexPath.append(indexPath)
+        }
     }
     
     // MARK: Change Check
@@ -253,6 +270,11 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 3)
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden = false
+        fetchRealm()
+    }
+    
+    @objc func deleteButtonClicked(sender: UIButton) {
+        repository.deleteTodo(item: todos[sender.tag])
         fetchRealm()
     }
     
@@ -307,6 +329,7 @@ extension TodoViewController: UITextViewDelegate {
         guard let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as? WriteTableViewCell else { return }
         if cell.todoTextView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             repository.deleteTodo(item: todos[textViewIndexPath.row])
+            arrIndexPath.remove(at: arrIndexPath.count - 1)
         } else {
             repository.updateTodo(oldValue: todos[textViewIndexPath.row], newValue: textView.text)
         }
