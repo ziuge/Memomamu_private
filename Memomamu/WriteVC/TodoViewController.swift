@@ -218,6 +218,13 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [delete])
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0.0
+        UIView.animate(withDuration: 0.3, delay: 0.05 * Double(indexPath.row), animations: {
+              cell.alpha = 1
+        })
+    }
+    
     // MARK: Change Check
     
     @objc func showChangeCheck(sender: UIButton) {

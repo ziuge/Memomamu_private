@@ -46,6 +46,7 @@ class SortViewController: UIViewController {
         view.separatorStyle = .none
         view.rowHeight = 280
         view.showsVerticalScrollIndicator = false
+        view.allowsSelection = false
         return view
     }()
     
@@ -167,5 +168,12 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        <#code#>
 //    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0.0
+        UIView.animate(withDuration: 0.3, delay: 0.05 * Double(indexPath.row), animations: {
+              cell.alpha = 1
+        })
+    }
 
 }

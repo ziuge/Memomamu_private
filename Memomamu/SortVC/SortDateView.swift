@@ -19,12 +19,12 @@ class SortDateView: UIView {
     let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.background
-//        view.layer.borderWidth = 0
-//        view.layer.masksToBounds = false
-//        view.layer.shadowColor = UIColor.black.cgColor
-//        view.layer.shadowOffset = CGSize(width: 8, height: 0)
-//        view.layer.shadowOpacity = 0.3
-//        view.layer.shadowRadius = 0.0
+        view.layer.borderWidth = 0
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 8, height: -2)
+        view.layer.shadowOpacity = 0.3
+        view.layer.shadowRadius = 4.0
         return view
     }()
     
