@@ -56,7 +56,7 @@ class TodoViewController: UIViewController {
         view.dataSource = self
         view.register(WriteTableViewCell.self, forCellReuseIdentifier: WriteTableViewCell.reuseIdentifier)
         view.separatorStyle = .none
-        view.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        view.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         return view
     }()
     var backgroundView: UIView = {

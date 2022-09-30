@@ -45,7 +45,7 @@ class SortViewController: UIViewController {
         view.dataSource = self
         view.backgroundColor = Constants.Color.background
         view.register(SortTableViewCell.self, forCellReuseIdentifier: SortTableViewCell.reuseIdentifier)
-        view.separatorStyle = .none
+        view.separatorStyle = .singleLine
         view.rowHeight = 280
         view.showsVerticalScrollIndicator = false
         view.allowsSelection = false
