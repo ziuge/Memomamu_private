@@ -34,8 +34,9 @@ class SortViewController: UIViewController {
     
     var calendarButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(systemName: "calendar"), for: .normal)
+        view.setImage(UIImage(named: "calendar"), for: .normal)
         view.tintColor = Constants.Color.text
+        view.configuration?.buttonSize = .large
         return view
     }()
     
@@ -85,9 +86,9 @@ class SortViewController: UIViewController {
     
     func setConstraints() {
         calendarButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
-            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
-            make.height.width.equalTo(21)
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
+            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
+            make.height.width.equalTo(40)
         }
         
         tableView.snp.makeConstraints { make in

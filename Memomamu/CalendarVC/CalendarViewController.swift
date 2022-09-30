@@ -76,6 +76,7 @@ class CalendarViewController: UIViewController {
         let view = UIButton()
         view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
+        view.configuration?.buttonSize = .large
         return view
     }()
     
@@ -105,9 +106,9 @@ class CalendarViewController: UIViewController {
     }
     func setConstraints() {
         sortButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.077)
-            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-25)
-            make.height.width.equalTo(21)
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
+            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
+            make.height.width.equalTo(40)
         }
     }
     
