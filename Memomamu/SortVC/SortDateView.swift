@@ -19,17 +19,23 @@ class SortDateView: UIView {
     let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Constants.Color.background
-        view.layer.borderWidth = 0
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 8, height: 0)
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 5.0
+//        view.layer.borderWidth = 0
+//        view.layer.masksToBounds = false
+//        view.layer.shadowColor = UIColor.yellow.cgColor
+//        view.layer.shadowOffset = CGSize(width: 8, height: 0)
+//        view.layer.shadowOpacity = 0.5
+//        view.layer.shadowRadius = 5.0
         return view
+    }()
+    let shadowImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "shadow")
+        return image
     }()
     let topView: UIView = {
         let view = UIView()
-        view.backgroundColor = Constants.Color.background
+//        view.backgroundColor = Constants.Color.background
+        view.backgroundColor = UIColor.brown
         return view
     }()
     
@@ -45,7 +51,7 @@ class SortDateView: UIView {
     
     func configureUI() {
         self.backgroundColor = Constants.Color.background
-        [backgroundView, topView, dateLabel].forEach {
+        [backgroundView, dateLabel, shadowImage].forEach {
             self.addSubview($0)
         }
     }
@@ -56,13 +62,20 @@ class SortDateView: UIView {
             make.leading.equalTo(self).offset(36)
         }
         backgroundView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.top.equalTo(self.safeAreaLayoutGuide)
+//            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(6)
+//            make.top.equalTo(self.safeAreaLayoutGuide).offset(-2)
         }
         
-        topView.snp.makeConstraints { make in
-            make.leading.trailing.equalTo(backgroundView)
-            make.top.equalTo(backgroundView).offset(-12)
-            make.bottom.equalTo(backgroundView).offset(12)
+        shadowImage.snp.makeConstraints { make in
+            make.leading.equalTo(backgroundView.snp.trailing)
+            make.top.bottom.equalTo(backgroundView)
         }
+        
+//        topView.snp.makeConstraints { make in
+//            make.leading.trailing.equalTo(backgroundView)
+//            make.top.equalTo(backgroundView).offset(-12)
+//            make.bottom.equalTo(backgroundView).offset(12)
+//        }
     }
 }

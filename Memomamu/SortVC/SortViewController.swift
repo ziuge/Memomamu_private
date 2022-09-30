@@ -27,8 +27,8 @@ class SortViewController: UIViewController {
     }()
     
     func fetchEverything() {
-        todos = repository.fetchEveryTodo().sorted(byKeyPath: "date", ascending: true)
-        diaries = repository.fetchEveryDiary().sorted(byKeyPath: "date", ascending: true)
+        todos = repository.fetchEveryTodo().sorted(byKeyPath: "date", ascending: false)
+        diaries = repository.fetchEveryDiary().sorted(byKeyPath: "date", ascending: false)
         tableView.reloadData()
     }
     
@@ -45,7 +45,7 @@ class SortViewController: UIViewController {
         view.dataSource = self
         view.backgroundColor = Constants.Color.background
         view.register(SortTableViewCell.self, forCellReuseIdentifier: SortTableViewCell.reuseIdentifier)
-        view.separatorStyle = .singleLine
+        view.separatorStyle = .none
         view.rowHeight = 280
         view.showsVerticalScrollIndicator = false
         view.allowsSelection = false

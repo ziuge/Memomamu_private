@@ -102,8 +102,8 @@ class SortCardTodoViewController: UIViewController {
 //            make.width.equalTo(view.snp.width).multipliedBy(0.9)
             make.leftMargin.equalTo(spacing)
             make.right.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
         }
         
         titleLabel.snp.makeConstraints { make in

@@ -20,6 +20,7 @@ class SortTableViewCell: UITableViewCell {
     }()
     var containerView: UIView = {
         let view = UIView()
+        view.backgroundColor = .clear
         return view
     }()
     

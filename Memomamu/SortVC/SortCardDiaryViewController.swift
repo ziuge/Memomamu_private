@@ -96,8 +96,8 @@ class SortCardDiaryViewController: UIViewController {
 //            make.width.equalTo(view.snp.width).multipliedBy(0.9)
             make.left.equalTo(view.safeAreaLayoutGuide)
             make.rightMargin.equalTo(-spacing)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(12)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
         }
         
         titleLabel.snp.makeConstraints { make in
