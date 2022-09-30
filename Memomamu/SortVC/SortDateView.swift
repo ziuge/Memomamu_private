@@ -69,7 +69,8 @@ class SortDateView: UIView {
         
         shadowImage.snp.makeConstraints { make in
             make.leading.equalTo(backgroundView.snp.trailing)
-            make.top.bottom.equalTo(backgroundView)
+            make.top.equalTo(backgroundView)
+            make.bottom.equalTo(backgroundView).offset(-1)
         }
         
 //        topView.snp.makeConstraints { make in

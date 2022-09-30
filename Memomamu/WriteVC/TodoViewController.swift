@@ -241,6 +241,12 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             indexPath != IndexPath(row: todos.count, section: 0)
         })
         
+        if let diary = repository.fetchDiary(date: selectedDate) {
+            if todos.count == 0 && (diary.diary == "" || diary.diary == nil) {
+                repository.deleteDiary(item: diary)
+            }
+        }
+        
         fetchRealm()
     }
     
