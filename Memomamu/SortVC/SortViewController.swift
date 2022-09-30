@@ -21,8 +21,11 @@ class SortViewController: UIViewController {
     
     var emptyLabel: UILabel = {
         let view = UILabel()
-        view.text = "할 일을 추가해주세요 ;("
+        view.text = #"할 일을 추가해주세요\#n;("#
         view.textColor = Constants.Color.text
+        view.font = Constants.Font.title
+        view.numberOfLines = 2
+        view.textAlignment = .center
         return view
     }()
     
@@ -67,7 +70,7 @@ class SortViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.background
         fetchEverything()
-
+        
         configure()
         setConstraints()
         
@@ -75,11 +78,17 @@ class SortViewController: UIViewController {
         tableView.setNeedsDisplay()
         tableView.endUpdates()
         
+        if diaries?.count == 0 {
+            emptyLabel.isHidden = false
+        } else {
+            emptyLabel.isHidden = true
+        }
+        
         calendarButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
     }
     
     func configure() {
-        [emptyLabel, calendarButton, tableView].forEach {
+        [calendarButton, tableView, emptyLabel].forEach {
             view.addSubview($0)
         }
     }
@@ -99,21 +108,10 @@ class SortViewController: UIViewController {
         
         emptyLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view.safeAreaLayoutGuide)
-            make.centerY.equalTo(view.safeAreaLayoutGuide)
+            make.centerY.equalTo(view.safeAreaLayoutGuide).offset(-40)
         }
-        
-//        backgroundShadow.snp.makeConstraints { make in
-//            make.topMargin.equalTo(view.safeAreaLayoutGuide)
-//            make.bottom.equalTo(view)
-//            make.width.equalTo(view.snp.width).multipliedBy(0.4)
-//        }
+
     }
-//
-//    @objc func openWrite() {
-//        let vc = WriteViewController()
-//        UIApplication.shared.windows.first?.rootViewController = vc
-//        UIApplication.shared.windows.first?.makeKeyAndVisible()
-//    }
     
     @objc func openCalendar() {
         let vc = CalendarViewController()
@@ -133,10 +131,6 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
         return (diaries != nil) ? diaries!.count : 0
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SortTableViewCell.reuseIdentifier, for: indexPath) as? SortTableViewCell else { return UITableViewCell() }
         
@@ -152,26 +146,7 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-//    func addPageVC(date: String, cell: SortTableViewCell) {
-//        print(#function)
-//        vc1.selectedDate = date
-//        vc2.selectedDate = date
-//        vc.vc1 = vc1
-//        vc.vc2 = vc2
-//        addChild(vc)
-//        cell.containerView.addSubview(vc.view)
-//        vc.selectedDate = date
-//        vc.didMove(toParent: self)
-//        vc.view.snp.makeConstraints { make in
-//            make.top.bottom.leading.trailing.equalTo(cell.containerView)
-//        }
-//    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if arrIndexPath.contains(indexPath) == false {
             cell.alpha = 0

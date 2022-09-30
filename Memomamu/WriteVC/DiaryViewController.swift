@@ -66,12 +66,12 @@ class DiaryViewController: UIViewController {
         super.viewDidLoad()
         fetchRealm()
         
-        if diary == nil {
-            repository.addDiary(item: Diary(date: selectedDate, diary: ""))
-            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
-            fetchRealm()
-            
-        }
+//        if diary == nil {
+//            repository.addDiary(item: Diary(date: selectedDate, diary: ""))
+//            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
+//            fetchRealm()
+//
+//        }
         if diaryTextView.text == "" || diaryTextView.text == "오늘 하루를 작성해보세요 :)                                                       " {
             diaryTextView.text = "오늘 하루를 작성해보세요 :)                                                       "
             diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
@@ -128,7 +128,12 @@ class DiaryViewController: UIViewController {
     }
     
     @objc func saveButtonClicked() {
-        repository.updateDiary(oldValue: diary!, newValue: diaryTextView.text)
+        if diary == nil {
+            repository.addDiary(item: Diary(date: selectedDate, diary: diaryTextView.text))
+        } else {
+            repository.updateDiary(oldValue: diary!, newValue: diaryTextView.text)
+        }
+        
         fetchRealm()
     }
     
@@ -153,6 +158,7 @@ extension DiaryViewController: UITextViewDelegate {
         if diaryTextView.text == "" {
             diaryTextView.text = "오늘 하루를 작성해보세요 :)                                                       "
             diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
+            repository.deleteDiary(item: diary!)
         } else {
             saveButtonClicked()
         }

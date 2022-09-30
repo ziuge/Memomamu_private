@@ -104,12 +104,6 @@ class TodoViewController: UIViewController {
             make.top.equalTo(titleLabel.snp.bottom).offset(19)
         }
         
-//        editButton.snp.makeConstraints { make in
-//            make.topMargin.equalTo(backgroundView).offset(20)
-//            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-20)
-//            make.height.width.equalTo(21)
-//        }
-        
         tableView.snp.makeConstraints { make in
             make.trailing.equalTo(backgroundView)
             make.leading.equalTo(backgroundView).offset(40)
@@ -117,14 +111,6 @@ class TodoViewController: UIViewController {
             make.top.equalTo(lineImageView.snp.bottom)
         }
     }
-    
-//    func scrollToBottom(){
-//        let lastRowOfIndexPath = self.tableView.numberOfRows(inSection: 0) - 1
-//        DispatchQueue.main.async {
-//            let indexPath = IndexPath(row: lastRowOfIndexPath, section: 0)
-//            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-//        }
-//    }
 
 }
 
@@ -202,31 +188,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        if indexPath == [1, 0] {
-//            return .none
-//        } else {
-//            return .delete
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//            repository.deleteTodo(item: todos[indexPath.row])
-//        }
-//    }
-    
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let delete = UIContextualAction(style: .normal, title: "삭제") { action, view, completionHandler in
-//            self.repository.deleteTodo(item: self.todos[indexPath.row])
-//        }
-//        delete.image = UIImage(systemName: "trash")
-//        delete.backgroundColor = .systemRed
-//
-//        return UISwipeActionsConfiguration(actions: [delete])
-//    }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if arrIndexPath.contains(indexPath) == false {
@@ -294,14 +255,14 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         let cell: WriteTableViewCell = self.tableView.cellForRow(at: index) as! WriteTableViewCell
         cell.todoTextView.becomeFirstResponder()
     }
-    
-    @objc func editMode() {
-        if self.tableView.isEditing {
-            self.tableView.setEditing(false, animated: true)
-        } else {
-            self.tableView.setEditing(true, animated: true)
-        }
-    }
+//
+//    @objc func editMode() {
+//        if self.tableView.isEditing {
+//            self.tableView.setEditing(false, animated: true)
+//        } else {
+//            self.tableView.setEditing(true, animated: true)
+//        }
+//    }
     
 }
 
@@ -336,8 +297,11 @@ extension TodoViewController: UITextViewDelegate {
             arrIndexPath = arrIndexPath.filter({ indexPath in
                 indexPath != IndexPath(row: todos.count, section: 0)
             })
-            print(arrIndexPath)
-            
+            if let diary = repository.fetchDiary(date: selectedDate) {
+                if todos.count == 0 && (diary.diary == "" || diary.diary == nil) {
+                    repository.deleteDiary(item: diary)
+                }
+            }
         } else {
             repository.updateTodo(oldValue: todos[textViewIndexPath.row], newValue: textView.text)
         }

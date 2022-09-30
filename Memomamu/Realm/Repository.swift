@@ -121,4 +121,14 @@ class Repository: ContentRepositoryType {
         }
     }
     
+    func deleteDiary(item: Diary) {
+        do {
+            try localRealm.write({
+                localRealm.delete(item)
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
 }
