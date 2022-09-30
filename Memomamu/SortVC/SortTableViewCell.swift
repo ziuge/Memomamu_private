@@ -12,9 +12,10 @@ class SortTableViewCell: UITableViewCell {
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
     var dateView = SortDateView()
-    var bottomView: UIView = {
+    var topView: UIView = {
         let view = UIView()
-        view.backgroundColor = Constants.Color.background
+//        view.backgroundColor = Constants.Color.background
+        view.backgroundColor = .magenta
         return view
     }()
     var containerView: UIView = {
@@ -78,8 +79,9 @@ class SortTableViewCell: UITableViewCell {
             make.trailing.equalTo(contentView)
         }
         
-//        bottomView.snp.makeConstraints { make in
-//            make.top.leading.bottom.trailing.equalTo(contentView)
+//        topView.snp.makeConstraints { make in
+//            make.top.leading.trailing.equalTo(dateView)
+//            make.bottom.equalTo(contentView).offset(8)
 //        }
     }
     
@@ -92,7 +94,6 @@ class SortTableViewCell: UITableViewCell {
     let vc2 = SortCardDiaryViewController()
     
     func addPageVC(date: String, cell: SortTableViewCell) {
-        print(#function, date)
         vc1.selectedDate = date
         vc2.selectedDate = date
         vc.vc1 = vc1

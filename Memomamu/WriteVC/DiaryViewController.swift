@@ -128,13 +128,11 @@ class DiaryViewController: UIViewController {
     }
     
     @objc func saveButtonClicked() {
-        print(#function)
         repository.updateDiary(oldValue: diary!, newValue: diaryTextView.text)
         fetchRealm()
     }
     
     @objc func finishButtonClicked() {
-        print("finish!")
     }
     
     func setData(data: Diary) {

@@ -123,7 +123,6 @@ class CardTodoViewController: UIViewController {
     }
 
     @objc func goTodo() {
-        print("gotodo")
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
 //        let nav = UINavigationController(rootViewController: self)

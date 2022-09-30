@@ -39,8 +39,6 @@
 		DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */; };
 		DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */; };
 		DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */; };
-		DEBF1B7F28E17A6D00C54001 /* CheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF1B7E28E17A6D00C54001 /* CheckModel.swift */; };
-		DEDD8F5228D9A21700464FA7 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5128D9A21700464FA7 /* Observable.swift */; };
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
@@ -77,8 +75,6 @@
 		DE22096F28C9CBA000612BB1 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
 		DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
-		DEBF1B7E28E17A6D00C54001 /* CheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckModel.swift; sourceTree = "<group>"; };
-		DEDD8F5128D9A21700464FA7 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
@@ -131,7 +127,6 @@
 			children = (
 				DE22096F28C9CBA000612BB1 /* Content.swift */,
 				DE0314E828D6BF9A00FC9561 /* TodoEnum.swift */,
-				DEBF1B7E28E17A6D00C54001 /* CheckModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,7 +202,6 @@
 			children = (
 				DE8CE76728D87C18008F8319 /* Extensions */,
 				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
-				DEDD8F5128D9A21700464FA7 /* Observable.swift */,
 				DE22096228C9B49500612BB1 /* Constants */,
 			);
 			path = Utility;
@@ -331,10 +325,8 @@
 				DE22096428C9B49E00612BB1 /* Constants.swift in Sources */,
 				DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */,
 				DE01626F28E2E5D50067A46D /* SortTableViewCell.swift in Sources */,
-				DEDD8F5228D9A21700464FA7 /* Observable.swift in Sources */,
 				DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */,
 				DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */,
-				DEBF1B7F28E17A6D00C54001 /* CheckModel.swift in Sources */,
 				DE22096C28C9BAB400612BB1 /* WriteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

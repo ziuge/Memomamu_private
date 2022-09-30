@@ -21,7 +21,6 @@ class SortCardTodoViewController: UIViewController {
     }
     
     func fetchRealm(date: String) {
-        print(#function, date)
         todos = repository.fetchTodo(date: date)
         tableView.reloadData()
         if todos.count == 0 {
@@ -145,7 +144,6 @@ extension SortCardTodoViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SortCardTodoTableViewCell.reuseIdentifier, for: indexPath) as? SortCardTodoTableViewCell else { return UITableViewCell() }
         
-        print("=======", todos[indexPath.row].todo)
         cell.todoTextView.isEditable = false
         cell.setData(data: todos[indexPath.row])
         

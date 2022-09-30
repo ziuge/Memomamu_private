@@ -58,7 +58,7 @@ class SortViewController: UIViewController {
         view.layer.shadowColor = UIColor.darkGray.cgColor
         view.layer.shadowOffset = CGSize(width: 8, height: 0)
         view.layer.opacity = 0.2
-        view.layer.shadowRadius = 3.0
+        view.layer.shadowRadius = 5.0
         return view
     }()
     

@@ -25,7 +25,6 @@ class CalendarViewController: UIViewController {
     fileprivate weak var calendar: FSCalendar!
     
     func makeCalendar() {
-        print(#function)
         let spacing = 36
         let calendar = FSCalendar(frame: CGRect(x: spacing, y: Int(self.view.frame.height * 0.12), width: Int(self.view.frame.width) - (spacing * 2), height: Int(self.view.frame.height * 0.4)))
         calendar.dataSource = self
@@ -81,7 +80,6 @@ class CalendarViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        print(#function, self)
         super.viewDidLoad()
         
         fetchEverything()

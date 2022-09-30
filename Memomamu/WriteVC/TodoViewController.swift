@@ -11,7 +11,11 @@ import RealmSwift
 class TodoViewController: UIViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
-    var arrIndexPath = [IndexPath]()
+    var arrIndexPath = [IndexPath]() {
+        didSet {
+            print(arrIndexPath)
+        }
+    }
     
     // MARK: Realm
     let repository = Repository()
@@ -65,6 +69,7 @@ class TodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.background
+        
         fetchRealm()
         configure()
         setConstraints()
@@ -234,10 +239,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.layer.transform = CATransform3DIdentity
             })
             
-//            UIView.animate(withDuration: 0.5, delay: 0.05 * Double(indexPath.row), animations: {
-//                  cell.alpha = 1
-//            })
-            
             arrIndexPath.append(indexPath)
         }
     }
@@ -275,11 +276,14 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func deleteButtonClicked(sender: UIButton) {
         repository.deleteTodo(item: todos[sender.tag])
+        arrIndexPath = arrIndexPath.filter({ indexPath in
+            indexPath != IndexPath(row: todos.count, section: 0)
+        })
+        
         fetchRealm()
     }
     
     @objc func addTodo() {
-        print(#function)
         repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "", check: 0, color: 0))
         if repository.fetchDiary(date: selectedDate) == nil {
             repository.addDiary(item: Diary(date: selectedDate, diary: nil))
@@ -329,7 +333,11 @@ extension TodoViewController: UITextViewDelegate {
         guard let cell: WriteTableViewCell = self.tableView.cellForRow(at: textViewIndexPath) as? WriteTableViewCell else { return }
         if cell.todoTextView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             repository.deleteTodo(item: todos[textViewIndexPath.row])
-            arrIndexPath.remove(at: arrIndexPath.count - 1)
+            arrIndexPath = arrIndexPath.filter({ indexPath in
+                indexPath != IndexPath(row: todos.count, section: 0)
+            })
+            print(arrIndexPath)
+            
         } else {
             repository.updateTodo(oldValue: todos[textViewIndexPath.row], newValue: textView.text)
         }

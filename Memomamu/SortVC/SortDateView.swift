@@ -22,9 +22,14 @@ class SortDateView: UIView {
         view.layer.borderWidth = 0
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 8, height: 1)
+        view.layer.shadowOffset = CGSize(width: 8, height: 0)
         view.layer.shadowOpacity = 0.3
-        view.layer.shadowRadius = 2.0
+        view.layer.shadowRadius = 5.0
+        return view
+    }()
+    let topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Constants.Color.background
         return view
     }()
     
@@ -40,18 +45,24 @@ class SortDateView: UIView {
     
     func configureUI() {
         self.backgroundColor = Constants.Color.background
-        [backgroundView, dateLabel].forEach {
+        [backgroundView, topView, dateLabel].forEach {
             self.addSubview($0)
         }
     }
     
     func setConstraints() {
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(12)
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(16)
             make.leading.equalTo(self).offset(36)
         }
         backgroundView.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        topView.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(backgroundView)
+            make.top.equalTo(backgroundView).offset(-12)
+            make.bottom.equalTo(backgroundView).offset(12)
         }
     }
 }
