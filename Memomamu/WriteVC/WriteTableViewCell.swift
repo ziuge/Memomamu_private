@@ -24,7 +24,7 @@ class WriteTableViewCell: UITableViewCell {
         let view = UITextView()
         view.textColor = Constants.Color.background
         view.font = Constants.Font.content
-        view.text = "할 일을 작성하세요 :)"
+        view.text = NSLocalizedString("WriteTodo", comment: "할 일 작성 문구")
         view.isEditable = true
         view.returnKeyType = .next
         view.isScrollEnabled = false
@@ -32,7 +32,6 @@ class WriteTableViewCell: UITableViewCell {
         view.sizeToFit()
         view.backgroundColor = .clear
         view.textContainer.maximumNumberOfLines = 0
-        
         return view
     }()
 //    var deleteButton: UIButton = {

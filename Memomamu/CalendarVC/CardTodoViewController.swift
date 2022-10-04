@@ -55,7 +55,7 @@ class CardTodoViewController: UIViewController {
     }()
     var todoNilLabel: UILabel = {
         let view = UILabel()
-        view.text = "할 일을 작성하세요 :)"
+        view.text = NSLocalizedString("WriteTodo", comment: "할 일 작성 문구")
         view.textAlignment = .center
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
