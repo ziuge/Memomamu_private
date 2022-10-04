@@ -18,7 +18,7 @@ class DiaryViewController: UIViewController {
     var diary: Diary? = nil
     func fetchRealm() {
         diary = repository.fetchDiary(date: selectedDate)
-        diaryTextView.text = (diary != nil) ? diary!.diary : "오늘 하루를 작성해보세요 :)                                                       "
+        diaryTextView.text = (diary != nil) ? diary!.diary : NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구")
         
         guard let diaryText = diary?.diary else { return }
         diaryTextView.setLineAndLetterSpacing(diaryText)
@@ -46,7 +46,7 @@ class DiaryViewController: UIViewController {
     }()
     var diaryTextView: UITextView = {
         let view = UITextView()
-        view.text = "오늘 하루를 작성해보세요 :)                                                       "
+        view.text = NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구")
         view.setLineAndLetterSpacing(view.text)
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background
@@ -72,8 +72,8 @@ class DiaryViewController: UIViewController {
 //            fetchRealm()
 //
 //        }
-        if diaryTextView.text == "" || diaryTextView.text == "오늘 하루를 작성해보세요 :)                                                       " {
-            diaryTextView.text = "오늘 하루를 작성해보세요 :)                                                       "
+        if diaryTextView.text == "" || diaryTextView.text == NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구") {
+            diaryTextView.text = NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구")
             diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
         }
         diaryTextView.delegate = self
@@ -148,17 +148,20 @@ class DiaryViewController: UIViewController {
 // MARK: - textView Delegate
 extension DiaryViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if diaryTextView.text == "오늘 하루를 작성해보세요 :)                                                       " {
+        if diaryTextView.text == NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구") {
             diaryTextView.text = ""
             diaryTextView.textColor = Constants.Color.background
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if diaryTextView.text == "" {
-            diaryTextView.text = "오늘 하루를 작성해보세요 :)                                                       "
+        if diaryTextView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            diaryTextView.text = NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구")
             diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
-            repository.deleteDiary(item: diary!)
+            if diary != nil {
+                repository.deleteDiary(item: diary!)
+            }
+            
         } else {
             saveButtonClicked()
         }

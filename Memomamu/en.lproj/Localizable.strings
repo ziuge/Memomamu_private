@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Memomamu
+
+  Created by CHOI on 2022/10/03.
+  
+*/
+
+"WriteTodo" = "Add a new task";
+"WriteDiary" = "How was your day?                                                       ";

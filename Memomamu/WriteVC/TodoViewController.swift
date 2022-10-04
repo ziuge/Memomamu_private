@@ -178,7 +178,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.todoTextView.textColor = Constants.Color.background.withAlphaComponent(0.8)
             cell.checkButton.setImage(UIImage(named: "addTodoButton"), for: .normal)
             cell.todoTextView.isEditable = false
-            cell.todoTextView.text = "할 일을 작성하세요 :)"
+            cell.todoTextView.text = NSLocalizedString("WriteTodo", comment: "할 일 작성 문구")
             cell.todoTextView.tag = indexPath.row
             cell.selectionStyle = .none
             cell.changeCheckView.isHidden = false

@@ -92,6 +92,8 @@ class CalendarViewController: UIViewController {
 //        viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
         sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
         
+        title = "nav"
+        
         configureUI()
         setConstraints()
         addPageVC()

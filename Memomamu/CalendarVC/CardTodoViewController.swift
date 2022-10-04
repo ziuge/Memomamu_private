@@ -125,8 +125,6 @@ class CardTodoViewController: UIViewController {
     @objc func goTodo() {
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
-//        let nav = UINavigationController(rootViewController: self)
-//        nav.pushViewController(vc, animated: true)
         
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()

@@ -27,7 +27,6 @@
 		DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */; };
 		DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094228C9B32400612BB1 /* AppDelegate.swift */; };
 		DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22094428C9B32400612BB1 /* SceneDelegate.swift */; };
-		DE22094A28C9B32400612BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE22094828C9B32400612BB1 /* Main.storyboard */; };
 		DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE22094B28C9B32800612BB1 /* Assets.xcassets */; };
 		DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE22094D28C9B32800612BB1 /* LaunchScreen.storyboard */; };
 		DE22096428C9B49E00612BB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096328C9B49E00612BB1 /* Constants.swift */; };
@@ -39,6 +38,7 @@
 		DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */; };
 		DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */; };
 		DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */; };
+		DEB297B928EAF7190023148B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEB297BB28EAF7190023148B /* Localizable.strings */; };
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
@@ -64,7 +64,6 @@
 		DE22093F28C9B32400612BB1 /* Memomamu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memomamu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE22094228C9B32400612BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE22094428C9B32400612BB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DE22094928C9B32400612BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE22094B28C9B32800612BB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE22094E28C9B32800612BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE22095028C9B32800612BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +74,9 @@
 		DE22096F28C9CBA000612BB1 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
 		DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extension.swift"; sourceTree = "<group>"; };
+		DEB297BA28EAF7190023148B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DEB297BC28EAF73A0023148B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DEB297BD28EAF7720023148B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
@@ -167,7 +169,6 @@
 				DE22096728C9B94900612BB1 /* WriteVC */,
 				DE22094228C9B32400612BB1 /* AppDelegate.swift */,
 				DE22094428C9B32400612BB1 /* SceneDelegate.swift */,
-				DE22094828C9B32400612BB1 /* Main.storyboard */,
 				DE22094B28C9B32800612BB1 /* Assets.xcassets */,
 				DE22094D28C9B32800612BB1 /* LaunchScreen.storyboard */,
 				DE22095028C9B32800612BB1 /* Info.plist */,
@@ -203,6 +204,7 @@
 				DE8CE76728D87C18008F8319 /* Extensions */,
 				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
 				DE22096228C9B49500612BB1 /* Constants */,
+				DEB297BB28EAF7190023148B /* Localizable.strings */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -265,6 +267,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
+				ja,
 			);
 			mainGroup = DE22093628C9B32400612BB1;
 			packageReferences = (
@@ -287,10 +291,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEB297B928EAF7190023148B /* Localizable.strings in Resources */,
 				DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */,
 				DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */,
 				DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */,
-				DE22094A28C9B32400612BB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,14 +338,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DE22094828C9B32400612BB1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE22094928C9B32400612BB1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DE22094D28C9B32800612BB1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -350,6 +346,17 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		DEB297BB28EAF7190023148B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEB297BA28EAF7190023148B /* en */,
+				DEB297BC28EAF73A0023148B /* ko */,
+				DEB297BD28EAF7720023148B /* ja */,
+			);
+			name = Localizable.strings;
+			path = Memomamu;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -357,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -417,6 +425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -473,14 +482,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DV7XBU83N5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "메모마무";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
@@ -491,7 +499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Memomamu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -506,14 +514,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DV7XBU83N5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "메모마무";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
@@ -524,7 +531,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Memomamu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
