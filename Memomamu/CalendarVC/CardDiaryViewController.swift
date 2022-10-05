@@ -43,7 +43,7 @@ class CardDiaryViewController: UIViewController {
     }()
     var diaryTextView: UITextView = {
         let view = UITextView()
-        view.text = "오늘 하루를 작성해보세요 :)                                                       "
+        view.text = NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구")
         view.font = Constants.Font.content
         view.textColor = Constants.Color.background.withAlphaComponent(0.6)
         view.backgroundColor = .clear

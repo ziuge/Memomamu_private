@@ -21,7 +21,7 @@ class SortViewController: UIViewController {
     
     var emptyLabel: UILabel = {
         let view = UILabel()
-        view.text = #"할 일을 추가해주세요\#n;("#
+        view.text = NSLocalizedString("EmptySortTable", comment: "Empty SortTableView")
         view.textColor = Constants.Color.text
         view.font = Constants.Font.title
         view.numberOfLines = 2
