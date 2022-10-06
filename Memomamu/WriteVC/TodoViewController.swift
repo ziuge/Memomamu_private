@@ -74,6 +74,10 @@ class TodoViewController: UIViewController {
         configure()
         setConstraints()
 //        editButton.addTarget(self, action: #selector(editMode), for: .touchUpInside)
+        
+        tableView.dragInteractionEnabled = true
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
     }
     
     func configure() {
@@ -112,6 +116,21 @@ class TodoViewController: UIViewController {
         }
     }
 
+    func snapShotOfCall(_ inputView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
+        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+            
+        let cellSnapshot: UIView = UIImageView(image: image)
+        cellSnapshot.layer.masksToBounds = false
+        cellSnapshot.layer.cornerRadius = 0.0
+        cellSnapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        cellSnapshot.layer.shadowRadius = 5.0
+        cellSnapshot.layer.shadowOpacity = 0.4
+            
+        return cellSnapshot
+    }
 }
 
 // MARK: - TableView
@@ -316,7 +335,18 @@ extension TodoViewController: UITextViewDelegate {
     
 }
 
-// MARK: Gesture Recognizer
-extension TodoViewController: UIGestureRecognizerDelegate {
+// MARK: - TableView Drag & Drop
+extension TodoViewController: UITableViewDragDelegate, UITableViewDropDelegate {
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
     
-}
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+            if session.localDragSession != nil {
+                return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+            }
+            return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+        }
+        func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
+    }
+
