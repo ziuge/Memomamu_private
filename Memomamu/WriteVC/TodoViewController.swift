@@ -342,11 +342,11 @@ extension TodoViewController: UITableViewDragDelegate, UITableViewDropDelegate {
     }
     
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-            if session.localDragSession != nil {
-                return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-            }
-            return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+        if session.localDragSession != nil {
+            return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
         }
-        func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
+        return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
     }
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
+}
 

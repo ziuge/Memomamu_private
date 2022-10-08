@@ -43,6 +43,9 @@
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
+		DEE9C08128F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C08028F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		DEE9C08328F1AF7A00EAF7EA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C08228F1AF7A00EAF7EA /* FirebaseCrashlytics */; };
+		DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +84,7 @@
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
+		DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +93,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */,
+				DEE9C08128F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */,
+				DEE9C08328F1AF7A00EAF7EA /* FirebaseCrashlytics in Frameworks */,
 				DE01627728E3DC200067A46D /* Realm in Frameworks */,
 				DE01627928E3DC200067A46D /* RealmSwift in Frameworks */,
 				DE22096A28C9BA5600612BB1 /* SnapKit in Frameworks */,
@@ -161,6 +167,7 @@
 		DE22094128C9B32400612BB1 /* Memomamu */ = {
 			isa = PBXGroup;
 			children = (
+				DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */,
 				DE0314E328D6BAF300FC9561 /* Model */,
 				DE7838B028D1AEDB0093F034 /* Utility */,
 				DE0314E428D6BB4500FC9561 /* Realm */,
@@ -228,6 +235,7 @@
 				DE22093B28C9B32400612BB1 /* Sources */,
 				DE22093C28C9B32400612BB1 /* Frameworks */,
 				DE22093D28C9B32400612BB1 /* Resources */,
+				DEE9C08628F1B0B200EAF7EA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -240,6 +248,8 @@
 				DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */,
 				DE01627628E3DC200067A46D /* Realm */,
 				DE01627828E3DC200067A46D /* RealmSwift */,
+				DEE9C08028F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */,
+				DEE9C08228F1AF7A00EAF7EA /* FirebaseCrashlytics */,
 			);
 			productName = Memomamu;
 			productReference = DE22093F28C9B32400612BB1 /* Memomamu.app */;
@@ -276,6 +286,7 @@
 				DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */,
+				DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = DE22094028C9B32400612BB1 /* Products */;
 			projectDirPath = "";
@@ -293,12 +304,35 @@
 			files = (
 				DEB297B928EAF7190023148B /* Localizable.strings in Resources */,
 				DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */,
+				DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */,
 				DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */,
 				DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DEE9C08628F1B0B200EAF7EA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DE22093B28C9B32400612BB1 /* Sources */ = {
@@ -483,6 +517,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DV7XBU83N5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
@@ -596,6 +631,14 @@
 				minimumVersion = 6.5.0;
 			};
 		};
+		DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -623,6 +666,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		DEE9C08028F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		DEE9C08228F1AF7A00EAF7EA /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

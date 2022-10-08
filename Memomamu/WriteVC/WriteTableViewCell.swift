@@ -34,13 +34,6 @@ class WriteTableViewCell: UITableViewCell {
         view.textContainer.maximumNumberOfLines = 0
         return view
     }()
-//    var deleteButton: UIButton = {
-//        let view = UIButton()
-//        view.setImage(UIImage(systemName: "trash"), for: .normal)
-//        view.tintColor = .red
-//        view.isHidden = true
-//        return view
-//    }()
     let finishedButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = Constants.Color.background.withAlphaComponent(0.7)
