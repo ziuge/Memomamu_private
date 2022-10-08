@@ -381,6 +381,15 @@ card만을 위한 tableviewcell 필요할듯
 
 </details>
 
+<details>
+<summary>1007</summary>
+
+- [ ]  순서 바꾸는 기능 완성하기
+- [ ]  Crashlytics 달기
+
+</details>
+
+
 <!--
 <details>
 <summary>Click to toggle contents of `code`</summary>
