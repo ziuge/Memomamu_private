@@ -91,6 +91,16 @@ class Repository: ContentRepositoryType {
         }
     }
     
+    func updateTodoOrder(oldValue: Todo, newValue: Date) {
+        do {
+            try localRealm.write({
+                oldValue.orderDate = newValue
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
     func updateDiary(oldValue: Diary, newValue: String) {
         do {
             try localRealm.write({

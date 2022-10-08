@@ -78,6 +78,9 @@ class TodoViewController: UIViewController {
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
         tableView.dropDelegate = self
+        
+//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressCalled(gestureRecognizer:)))
+//        tableView.addGestureRecognizer(longPressGesture)
     }
     
     func configure() {
@@ -146,6 +149,19 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return todos.count
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
+        let source = self.todos[sourceIndexPath.row].orderDate
+        let destination = self.todos[destinationIndexPath.row].orderDate
+        repository.updateTodoOrder(oldValue: todos[sourceIndexPath.row], newValue: destination)
+        repository.updateTodoOrder(oldValue: todos[destinationIndexPath.row], newValue: source)
+        fetchRealm()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -280,14 +296,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         let cell: WriteTableViewCell = self.tableView.cellForRow(at: index) as! WriteTableViewCell
         cell.todoTextView.becomeFirstResponder()
     }
-//
-//    @objc func editMode() {
-//        if self.tableView.isEditing {
-//            self.tableView.setEditing(false, animated: true)
-//        } else {
-//            self.tableView.setEditing(true, animated: true)
-//        }
-//    }
     
 }
 
@@ -350,3 +358,107 @@ extension TodoViewController: UITableViewDragDelegate, UITableViewDropDelegate {
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
 }
 
+//// MARK: - Long Press Gesture
+//extension TodoViewController {
+//    @objc func longPressCalled(gestureRecognizer: UIGestureRecognizer) {
+//        guard let longPress = gestureRecognizer as? UILongPressGestureRecognizer else { return }
+//        let state = longPress.state
+//
+//        let locationInView = longPress.location(in: tableView)
+//        let indexPath = tableView.indexPathForRow(at: locationInView)
+//
+//        // 최초 indexPath 변수
+//        struct Initial {
+//            static var initialIndexPath: IndexPath?
+//        }
+//
+//        // 스냅샷
+//        struct MyCell {
+//            static var cellSnapshot: UIView?
+//            static var cellIsAnimating: Bool = false
+//            static var cellNeedToShow: Bool = false
+//        }
+//
+//        // UIGestureRecognizer 상태에 따른 case 분기처리
+//        switch state {
+//
+//            // longPress 제스처가 시작할 때 case
+//        case UIGestureRecognizer.State.began:
+//            if indexPath != nil {
+//                Initial.initialIndexPath = indexPath
+//                var cell: UITableViewCell? = UITableViewCell()
+//                cell = tableView.cellForRow(at: indexPath!)
+//
+//                MyCell.cellSnapshot = snapShotOfCall(cell!)
+//
+//                var center = cell?.center
+//                MyCell.cellSnapshot!.center = center!
+//                // 원래 처음 꾹 누른 부분의 기존 row는 가려준다.
+//                MyCell.cellSnapshot!.alpha = 0.0
+//                tableView.addSubview(MyCell.cellSnapshot!)
+//
+//                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+//                    center?.y = locationInView.y
+//                    MyCell.cellIsAnimating = true
+//                    MyCell.cellSnapshot!.center = center!
+//                    MyCell.cellSnapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+//                    MyCell.cellSnapshot!.alpha = 0.98
+//                    cell?.alpha = 0.0
+//                }, completion: { (finished) -> Void in
+//                    if finished {
+//                        MyCell.cellIsAnimating = false
+//                        if MyCell.cellNeedToShow {
+//                            MyCell.cellNeedToShow = false
+//                            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+//                                cell?.alpha = 1
+//                            })
+//                        } else {
+//                            cell?.isHidden = true
+//                        }
+//                    }
+//                })
+//            }
+//            // longPress 제스처가 변경될 때 case
+//        case UIGestureRecognizer.State.changed:
+//            if MyCell.cellSnapshot != nil {
+//                var center = MyCell.cellSnapshot!.center
+//                center.y = locationInView.y
+//                MyCell.cellSnapshot!.center = center
+//                print("initial", Initial.initialIndexPath)
+//                print(indexPath)
+//                if ((indexPath != nil) && (indexPath != Initial.initialIndexPath)) && Initial.initialIndexPath != nil {
+//                    // 메모리 관련 이슈때문에 바꿔준 부분
+//
+////                    self.cardItems.insert(self.cardItems.remove(at: Initial.initialIndexPath!.row), at: indexPath!.row)
+////                    cardListTableView.moveRow(at: Initial.initialIndexPath!, to: indexPath!)
+//                    Initial.initialIndexPath = indexPath
+//                }
+//            }
+//            // longPress 제스처가 끝났을 때 case
+//        default:
+//            if Initial.initialIndexPath != nil {
+//                let cell = tableView.cellForRow(at: Initial.initialIndexPath!)
+//                if MyCell.cellIsAnimating {
+//                    MyCell.cellNeedToShow = true
+//                } else {
+//                    cell?.isHidden = false
+//                    cell?.alpha = 0.0
+//                }
+//
+//                UIView.animate(withDuration: 0.2, animations: { () -> Void in
+//                    MyCell.cellSnapshot!.center = (cell?.center)!
+//                    MyCell.cellSnapshot!.transform = CGAffineTransform.identity
+//                    MyCell.cellSnapshot!.alpha = 0.0
+//                    cell?.alpha = 1.0
+//
+//                }, completion: { (finished) -> Void in
+//                    if finished {
+//                        Initial.initialIndexPath = nil
+//                        MyCell.cellSnapshot!.removeFromSuperview()
+//                        MyCell.cellSnapshot = nil
+//                    }
+//                })
+//            }
+//        }
+//    }
+//}
