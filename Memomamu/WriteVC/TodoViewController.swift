@@ -155,18 +155,49 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         return true
     }
     
-//    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//        return indexPath.section == 0
-//    }
-    
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
+        
+//        var indexList: [Todo] = []
+//        for item in todos {
+//            indexList.append(item)
+//        }
+//
+//        let sourceTodo = self.todos[sourceIndexPath.row]
+//        let destinationDate = self.todos[destinationIndexPath.row].orderDate
+        
+        
+        
+        
+        if sourceIndexPath.row == destinationIndexPath.row {
+            return
+        }
+
         let sourceTodo = self.todos[sourceIndexPath.row]
-        let sourceDate = self.todos[sourceIndexPath.row].orderDate
-        let destinationTodo = self.todos[destinationIndexPath.row]
         let destinationDate = self.todos[destinationIndexPath.row].orderDate
-        repository.updateTodoOrder(oldValue: sourceTodo, newValue: destinationDate)
-        repository.updateTodoOrder(oldValue: destinationTodo, newValue: sourceDate)
+
+        if sourceIndexPath.row < destinationIndexPath.row {
+            let startIndex = sourceIndexPath.row
+            let endIndex = destinationIndexPath.row - 1
+            for index in Range(startIndex...endIndex).reversed() {
+                print("todo", index + 1, "date", index)
+                repository.updateTodoOrder(oldValue: todos[index + 1], newValue: todos[index].orderDate)
+            }
+        } else if sourceIndexPath.row > destinationIndexPath.row {
+            let startIndex = destinationIndexPath.row + 1
+            let endIndex = sourceIndexPath.row
+            for index in Range(startIndex...endIndex) {
+                print("todo", index - 1, "date", index)
+                repository.updateTodoOrder(oldValue: todos[index - 1], newValue: todos[index].orderDate)
+            }
+        } else {
+            print("same index")
+            return
+        }
+        print("last")
+        
+//        repository.updateTodoOrder(oldValue: sourceTodo, newValue: destinationDate)
+
         fetchRealm()
     }
     
@@ -356,8 +387,12 @@ extension TodoViewController: UITableViewDragDelegate, UITableViewDropDelegate {
     
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         if session.localDragSession != nil {
+            if destinationIndexPath?.section == 1 {
+                return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
+            }
             return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
         }
+        
         return UITableViewDropProposal(operation: .cancel, intent: .unspecified)
     }
     func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) { }
