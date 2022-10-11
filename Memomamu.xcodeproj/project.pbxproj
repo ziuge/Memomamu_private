@@ -43,9 +43,10 @@
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
-		DEE9C08128F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C08028F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		DEE9C08328F1AF7A00EAF7EA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C08228F1AF7A00EAF7EA /* FirebaseCrashlytics */; };
 		DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */; };
+		DEE9C09128F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09028F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		DEE9C09328F58CF500EAF7EA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */; };
+		DEE9C09528F58CF500EAF7EA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DungGeunMo.otf; path = ../../Downloads/DungGeunMo.otf; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
 		DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memomamu.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +94,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEE9C09528F58CF500EAF7EA /* FirebaseMessaging in Frameworks */,
 				DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */,
-				DEE9C08128F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				DEE9C09128F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				DE0314D528D4572700FC9561 /* FSCalendar in Frameworks */,
-				DEE9C08328F1AF7A00EAF7EA /* FirebaseCrashlytics in Frameworks */,
+				DEE9C09328F58CF500EAF7EA /* FirebaseCrashlytics in Frameworks */,
 				DE01627728E3DC200067A46D /* Realm in Frameworks */,
 				DE01627928E3DC200067A46D /* RealmSwift in Frameworks */,
 				DE22096A28C9BA5600612BB1 /* SnapKit in Frameworks */,
@@ -167,6 +170,7 @@
 		DE22094128C9B32400612BB1 /* Memomamu */ = {
 			isa = PBXGroup;
 			children = (
+				DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */,
 				DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */,
 				DE0314E328D6BAF300FC9561 /* Model */,
 				DE7838B028D1AEDB0093F034 /* Utility */,
@@ -248,8 +252,9 @@
 				DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */,
 				DE01627628E3DC200067A46D /* Realm */,
 				DE01627828E3DC200067A46D /* RealmSwift */,
-				DEE9C08028F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */,
-				DEE9C08228F1AF7A00EAF7EA /* FirebaseCrashlytics */,
+				DEE9C09028F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */,
+				DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */,
+				DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */,
 			);
 			productName = Memomamu;
 			productReference = DE22093F28C9B32400612BB1 /* Memomamu.app */;
@@ -286,7 +291,7 @@
 				DE0314D328D4572700FC9561 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */,
-				DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DEE9C08F28F58CF400EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = DE22094028C9B32400612BB1 /* Products */;
 			projectDirPath = "";
@@ -515,6 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Memomamu/Memomamu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -548,6 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Memomamu/Memomamu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DV7XBU83N5;
@@ -631,7 +638,7 @@
 				minimumVersion = 6.5.0;
 			};
 		};
-		DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		DEE9C08F28F58CF400EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -667,15 +674,20 @@
 			package = DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		DEE9C08028F1AF7A00EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+		DEE9C09028F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = DEE9C08F28F58CF400EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsWithoutAdIdSupport;
 		};
-		DEE9C08228F1AF7A00EAF7EA /* FirebaseCrashlytics */ = {
+		DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DEE9C07F28F1AF7A00EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = DEE9C08F28F58CF400EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DEE9C08F28F58CF400EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
