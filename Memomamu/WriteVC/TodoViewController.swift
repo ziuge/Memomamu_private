@@ -158,17 +158,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
         
-//        var indexList: [Todo] = []
-//        for item in todos {
-//            indexList.append(item)
-//        }
-//
-//        let sourceTodo = self.todos[sourceIndexPath.row]
-//        let destinationDate = self.todos[destinationIndexPath.row].orderDate
-        
-        
-        
-        
         if sourceIndexPath.row == destinationIndexPath.row {
             return
         }
@@ -187,16 +176,13 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             let startIndex = destinationIndexPath.row + 1
             let endIndex = sourceIndexPath.row
             for index in Range(startIndex...endIndex) {
-                print("todo", index - 1, "date", index)
-                repository.updateTodoOrder(oldValue: todos[index - 1], newValue: todos[index].orderDate)
+                repository.updateTodoOrder(oldValue: todos[index - 1], newValue: todos[index].orderDate - 0.001)
             }
         } else {
-            print("same index")
             return
         }
-        print("last")
         
-//        repository.updateTodoOrder(oldValue: sourceTodo, newValue: destinationDate)
+        repository.updateTodoOrder(oldValue: sourceTodo, newValue: destinationDate)
 
         fetchRealm()
     }
@@ -376,7 +362,6 @@ extension TodoViewController: UITextViewDelegate {
         }
         fetchRealm()
     }
-    
 }
 
 // MARK: - TableView Drag & Drop

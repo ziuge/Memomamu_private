@@ -87,6 +87,10 @@ class SortViewController: UIViewController {
         calendarButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        self.dismiss(animated: true)
+    }
+    
     func configure() {
         [calendarButton, tableView, emptyLabel].forEach {
             view.addSubview($0)

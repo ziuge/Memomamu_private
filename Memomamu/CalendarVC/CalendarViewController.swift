@@ -65,13 +65,7 @@ class CalendarViewController: UIViewController {
         calendar.scrollDirection = .horizontal
         calendar.placeholderType = .none
     }
-//    var viewButton: UIButton = {
-//        let view = UIButton()
-//        view.setImage(UIImage(named: "todayButton.jpg"), for: .normal)
-//        view.tintColor = Constants.Color.text
-//        return view
-//    }()
-    
+
     var sortButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
@@ -89,15 +83,16 @@ class CalendarViewController: UIViewController {
         self.calendar.select(Date(), scrollToDate: false)
         self.calendar.accessibilityIdentifier = "calendar"
         
-//        viewButton.addTarget(self, action: #selector(openWrite), for: .touchUpInside)
         sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
-        
-        title = "nav"
         
         configureUI()
         setConstraints()
         addPageVC()
         setPageConstraints()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.dismiss(animated: true)
     }
     
     func configureUI() {
@@ -133,12 +128,6 @@ class CalendarViewController: UIViewController {
             make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-36)
         }
     }
-    
-//    @objc func openWrite() {
-//        let vc = WriteViewController()
-//        UIApplication.shared.windows.first?.rootViewController = vc
-//        UIApplication.shared.windows.first?.makeKeyAndVisible()
-//    }
     
     @objc func openSort() {
         let vc = SortViewController()
