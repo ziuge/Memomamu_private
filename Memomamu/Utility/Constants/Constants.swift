@@ -15,6 +15,10 @@ enum Constants {
         static let point = UIColor(red: (171/255.0), green: (214/255.0), blue: (0/255.0), alpha: 1)
     }
     
+    enum Language {
+        static let korean = "DungGeunMo"
+    }
+    
     enum Font {
         static let head = UIFont(name: "DungGeunMo", size: 24)
         static let title = UIFont(name: "DungGeunMo", size: 20)

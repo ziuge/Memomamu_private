@@ -47,6 +47,8 @@
 		DEE9C09128F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09028F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		DEE9C09328F58CF500EAF7EA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */; };
 		DEE9C09528F58CF500EAF7EA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */; };
+		DEFBA15528F599B900A68E10 /* BestTen-CRT.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */; };
+		DEFBA15828F59D0F00A68E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA15A28F59D0F00A68E10 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,10 @@
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
 		DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memomamu.entitlements; sourceTree = "<group>"; };
+		DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BestTen-CRT.otf"; sourceTree = "<group>"; };
+		DEFBA15928F59D0F00A68E10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEFBA15B28F59D1000A68E10 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DEFBA15C28F59D1100A68E10 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,7 @@
 			children = (
 				DE22094128C9B32400612BB1 /* Memomamu */,
 				DEDD8F5A28DB3B7400464FA7 /* DungGeunMo.otf */,
+				DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */,
 				DE22094028C9B32400612BB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
 				DE22096228C9B49500612BB1 /* Constants */,
 				DEB297BB28EAF7190023148B /* Localizable.strings */,
+				DEFBA15A28F59D0F00A68E10 /* InfoPlist.strings */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -308,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEB297B928EAF7190023148B /* Localizable.strings in Resources */,
+				DEFBA15828F59D0F00A68E10 /* InfoPlist.strings in Resources */,
 				DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */,
 				DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */,
+				DEFBA15528F599B900A68E10 /* BestTen-CRT.otf in Resources */,
 				DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */,
 				DEDD8F5B28DB3B7F00464FA7 /* DungGeunMo.otf in Resources */,
 			);
@@ -395,6 +405,16 @@
 			name = Localizable.strings;
 			path = Memomamu;
 			sourceTree = SOURCE_ROOT;
+		};
+		DEFBA15A28F59D0F00A68E10 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEFBA15928F59D0F00A68E10 /* en */,
+				DEFBA15B28F59D1000A68E10 /* ja */,
+				DEFBA15C28F59D1100A68E10 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
@@ -528,6 +548,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "메모마무";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -561,6 +582,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "메모마무";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
