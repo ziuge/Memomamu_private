@@ -64,6 +64,7 @@ class CalendarViewController: UIViewController {
         calendar.scrollEnabled = true
         calendar.scrollDirection = .horizontal
         calendar.placeholderType = .none
+        
     }
 
     var sortButton: UIButton = {
@@ -212,7 +213,7 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
 //    }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventOffsetFor date: Date) -> CGPoint {
-        return CGPoint(x: 0, y: 2)
+        return CGPoint(x: 0, y: 1.5)
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {

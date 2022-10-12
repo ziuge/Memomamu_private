@@ -36,9 +36,9 @@ class CalendarCell: FSCalendarCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let circleImageView = UIImageView(image: UIImage(named: "circle")!)
-        self.contentView.insertSubview(circleImageView, at: 0)
-        self.circleImageView = circleImageView
+//        let circleImageView = UIImageView(image: UIImage(named: "circle")!)
+//        self.contentView.insertSubview(circleImageView, at: 0)
+//        self.circleImageView = circleImageView
         
         let selectionLayer = CAShapeLayer()
         selectionLayer.fillColor = UIColor.black.cgColor
@@ -46,7 +46,7 @@ class CalendarCell: FSCalendarCell {
         self.contentView.layer.insertSublayer(selectionLayer, below: self.titleLabel!.layer)
         self.selectionLayer = selectionLayer
         
-        self.shapeLayer.isHidden = true
+//        self.shapeLayer.isHidden = true
         
         let view = UIView(frame: self.bounds)
         view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.12)
@@ -74,6 +74,17 @@ class CalendarCell: FSCalendarCell {
 //            self.selectionLayer.path = UIBezierPath(ovalIn: CGRect(x: self.contentView.frame.width / 2 - diameter / 2, y: self.contentView.frame.height / 2 - diameter / 2, width: diameter, height: diameter)).cgPath
 //        }
 
+        let titleHeight: CGFloat = self.bounds.size.height * 4 / 5
+        var diameter: CGFloat = min(self.bounds.size.height * 5 / 8, self.bounds.size.width)
+        diameter = diameter > FSCalendarStandardCellDiameter ? (diameter - (diameter-FSCalendarStandardCellDiameter) * 0.5) : diameter
+        shapeLayer.frame = CGRect(x: (bounds.size.width - diameter) / 2,
+                                  y: (titleHeight - diameter) / 2,
+                                  width: diameter - 2, height: diameter - 2)
+        
+        let path = UIBezierPath(roundedRect: shapeLayer.bounds, cornerRadius: shapeLayer.bounds.width * 0.5 * appearance.borderRadius).cgPath
+        if shapeLayer.path != path {
+            shapeLayer.path = path
+        }
     }
     
     override func configureAppearance() {
