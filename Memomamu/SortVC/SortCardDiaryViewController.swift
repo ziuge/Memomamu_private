@@ -93,9 +93,8 @@ class SortCardDiaryViewController: UIViewController {
         }
         
         backgroundView.snp.makeConstraints { make in
-//            make.width.equalTo(view.snp.width).multipliedBy(0.9)
             make.left.equalTo(view.safeAreaLayoutGuide)
-            make.rightMargin.equalTo(-spacing)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-spacing)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
         }
@@ -108,17 +107,12 @@ class SortCardDiaryViewController: UIViewController {
         diaryImageView.snp.makeConstraints { make in
             make.topMargin.equalTo(titleLabel.snp.bottom).offset(22)
             make.height.equalTo(backgroundView.snp.height).multipliedBy(0.7)
-//            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.9)
             make.leftMargin.equalTo(backgroundView).offset(12)
             make.rightMargin.equalTo(backgroundView).offset(-18)
-//            make.centerX.equalTo(backgroundView)
         }
         
         diaryTextView.snp.makeConstraints { make in
-            make.height.equalTo(backgroundView.snp.height).multipliedBy(0.54)
-//            make.width.equalTo(backgroundView.snp.width).multipliedBy(0.88)
             make.centerX.equalTo(diaryImageView)
-//            make.centerY.equalTo(diaryImageView)
             make.top.bottom.equalTo(diaryImageView)
             make.leading.equalTo(diaryImageView.snp.leading).offset(2)
             make.trailing.equalTo(diaryImageView.snp.trailing).offset(-2)

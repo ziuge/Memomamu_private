@@ -99,8 +99,7 @@ class SortCardTodoViewController: UIViewController {
         }
         
         backgroundView.snp.makeConstraints { make in
-//            make.width.equalTo(view.snp.width).multipliedBy(0.9)
-            make.leftMargin.equalTo(spacing)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(spacing)
             make.right.equalTo(view.safeAreaLayoutGuide)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
@@ -115,14 +114,11 @@ class SortCardTodoViewController: UIViewController {
             make.leading.equalTo(backgroundView).offset(18)
             make.trailing.bottom.equalTo(backgroundView.safeAreaLayoutGuide)
             make.topMargin.equalTo(titleLabel.snp.bottom).offset(20)
-//            make.bottomMargin.equalTo(backgroundView).offset(20)
-//            make.bottom.equalTo(backgroundView).offset(300)
         }
         
         todoNilLabel.snp.makeConstraints { make in
             make.leading.equalTo(backgroundView.safeAreaLayoutGuide)
             make.trailing.equalTo(backgroundView.safeAreaLayoutGuide)
-//            make.topMargin.equalTo(titleLabel.snp.bottom).offset(40)
             make.centerY.equalTo(backgroundView)
         }
     }
