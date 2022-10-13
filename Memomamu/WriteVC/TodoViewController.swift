@@ -78,9 +78,6 @@ class TodoViewController: UIViewController {
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
         tableView.dropDelegate = self
-        
-//        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressCalled(gestureRecognizer:)))
-//        tableView.addGestureRecognizer(longPressGesture)
     }
     
     func configure() {
@@ -118,22 +115,34 @@ class TodoViewController: UIViewController {
             make.top.equalTo(lineImageView.snp.bottom)
         }
     }
-
-    func snapShotOfCall(_ inputView: UIView) -> UIView {
-        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
-        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-            
-        let cellSnapshot: UIView = UIImageView(image: image)
-        cellSnapshot.layer.masksToBounds = false
-        cellSnapshot.layer.cornerRadius = 0.0
-        cellSnapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
-        cellSnapshot.layer.shadowRadius = 5.0
-        cellSnapshot.layer.shadowOpacity = 0.4
-            
-        return cellSnapshot
+    
+    func stringToDate(string: String) -> Date {
+        let selectedDate = string
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy. MM. dd."
+        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+        formatter.locale = Locale(identifier: "en_US")
+        let date = formatter.date(from: selectedDate)!
+        return date
     }
+    func dateToString(date: Date) -> String {
+        let date = date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy. MM. dd."
+        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+        formatter.locale = Locale(identifier: "en_US")
+        let string = formatter.string(from: date)
+        return string
+    }
+
+    func nextDay(string: String) -> String {
+        var rawDate = stringToDate(string: string)
+        rawDate.addTimeInterval(86400)
+        let string = dateToString(date: rawDate)
+        print(#function, string)
+        return string
+    }
+    
 }
 
 // MARK: - TableView
@@ -204,7 +213,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.finishedButton.tag = indexPath.row
             cell.finishedButton.addTarget(self, action: #selector(changeCheck(sender:)), for: .touchUpInside)
-            
             cell.delayedButton.tag = indexPath.row
             cell.delayedButton.addTarget(self, action: #selector(changeCheckDelayed(sender:)), for: .touchUpInside)
             cell.unfinishedButton.tag = indexPath.row
@@ -260,7 +268,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // MARK: Change Check
+    // MARK: Change Check Function
     
     @objc func showChangeCheck(sender: UIButton) {
         tableView.reloadData()
@@ -281,6 +289,8 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 2)
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden = false
+        repository.addTodo(item: Todo(date: nextDay(string: selectedDate), orderDate: Date(), todo: todos[sender.tag].todo, check: 0, color: 0))
+        showToast(message: "내일 할 일에 추가했어요!")
         fetchRealm()
     }
     
