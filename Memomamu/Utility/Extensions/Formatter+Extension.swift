@@ -12,7 +12,7 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy. MM. dd."
         formatter.locale = Locale(identifier: "en_US")
-        formatter.timeZone = NSTimeZone(name: "KST") as TimeZone?
+        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
         return formatter
     }()
     
@@ -20,7 +20,7 @@ extension DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "d, MMMM"
         formatter.locale = Locale(identifier: "en_US")
-        formatter.timeZone = NSTimeZone(name: "KST") as TimeZone?
+        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
         return formatter
     }()
 }
