@@ -32,6 +32,7 @@ class SortTableViewCell: UITableViewCell {
         setConstraints()
         
         addPageVC(date: selectedDate, cell: self)
+        
     }
     
     required init?(coder: NSCoder) {

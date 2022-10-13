@@ -146,6 +146,8 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
         cell.setDate(date: date)
         cell.addPageVC(date: date, cell: cell)
         
+        cell.vc.setViewControllers([cell.vc1], direction: .forward, animated: false)
+        
 //        addPageVC(date: diaries![indexPath.row].date, cell: cell)
         
         return cell
