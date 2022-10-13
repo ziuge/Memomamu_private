@@ -8,19 +8,6 @@
 import Foundation
 import RealmSwift
 
-class Diary: Object {
-    @Persisted var date: String // 날짜
-    @Persisted var diary: String?
-    
-    @Persisted(primaryKey: true) var objectId: ObjectId
-    
-    convenience init(date: String, diary: String?) {
-        self.init()
-        self.date = date
-        self.diary = diary
-    }
-}
-
 class Todo: Object {
     @Persisted var date: String // Todo 작성 날짜
     @Persisted var orderDate: Date // 순서 변경을 위한 날짜 데이터 받아오기

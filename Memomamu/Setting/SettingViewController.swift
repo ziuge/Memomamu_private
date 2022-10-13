@@ -9,6 +9,13 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
+    var logoImageView: UIImageView = {
+        let view = UIImageView(image: UIImage(named: "Frame"))
+        return view
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
