@@ -47,12 +47,12 @@ class CalendarViewController: UIViewController {
         calendar.appearance.titleDefaultColor = .white
         calendar.appearance.titleWeekendColor = .white
         calendar.appearance.weekdayTextColor = Constants.Color.text
-        calendar.appearance.weekdayFont = Constants.Font.content
+        calendar.appearance.weekdayFont = Constants.Font.calendarContent
         calendar.appearance.selectionColor = Constants.Color.text
         
         calendar.appearance.todayColor = Constants.Color.paper.withAlphaComponent(0.4)
         calendar.appearance.caseOptions = FSCalendarCaseOptions.weekdayUsesSingleUpperCase
-        calendar.appearance.titleFont = Constants.Font.content
+        calendar.appearance.titleFont = Constants.Font.calendarContent
         
         calendar.register(CalendarCell.self, forCellReuseIdentifier: "cell")
 //        calendar.clipsToBounds = true // Remove top/bottom line

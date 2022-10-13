@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>BestTen-CRT.otf</string>
 		<string>DungGeunMo.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

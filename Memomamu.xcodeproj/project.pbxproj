@@ -38,6 +38,7 @@
 		DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */; };
 		DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8908DA28F6EE8A00651982 /* SettingViewController.swift */; };
 		DE8908E628F7D46000651982 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8908E528F7D46000651982 /* Diary.swift */; };
+		DE8908EB28F7DAC000651982 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE8908E828F7D49400651982 /* DungGeunMo.otf */; };
 		DE8CE76628D84A4B008F8319 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */; };
 		DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */; };
 		DEB297B928EAF7190023148B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEB297BB28EAF7190023148B /* Localizable.strings */; };
@@ -164,8 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				DE22094128C9B32400612BB1 /* Memomamu */,
-				DE8908E828F7D49400651982 /* DungGeunMo.otf */,
-				DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */,
 				DE22094028C9B32400612BB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,6 +180,7 @@
 		DE22094128C9B32400612BB1 /* Memomamu */ = {
 			isa = PBXGroup;
 			children = (
+				DE8908EA28F7DA1200651982 /* Resources */,
 				DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */,
 				DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */,
 				DE0314E328D6BAF300FC9561 /* Model */,
@@ -239,6 +239,15 @@
 				DE8908DA28F6EE8A00651982 /* SettingViewController.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		DE8908EA28F7DA1200651982 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE8908E828F7D49400651982 /* DungGeunMo.otf */,
+				DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DE8CE76728D87C18008F8319 /* Extensions */ = {
@@ -333,6 +342,7 @@
 				DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */,
 				DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */,
 				DEFBA15528F599B900A68E10 /* BestTen-CRT.otf in Resources */,
+				DE8908EB28F7DAC000651982 /* DungGeunMo.otf in Resources */,
 				DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

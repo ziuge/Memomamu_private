@@ -15,16 +15,14 @@ enum Constants {
         static let point = UIColor(red: (171/255.0), green: (214/255.0), blue: (0/255.0), alpha: 1)
     }
     
-    enum Language {
-        static let korean = "DungGeunMo"
-    }
-    
     enum Font {
         static let head = UIFont(name: "DungGeunMo", size: 24)
         static let title = UIFont(name: "DungGeunMo", size: 20)
         static let cardTitle = UIFont(name: "DungGeunMo", size: 18)
-        static let content = UIFont(name: "DungGeunMo", size: 15)
-        static let button = UIFont(name: "DungGeunMo", size: 15)
-        static let smallContent = UIFont(name: "DungGeunMo", size: 14)
+        static let calendarContent = UIFont(name: "DungGeunMo", size: 15)
+        static let content = UIFont(name: NSLocalizedString("fontName", comment: "폰트 이름"), size: 15)
+        static let button = UIFont(name: NSLocalizedString("fontName", comment: "폰트 이름"), size: 15)
+        static let smallContent = UIFont(name: NSLocalizedString("fontName", comment: "폰트 이름"), size: 14)
     }
 }
+
