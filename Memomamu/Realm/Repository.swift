@@ -95,7 +95,6 @@ class Repository: ContentRepositoryType {
         do {
             try localRealm.write({
                 oldValue.orderDate = newValue
-                print("update order success!")
             })
         } catch {
             print(error)

@@ -156,7 +156,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("\(sourceIndexPath.row) -> \(destinationIndexPath.row)")
         
         if sourceIndexPath.row == destinationIndexPath.row {
             return
@@ -169,7 +168,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
             let startIndex = sourceIndexPath.row
             let endIndex = destinationIndexPath.row - 1
             for index in Range(startIndex...endIndex).reversed() {
-                print("todo", index + 1, "date", index)
                 repository.updateTodoOrder(oldValue: todos[index + 1], newValue: todos[index].orderDate)
             }
         } else if sourceIndexPath.row > destinationIndexPath.row {

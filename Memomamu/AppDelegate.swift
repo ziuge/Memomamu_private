@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Thread.sleep(forTimeInterval: 2.0)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
         FirebaseApp.configure()
         
         if #available(iOS 10.0, *) {
@@ -40,13 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Messaging.messaging().delegate = self
         
-        Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-            print("FCM registration token: \(token)")
-          }
-        }
+//        Messaging.messaging().token { token, error in
+//          if let error = error {
+//            print("Error fetching FCM registration token: \(error)")
+//          } else if let token = token {
+//            print("FCM registration token: \(token)")
+//          }
+//        }
         
         return true
     }
@@ -83,17 +84,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     // 푸시 클릭: 호두과자를 장바구니에 담는 화면까지 전환
     // 유저가 푸시를 클릭했을 때에만 수신 확인 가능
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-        let userInfo = response.notification.request.content.userInfo
-        
-        if userInfo[AnyHashable("sesac")] as? String == "project" {
-            print("SESAC PROJECT")
-        } else {
-            print("NOTHING")
-        }
-        
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//
+//        let userInfo = response.notification.request.content.userInfo
+//
+//        if userInfo[AnyHashable("sesac")] as? String == "project" {
+//            print("SESAC PROJECT")
+//        } else {
+//            print("NOTHING")
+//        }
+//
+//    }
     
 }
 
