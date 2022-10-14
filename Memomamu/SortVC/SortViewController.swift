@@ -18,7 +18,13 @@ class SortViewController: BaseViewController {
     var diaries: Results<Diary>?
     var content: [Any] = []
     var dates: [String] = []
+    func fetchEverything() {
+        todos = repository.fetchEveryTodo().sorted(byKeyPath: "date", ascending: false)
+        diaries = repository.fetchEveryDiary().sorted(byKeyPath: "date", ascending: false)
+        tableView.reloadData()
+    }
     
+    // MARK: UI
     var emptyLabel: UILabel = {
         let view = UILabel()
         view.text = NSLocalizedString("EmptySortTable", comment: "Empty SortTableView")
@@ -28,21 +34,6 @@ class SortViewController: BaseViewController {
         view.textAlignment = .center
         return view
     }()
-    
-    func fetchEverything() {
-        todos = repository.fetchEveryTodo().sorted(byKeyPath: "date", ascending: false)
-        diaries = repository.fetchEveryDiary().sorted(byKeyPath: "date", ascending: false)
-        tableView.reloadData()
-    }
-    
-    var calendarButton: UIButton = {
-        let view = UIButton()
-        view.setImage(UIImage(named: "calendar"), for: .normal)
-        view.tintColor = Constants.Color.text
-        view.configuration?.buttonSize = .large
-        return view
-    }()
-    
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.delegate = self
@@ -55,7 +46,6 @@ class SortViewController: BaseViewController {
         view.allowsSelection = false
         return view
     }()
-    
     var backgroundShadow: UIView = {
         let view = UIView()
         view.backgroundColor = .magenta
@@ -80,8 +70,7 @@ class SortViewController: BaseViewController {
         } else {
             emptyLabel.isHidden = true
         }
-        
-        calendarButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -89,18 +78,12 @@ class SortViewController: BaseViewController {
     }
     
     override func configure() {
-        [calendarButton, tableView, emptyLabel].forEach {
+        [tableView, emptyLabel].forEach {
             view.addSubview($0)
         }
     }
     
     override func setConstraints() {
-        calendarButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
-            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
-            make.height.width.equalTo(40)
-        }
-        
         tableView.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.12)
             make.trailing.leading.equalTo(view)
@@ -113,17 +96,10 @@ class SortViewController: BaseViewController {
         }
 
     }
-    
-    @objc func openCalendar() {
-        let vc = CalendarViewController()
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
 
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     let vc1 = SortCardTodoViewController()
     let vc2 = SortCardDiaryViewController()
-    
 }
 
 extension SortViewController: UITableViewDelegate, UITableViewDataSource {

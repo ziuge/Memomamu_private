@@ -32,6 +32,7 @@ class CardTodoViewController: BaseViewController {
         }
     }
     
+    // MARK: UI
     var titleLabel: UILabel = {
         let view = UILabel()
         view.text = "to do list"
@@ -125,8 +126,9 @@ class CardTodoViewController: BaseViewController {
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
         
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        UIApplication.shared.windows.first?.rootViewController = vc
+//        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

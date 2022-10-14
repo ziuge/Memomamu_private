@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardTodoTableVIewCell: UITableViewCell {
+class CardTodoTableVIewCell: BaseTableViewCell {
     
     let checkList = ["unchecked", "finished", "delayed", "unfinished"]
 
