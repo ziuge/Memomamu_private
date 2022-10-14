@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CheckStatusButtonView: UIView {
+class CheckStatusButtonView: BaseView {
     
     let finishedButton: UIButton = {
         let view = UIButton()
@@ -33,22 +33,20 @@ class CheckStatusButtonView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
-        setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
-    func configureUI() {
+    override func configureUI() {
         self.backgroundColor = Constants.Color.paper
         [finishedButton, delayedButton, unfinishedButton].forEach {
             self.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         finishedButton.snp.makeConstraints { make in
             make.height.equalTo(32)
             make.width.equalTo(40)

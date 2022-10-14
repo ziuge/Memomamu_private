@@ -91,11 +91,6 @@ class WriteTableViewCell: UITableViewCell {
         
         configure()
         setConstraints()
-//        checkButton.addTarget(self, action: #selector(showCheckStatusChangeButton), for: .touchUpInside)
-//        finishedButton.addTarget(self, action: #selector(changeCheck), for: .touchUpInside)
-//        delayedButton.addTarget(self, action: #selector(changeCheckDelayed), for: .touchUpInside)
-//        unfinishedButton.addTarget(self, action: #selector(changeCheckUnfinished), for: .touchUpInside)
-//        CheckStatusButtonView().finishedButton.addTarget(self, action: #selector(checkFinished), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -187,12 +182,6 @@ class WriteTableViewCell: UITableViewCell {
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(unfinishedButton.snp.trailing).offset(8)
         }
-        
-//        delete button ... swipe gesture 해결하고 나서 할 것!
-//        deleteButton.snp.makeConstraints { make in
-//            make.leading.equalTo(todoTextView.snp.trailing)
-//            make.centerY.equalTo(todoTextView)
-//        }
     }
     
 }

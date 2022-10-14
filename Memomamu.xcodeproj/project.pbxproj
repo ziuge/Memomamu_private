@@ -47,7 +47,6 @@
 		DEC3977828F9378500DA06AF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977728F9378500DA06AF /* BaseView.swift */; };
 		DEC3977A28F938A500DA06AF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977928F938A500DA06AF /* Date+Extension.swift */; };
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
-		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
 		DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */; };
 		DEE9C09128F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09028F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -97,7 +96,6 @@
 		DEC3977728F9378500DA06AF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		DEC3977928F938A500DA06AF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
-		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
 		DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memomamu.entitlements; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 				DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */,
 				DE1F8EBB28D0828700877A49 /* DiaryViewController.swift */,
 				DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */,
-				DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */,
 			);
 			path = WriteVC;
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 				DE01627428E32D1B0067A46D /* SortCardDiaryViewController.swift in Sources */,
 				DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */,
 				DEC3977028F84B2100DA06AF /* Toast+Extension.swift in Sources */,
-				DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */,
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
 				DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */,
 				DE0314E628D6BB7800FC9561 /* Repository.swift in Sources */,
