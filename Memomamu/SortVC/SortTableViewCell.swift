@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SortTableViewCell: UITableViewCell {
+class SortTableViewCell: BaseTableViewCell {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
@@ -27,12 +27,8 @@ class SortTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.background
-        
-        configure()
-        setConstraints()
-        
+
         addPageVC(date: selectedDate, cell: self)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -63,13 +59,13 @@ class SortTableViewCell: UITableViewCell {
         self.dateView.dateLabel.text = dateToString(date: rawDate)
     }
     
-    func configure() {
+    override func configure() {
         [containerView, dateView].forEach {
             contentView.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         dateView.snp.makeConstraints { make in
             make.top.leading.bottom.equalTo(contentView)
             make.width.equalTo(contentView.snp.width).multipliedBy(0.26)
@@ -80,11 +76,6 @@ class SortTableViewCell: UITableViewCell {
             make.leading.equalTo(dateView.snp.trailing)
             make.trailing.equalTo(contentView)
         }
-        
-//        topView.snp.makeConstraints { make in
-//            make.top.leading.trailing.equalTo(dateView)
-//            make.bottom.equalTo(contentView).offset(8)
-//        }
     }
     
     override func layoutSubviews() {
@@ -100,10 +91,8 @@ class SortTableViewCell: UITableViewCell {
         vc2.selectedDate = date
         vc.vc1 = vc1
         vc.vc2 = vc2
-//        self.contentView.addChild(vc)
         containerView.addSubview(vc.view)
         vc.selectedDate = date
-//        vc.didMove(toParent: self)
         vc.view.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(cell.containerView)
         }
