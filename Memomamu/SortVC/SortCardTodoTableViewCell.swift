@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SortCardTodoTableViewCell: UITableViewCell {
+class SortCardTodoTableViewCell: BaseTableViewCell {
     let checkList = ["unchecked", "finished", "delayed", "unfinished"]
 
     var checkButton: UIButton = {
@@ -34,10 +34,6 @@ class SortCardTodoTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.paper
-        
-        configure()
-        setConstraints()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -54,13 +50,13 @@ class SortCardTodoTableViewCell: UITableViewCell {
         
     }
 
-    func configure() {
+    override func configure() {
         [checkButton, todoTextView].forEach {
             contentView.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         checkButton.snp.makeConstraints { make in
             make.topMargin.equalTo(contentView)
             make.leading.equalTo(contentView)

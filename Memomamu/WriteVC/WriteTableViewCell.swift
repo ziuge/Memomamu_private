@@ -11,7 +11,7 @@ protocol MyTableViewCellDelegate: AnyObject {
     func didTapCheck(with status: String)
 }
 
-class WriteTableViewCell: UITableViewCell {
+class WriteTableViewCell: BaseTableViewCell {
     
     weak var delegate: MyTableViewCellDelegate?
     
@@ -88,9 +88,6 @@ class WriteTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.paper
-        
-        configure()
-        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -109,7 +106,6 @@ class WriteTableViewCell: UITableViewCell {
         } else {
             checkButton.setImage(UIImage(named: checkList[data.check]), for: .normal)
         }
-        
     }
 
     @objc func showCheckStatusChangeButton() {
@@ -122,13 +118,13 @@ class WriteTableViewCell: UITableViewCell {
         delegate?.didTapCheck(with: status)
     }
     
-    func configure() {
+    override func configure() {
         [checkButton, todoTextView, finishedButton, delayedButton, unfinishedButton, deleteButton, changeCheckView, clickButton].forEach {
             contentView.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         clickButton.snp.makeConstraints { make in
             make.top.leading.trailing.bottom.equalTo(contentView)
         }

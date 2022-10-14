@@ -35,9 +35,6 @@ class CardTodoTableVIewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Constants.Color.paper
-        
-        configure()
-        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -54,13 +51,13 @@ class CardTodoTableVIewCell: UITableViewCell {
         
     }
     
-    func configure() {
+    override func configure() {
         [checkButton, todoTextView].forEach {
             contentView.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         checkButton.snp.makeConstraints { make in
             make.topMargin.equalTo(contentView)
             make.leadingMargin.equalTo(contentView).offset(6)
@@ -70,8 +67,6 @@ class CardTodoTableVIewCell: UITableViewCell {
         todoTextView.snp.makeConstraints { make in
             make.topMargin.equalTo(contentView).offset(-8)
             make.bottomMargin.equalTo(contentView)
-//            make.centerY.equalTo(contentView)
-//            make.top.equalTo(checkButton.snp.top)
             make.leadingMargin.equalTo(checkButton.snp.trailing).offset(15)
             make.trailingMargin.equalTo(contentView).offset(-52)
         }
