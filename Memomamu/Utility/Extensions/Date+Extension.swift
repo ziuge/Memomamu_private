@@ -31,7 +31,11 @@ extension UIViewController {
     func nextDay(string: String) -> String {
         var rawDate = stringToDate(string: string)
         rawDate.addTimeInterval(86400)
-        let string = dateToString(date: rawDate)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy. MM. dd."
+        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+        formatter.locale = Locale(identifier: "en_US")
+        let string = formatter.string(from: rawDate)
         print(#function, string)
         return string
     }
