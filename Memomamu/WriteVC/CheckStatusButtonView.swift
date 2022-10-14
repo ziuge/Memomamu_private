@@ -39,7 +39,7 @@ class CheckStatusButtonView: BaseView {
         fatalError()
     }
     
-    override func configureUI() {
+    override func configure() {
         self.backgroundColor = Constants.Color.paper
         [finishedButton, delayedButton, unfinishedButton].forEach {
             self.addSubview($0)

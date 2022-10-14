@@ -25,11 +25,11 @@ class SettingViewController: BaseViewController {
     }
     
     override func configure() {
-        <#code#>
+        
     }
     
     override func setConstraints() {
-        <#code#>
+        
     }
     
 }

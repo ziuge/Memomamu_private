@@ -46,6 +46,8 @@
 		DEC3977628F9374A00DA06AF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977528F9374A00DA06AF /* BaseViewController.swift */; };
 		DEC3977828F9378500DA06AF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977728F9378500DA06AF /* BaseView.swift */; };
 		DEC3977A28F938A500DA06AF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977928F938A500DA06AF /* Date+Extension.swift */; };
+		DEC3977C28F93E4100DA06AF /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977B28F93E4100DA06AF /* SettingTableViewCell.swift */; };
+		DEC3977E28F93EDB00DA06AF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977D28F93EDB00DA06AF /* BaseTableViewCell.swift */; };
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
 		DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */; };
@@ -95,6 +97,8 @@
 		DEC3977528F9374A00DA06AF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DEC3977728F9378500DA06AF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		DEC3977928F938A500DA06AF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		DEC3977B28F93E4100DA06AF /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		DEC3977D28F93EDB00DA06AF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
 		DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -243,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				DE8908DA28F6EE8A00651982 /* SettingViewController.swift */,
+				DEC3977B28F93E4100DA06AF /* SettingTableViewCell.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			children = (
 				DEC3977528F9374A00DA06AF /* BaseViewController.swift */,
 				DEC3977728F9378500DA06AF /* BaseView.swift */,
+				DEC3977D28F93EDB00DA06AF /* BaseTableViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEC3977C28F93E4100DA06AF /* SettingTableViewCell.swift in Sources */,
 				DE01627228E32CFC0067A46D /* SortCardTodoViewController.swift in Sources */,
 				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
@@ -404,6 +411,7 @@
 				DE1F8EBC28D0828700877A49 /* DiaryViewController.swift in Sources */,
 				DE0314E028D48C4400FC9561 /* CardDiaryViewController.swift in Sources */,
 				DE22097028C9CBA000612BB1 /* Todo.swift in Sources */,
+				DEC3977E28F93EDB00DA06AF /* BaseTableViewCell.swift in Sources */,
 				DE22096E28C9CB5300612BB1 /* ReusableProtocol.swift in Sources */,
 				DE22096628C9B94400612BB1 /* WriteViewController.swift in Sources */,
 				DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */,
