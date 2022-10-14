@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import SwiftUI
 
-class DiaryViewController: UIViewController {
+class DiaryViewController: BaseViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
@@ -66,29 +66,21 @@ class DiaryViewController: UIViewController {
         super.viewDidLoad()
         fetchRealm()
         
-//        if diary == nil {
-//            repository.addDiary(item: Diary(date: selectedDate, diary: ""))
-//            diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
-//            fetchRealm()
-//
-//        }
         if diaryTextView.text == "" || diaryTextView.text == NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구") {
             diaryTextView.text = NSLocalizedString("WriteDiary", comment: "다이어리 작성 문구")
             diaryTextView.textColor = Constants.Color.background.withAlphaComponent(0.6)
         }
         diaryTextView.delegate = self
         
-        configure()
-        setConstraints()
     }
     
-    func configure() {
+    override func configure() {
         view.addSubview(backgroundView)
         [titleLabel, lineImageView, diaryImageView, diaryTextView].forEach {
             backgroundView.addSubview($0)
         }
     }
-    func setConstraints() {
+    override func setConstraints() {
         
         let spacing = 16
         

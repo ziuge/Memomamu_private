@@ -5,29 +5,13 @@
 //  Created by CHOI on 2022/09/16.
 //
 
-import Foundation
-
 import UIKit
 import FSCalendar
-
-enum SelectionType : Int {
-    case none
-    case single
-    case leftBorder
-    case middle
-    case rightBorder
-}
 
 class CalendarCell: FSCalendarCell {
     
     weak var circleImageView: UIImageView!
     weak var selectionLayer: CAShapeLayer!
-    
-    var selectionType: SelectionType = .none {
-        didSet {
-            setNeedsLayout()
-        }
-    }
     
     required init!(coder aDecoder: NSCoder!) {
         fatalError("init(coder:) has not been implemented")

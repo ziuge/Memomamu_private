@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+class SettingViewController: BaseViewController {
     
     var logoImageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: "Frame"))
@@ -24,5 +24,12 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func configure() {
+        <#code#>
+    }
+    
+    override func setConstraints() {
+        <#code#>
+    }
     
 }

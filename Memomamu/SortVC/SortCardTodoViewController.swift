@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class SortCardTodoViewController: UIViewController {
+class SortCardTodoViewController: BaseViewController {
     
     var selectedDate = DateFormatter.dateOnly.string(from: Date())
     
@@ -78,12 +78,10 @@ class SortCardTodoViewController: UIViewController {
         super.viewDidLoad()
         fetchRealm(date: selectedDate)
         
-        configure()
-        setConstraints()
         clickButton.addTarget(self, action: #selector(goTodo), for: .touchUpInside)
     }
     
-    func configure() {
+    override func configure() {
         view.addSubview(backgroundView)
         [tableView, titleLabel, todoNilLabel].forEach {
             backgroundView.addSubview($0)
@@ -91,7 +89,7 @@ class SortCardTodoViewController: UIViewController {
         view.addSubview(clickButton)
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         let spacing = 12
         
         clickButton.snp.makeConstraints { make in

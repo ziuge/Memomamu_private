@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class CardDiaryViewController: UIViewController {
+class CardDiaryViewController: BaseViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     
@@ -74,19 +74,17 @@ class CardDiaryViewController: UIViewController {
         super.viewDidLoad()
         fetchRealm()
         
-        configure()
-        setConstraints()
         clickButton.addTarget(self, action: #selector(goTodo), for: .touchUpInside)
     }
     
-    func configure() {
+    override func configure() {
         view.addSubview(backgroundView)
         [titleLabel, diaryImageView, diaryTextView, diaryNilLabel].forEach {
             backgroundView.addSubview($0)
         }
         view.addSubview(clickButton)
     }
-    func setConstraints() {
+    override func setConstraints() {
         let spacing = 40
         
         clickButton.snp.makeConstraints { make in

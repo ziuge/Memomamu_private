@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SortDateView: UIView {
+class SortDateView: BaseView {
     let dateLabel: UILabel = {
         let view = UILabel()
         view.text = "17, April"
@@ -41,30 +41,26 @@ class SortDateView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
-        setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError()
     }
     
-    func configureUI() {
+    override func configureUI() {
         self.backgroundColor = Constants.Color.background
         [backgroundView, dateLabel, shadowImage].forEach {
             self.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(16)
             make.leading.equalTo(self).offset(36)
         }
         backgroundView.snp.makeConstraints { make in
             make.leading.trailing.bottom.top.equalTo(self.safeAreaLayoutGuide)
-//            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(6)
-//            make.top.equalTo(self.safeAreaLayoutGuide).offset(-2)
         }
         
         shadowImage.snp.makeConstraints { make in
@@ -72,11 +68,5 @@ class SortDateView: UIView {
             make.top.equalTo(backgroundView)
             make.bottom.equalTo(backgroundView).offset(-1)
         }
-        
-//        topView.snp.makeConstraints { make in
-//            make.leading.trailing.equalTo(backgroundView)
-//            make.top.equalTo(backgroundView).offset(-12)
-//            make.bottom.equalTo(backgroundView).offset(12)
-//        }
     }
 }

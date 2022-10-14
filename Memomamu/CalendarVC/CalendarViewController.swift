@@ -9,7 +9,7 @@ import UIKit
 import FSCalendar
 import RealmSwift
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: BaseViewController {
     
     // MARK: Realm
     let repository = Repository()
@@ -21,6 +21,7 @@ class CalendarViewController: UIViewController {
         diaries = repository.fetchEveryDiary()
     }
     
+    // MARK: Calendar
     fileprivate let gregorian = Calendar(identifier: .gregorian)
     fileprivate weak var calendar: FSCalendar!
     
@@ -86,8 +87,6 @@ class CalendarViewController: UIViewController {
         
         sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
         
-        configureUI()
-        setConstraints()
         addPageVC()
         setPageConstraints()
     }
@@ -96,13 +95,13 @@ class CalendarViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    func configureUI() {
+    override func configure() {
         view.backgroundColor = Constants.Color.background
         [sortButton].forEach {
             view.addSubview($0)
         }
     }
-    func setConstraints() {
+    override func setConstraints() {
         sortButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)

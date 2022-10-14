@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class CardTodoViewController: UIViewController {
+class CardTodoViewController: BaseViewController {
     
     var selectedDate = DateFormatter.dateOnly.string(from: Date())
     
@@ -72,13 +72,11 @@ class CardTodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchRealm()
-        
-        configure()
-        setConstraints()
+
         clickButton.addTarget(self, action: #selector(goTodo), for: .touchUpInside)
     }
     
-    func configure() {
+    override func configure() {
         view.addSubview(backgroundView)
         [tableView, titleLabel, todoNilLabel].forEach {
             backgroundView.addSubview($0)
@@ -88,7 +86,8 @@ class CardTodoViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
     }
-    func setConstraints() {
+    
+    override func setConstraints() {
         let spacing = 40
         
         clickButton.snp.makeConstraints { make in

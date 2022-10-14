@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class SortViewController: UIViewController {
+class SortViewController: BaseViewController {
     
     var arrIndexPath = [IndexPath]()
     
@@ -71,9 +71,6 @@ class SortViewController: UIViewController {
         view.backgroundColor = Constants.Color.background
         fetchEverything()
         
-        configure()
-        setConstraints()
-        
         tableView.beginUpdates()
         tableView.setNeedsDisplay()
         tableView.endUpdates()
@@ -91,13 +88,13 @@ class SortViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    func configure() {
+    override func configure() {
         [calendarButton, tableView, emptyLabel].forEach {
             view.addSubview($0)
         }
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         calendarButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
@@ -147,8 +144,6 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
         cell.addPageVC(date: date, cell: cell)
         
         cell.vc.setViewControllers([cell.vc1], direction: .forward, animated: false)
-        
-//        addPageVC(date: diaries![indexPath.row].date, cell: cell)
         
         return cell
     }

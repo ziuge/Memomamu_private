@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class TodoViewController: UIViewController {
+class TodoViewController: BaseViewController {
     
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     var arrIndexPath = [IndexPath]() {
@@ -71,22 +71,19 @@ class TodoViewController: UIViewController {
         view.backgroundColor = Constants.Color.background
         
         fetchRealm()
-        configure()
-        setConstraints()
-//        editButton.addTarget(self, action: #selector(editMode), for: .touchUpInside)
         
         tableView.dragInteractionEnabled = true
         tableView.dragDelegate = self
         tableView.dropDelegate = self
     }
     
-    func configure() {
+    override func configure() {
         view.addSubview(backgroundView)
         [tableView, titleLabel, lineImageView].forEach {
             backgroundView.addSubview($0)
         }
     }
-    func setConstraints() {
+    override func setConstraints() {
         
         let spacing = 16
         
