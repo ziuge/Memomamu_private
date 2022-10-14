@@ -239,14 +239,12 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: Change Check Function
-    
     @objc func showChangeCheck(sender: UIButton) {
         tableView.reloadData()
         
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden.toggle()
     }
-    
     @objc func changeCheck(sender: UIButton) {
         repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 1)
         repository.updateTodoColor(oldValue: todos[sender.tag], newValue: Int.random(in: 0...11))
@@ -254,7 +252,6 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.changeCheckView.isHidden = false
         fetchRealm()
     }
-    
     @objc func changeCheckDelayed(sender: UIButton) {
         repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 2)
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
@@ -263,14 +260,12 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         showToast(message: "내일 할 일에 추가했어요!")
         fetchRealm()
     }
-    
     @objc func changeCheckUnfinished(sender: UIButton) {
         repository.updateTodoCheck(oldValue: todos[sender.tag], newValue: 3)
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden = false
         fetchRealm()
     }
-    
     @objc func deleteButtonClicked(sender: UIButton) {
         repository.deleteTodo(item: todos[sender.tag])
         arrIndexPath = arrIndexPath.filter({ indexPath in
@@ -285,6 +280,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         fetchRealm()
     }
     
+    // MARK: Add Todo
     @objc func addTodo() {
         repository.addTodo(item: Todo(date: selectedDate, orderDate: Date(), todo: "", check: 0, color: 0))
         if repository.fetchDiary(date: selectedDate) == nil {

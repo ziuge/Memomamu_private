@@ -11,16 +11,9 @@ import SnapKit
 class WriteViewController: BaseViewController {
     
     var selectedDate = DateFormatter.dateOnly.string(from: Date())
+    var isDiarySelected = false
     
     // MARK: UI
-    var viewButton: UIButton = {
-        let view = UIButton()
-        view.setImage(UIImage(named: "calendar"), for: .normal)
-        view.tintColor = Constants.Color.text
-        view.configuration?.buttonSize = .large
-        return view
-    }()
-    
     var dateLabel: UILabel = {
         let view = UILabel()
         view.textColor = Constants.Color.text
@@ -42,22 +35,18 @@ class WriteViewController: BaseViewController {
 
         addPageVC()
         
-        viewButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
+        if isDiarySelected == true {
+            vc.setViewControllers([vc.vc2], direction: .forward, animated: true)
+        }
     }
     
     override func configure() {
-        [containerView, viewButton, dateLabel].forEach {
+        [containerView, dateLabel].forEach {
             view.addSubview($0)
         }
         
     }
     override func setConstraints() {
-        viewButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
-            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
-            make.height.width.equalTo(40)
-        }
-
         dateLabel.snp.makeConstraints { make in
             make.topMargin.equalTo(view).offset(view.frame.height * 0.08)
             make.centerX.equalTo(view)
@@ -92,12 +81,5 @@ class WriteViewController: BaseViewController {
             make.top.bottom.leading.trailing.equalTo(containerView)
         }
     }
-    
-    @objc func openCalendar() {
-        let vc = CalendarViewController()
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-    }
-
 }
 
