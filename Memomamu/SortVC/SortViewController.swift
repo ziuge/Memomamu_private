@@ -46,6 +46,15 @@ class SortViewController: BaseViewController {
         view.allowsSelection = false
         return view
     }()
+    var backgroundShadow: UIView = {
+        let view = UIView()
+        view.backgroundColor = .magenta
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = CGSize(width: 8, height: 0)
+        view.layer.opacity = 0.2
+        view.layer.shadowRadius = 5.0
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
