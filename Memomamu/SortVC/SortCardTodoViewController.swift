@@ -56,7 +56,6 @@ class SortCardTodoViewController: BaseViewController {
         view.backgroundColor = Constants.Color.paper
         return view
     }()
-    
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = Constants.Color.paper
@@ -67,7 +66,6 @@ class SortCardTodoViewController: BaseViewController {
         view.contentInset = UIEdgeInsets(top: 6, left: 0, bottom: 0, right: 0)
         return view
     }()
-    
     var clickButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .clear
@@ -124,8 +122,9 @@ class SortCardTodoViewController: BaseViewController {
     @objc func goTodo(sender: UIButton) {
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        UIApplication.shared.windows.first?.rootViewController = vc
+//        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

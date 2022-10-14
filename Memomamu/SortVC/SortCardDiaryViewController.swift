@@ -27,6 +27,7 @@ class SortCardDiaryViewController: BaseViewController {
         }
     }
     
+    // MARK: UI
     var titleLabel: UILabel = {
         let view = UILabel()
         view.text = "diary"
@@ -125,8 +126,9 @@ class SortCardDiaryViewController: BaseViewController {
     @objc func goTodo() {
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
-        UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
-        vc.vc.setViewControllers([vc.vc.vc2], direction: .forward, animated: true)
+        vc.isDiarySelected = true
+//        UIApplication.shared.windows.first?.rootViewController = vc
+//        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -46,6 +46,28 @@ class SortViewController: BaseViewController {
         view.allowsSelection = false
         return view
     }()
+    var backgroundShadow: UIView = {
+        let view = UIView()
+        view.backgroundColor = .magenta
+        view.layer.shadowColor = UIColor.darkGray.cgColor
+        view.layer.shadowOffset = CGSize(width: 8, height: 0)
+        view.layer.opacity = 0.2
+        view.layer.shadowRadius = 5.0
+        return view
+    }()
+    var calendarButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
+        view.tintColor = Constants.Color.text
+        view.configuration?.buttonSize = .large
+        return view
+    }()
+    var settingButton: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(named: "settingButton"), for: .normal)
+        view.configuration?.buttonSize = .large
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,15 +91,27 @@ class SortViewController: BaseViewController {
     }
     
     override func configure() {
-        [tableView, emptyLabel].forEach {
+        [tableView, emptyLabel, calendarButton, settingButton].forEach {
             view.addSubview($0)
         }
     }
     
     override func setConstraints() {
+        calendarButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-26)
+            make.height.width.equalTo(40)
+        }
+        
+        settingButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
+            make.height.width.equalTo(40)
+        }
+        
         tableView.snp.makeConstraints { make in
 //            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.12)
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(60)
             make.trailing.leading.equalTo(view)
             make.bottom.equalTo(view)
         }
@@ -86,9 +120,8 @@ class SortViewController: BaseViewController {
             make.centerX.equalTo(view.safeAreaLayoutGuide)
             make.centerY.equalTo(view.safeAreaLayoutGuide).offset(-40)
         }
-
     }
-
+    
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     let vc1 = SortCardTodoViewController()
     let vc2 = SortCardDiaryViewController()

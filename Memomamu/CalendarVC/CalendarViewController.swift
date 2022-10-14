@@ -67,7 +67,7 @@ class CalendarViewController: BaseViewController {
         calendar.placeholderType = .none
         
     }
-
+    
     // MARK: UI
     var sortButton: UIButton = {
         let view = UIButton()
@@ -92,12 +92,8 @@ class CalendarViewController: BaseViewController {
         self.calendar.select(Date(), scrollToDate: false)
         self.calendar.accessibilityIdentifier = "calendar"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sortButton"), style: .plain, target: self, action: #selector(openSort))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingButton"), style: .plain, target: self, action: #selector(openSetting))
-        self.navigationController?.navigationBar.tintColor = Constants.Color.text
-        
-//        sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
-//        settingButton.addTarget(self, action: #selector(openSetting), for: .touchUpInside)
+        sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
+        settingButton.addTarget(self, action: #selector(openSetting), for: .touchUpInside)
         
         addPageVC()
         setPageConstraints()
@@ -109,22 +105,22 @@ class CalendarViewController: BaseViewController {
     
     override func configure() {
         view.backgroundColor = Constants.Color.background
-//        [sortButton, settingButton].forEach {
-//            view.addSubview($0)
-//        }
+        [sortButton, settingButton].forEach {
+            view.addSubview($0)
+        }
     }
     override func setConstraints() {
-//        sortButton.snp.makeConstraints { make in
-//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
-//            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)
-//            make.height.width.equalTo(40)
-//        }
-//        
-//        settingButton.snp.makeConstraints { make in
-//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
-//            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(16)
-//            make.height.width.equalTo(40)
-//        }
+        sortButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-26)
+            make.height.width.equalTo(40)
+        }
+        
+        settingButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
+            make.height.width.equalTo(40)
+        }
     }
     
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
@@ -149,7 +145,9 @@ class CalendarViewController: BaseViewController {
     
     @objc func openSort() {
         let vc = SortViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let nav = UINavigationController(rootViewController: vc)
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     @objc func openSetting() {
