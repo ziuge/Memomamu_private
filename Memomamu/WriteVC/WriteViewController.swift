@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class WriteViewController: UIViewController {
+class WriteViewController: BaseViewController {
     
     var selectedDate = DateFormatter.dateOnly.string(from: Date())
     
@@ -39,40 +39,19 @@ class WriteViewController: UIViewController {
         
         let rawDate = stringToDate(string: selectedDate)
         dateLabel.text = dateToString(date: rawDate)
-        configure()
-        setConstraints()
+
         addPageVC()
         
         viewButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
     }
     
-    func stringToDate(string: String) -> Date {
-        let selectedDate = string
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy. MM. dd."
-        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
-        formatter.locale = Locale(identifier: "en_US")
-        let date = formatter.date(from: selectedDate)!
-        return date
-    }
-    
-    func dateToString(date: Date) -> String {
-        let date = date
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d, MMMM"
-        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
-        formatter.locale = Locale(identifier: "en_US")
-        let string = formatter.string(from: date)
-        return string
-    }
-    
-    func configure() {
+    override func configure() {
         [containerView, viewButton, dateLabel].forEach {
             view.addSubview($0)
         }
         
     }
-    func setConstraints() {
+    override func setConstraints() {
         viewButton.snp.makeConstraints { make in
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.067)
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-16)

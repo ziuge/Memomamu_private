@@ -43,6 +43,9 @@
 		DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */; };
 		DEB297B928EAF7190023148B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEB297BB28EAF7190023148B /* Localizable.strings */; };
 		DEC3977028F84B2100DA06AF /* Toast+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3976F28F84B2100DA06AF /* Toast+Extension.swift */; };
+		DEC3977628F9374A00DA06AF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977528F9374A00DA06AF /* BaseViewController.swift */; };
+		DEC3977828F9378500DA06AF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977728F9378500DA06AF /* BaseView.swift */; };
+		DEC3977A28F938A500DA06AF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977928F938A500DA06AF /* Date+Extension.swift */; };
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
 		DEDD8F5928DB292800464FA7 /* ButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
@@ -90,6 +93,9 @@
 		DEB297BC28EAF73A0023148B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEB297BD28EAF7720023148B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DEC3976F28F84B2100DA06AF /* Toast+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Extension.swift"; sourceTree = "<group>"; };
+		DEC3977528F9374A00DA06AF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DEC3977728F9378500DA06AF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		DEC3977928F938A500DA06AF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
 		DEDD8F5828DB292800464FA7 /* ButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
@@ -226,6 +232,7 @@
 		DE7838B028D1AEDB0093F034 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DEC3977428F9373F00DA06AF /* Base */,
 				DE8CE76728D87C18008F8319 /* Extensions */,
 				DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */,
 				DE22096228C9B49500612BB1 /* Constants */,
@@ -258,8 +265,18 @@
 				DE8CE76828D87C28008F8319 /* Formatter+Extension.swift */,
 				DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */,
 				DEC3976F28F84B2100DA06AF /* Toast+Extension.swift */,
+				DEC3977928F938A500DA06AF /* Date+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DEC3977428F9373F00DA06AF /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DEC3977528F9374A00DA06AF /* BaseViewController.swift */,
+				DEC3977728F9378500DA06AF /* BaseView.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +400,7 @@
 				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
+				DEC3977628F9374A00DA06AF /* BaseViewController.swift in Sources */,
 				DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */,
 				DE01627B28E428910067A46D /* SortCardTodoTableViewCell.swift in Sources */,
 				DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */,
@@ -401,6 +419,7 @@
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
 				DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */,
 				DE0314E628D6BB7800FC9561 /* Repository.swift in Sources */,
+				DEC3977A28F938A500DA06AF /* Date+Extension.swift in Sources */,
 				DE22094528C9B32400612BB1 /* SceneDelegate.swift in Sources */,
 				DE22096428C9B49E00612BB1 /* Constants.swift in Sources */,
 				DE8908E628F7D46000651982 /* Diary.swift in Sources */,
@@ -409,6 +428,7 @@
 				DE0314D928D46DEA00FC9561 /* CalendarCell.swift in Sources */,
 				DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */,
 				DE22096C28C9BAB400612BB1 /* WriteTableViewCell.swift in Sources */,
+				DEC3977828F9378500DA06AF /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +590,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Memomamu/Memomamu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = DV7XBU83N5;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -589,7 +609,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Memomamu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -605,7 +625,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Memomamu/Memomamu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DV7XBU83N5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Memomamu/Info.plist;
@@ -623,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.Memomamu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

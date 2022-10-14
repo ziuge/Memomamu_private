@@ -14,7 +14,11 @@ class SettingViewController: UIViewController {
         return view
     }()
     
-    
+    var tableView: UITableView = {
+        let view = UITableView()
+        
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
