@@ -97,6 +97,7 @@ class CalendarViewController: BaseViewController {
         
         addPageVC()
         setPageConstraints()
+        print(self.navigationController)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -123,7 +124,6 @@ class CalendarViewController: BaseViewController {
         }
     }
     
-    
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     let vc1 = CardTodoViewController()
     let vc2 = CardDiaryViewController()
@@ -146,8 +146,8 @@ class CalendarViewController: BaseViewController {
     
     @objc func openSort() {
         let vc = SortViewController()
-//        let nav = UINavigationController(rootViewController: vc)
-        UIApplication.shared.windows.first?.rootViewController = vc
+        let nav = UINavigationController(rootViewController: vc)
+        UIApplication.shared.windows.first?.rootViewController = nav
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     

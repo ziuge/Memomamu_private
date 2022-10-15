@@ -57,7 +57,7 @@ class SortViewController: BaseViewController {
     }()
     var calendarButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(named: "sortButton.jpg"), for: .normal)
+        view.setImage(UIImage(named: "calendarButton.jpg"), for: .normal)
         view.tintColor = Constants.Color.text
         view.configuration?.buttonSize = .large
         return view
@@ -83,7 +83,10 @@ class SortViewController: BaseViewController {
         } else {
             emptyLabel.isHidden = true
         }
-
+        
+        settingButton.addTarget(self, action: #selector(openSetting), for: .touchUpInside)
+        calendarButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
+        print(self.navigationController)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -122,6 +125,17 @@ class SortViewController: BaseViewController {
         }
     }
     
+    @objc func openCalendar() {
+        let vc = CalendarViewController()
+        UIApplication.shared.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
+    
+    @objc func openSetting() {
+        let vc = SettingViewController()
+        self.navigationController?.show(vc, sender: self)
+    }
+    
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
     let vc1 = SortCardTodoViewController()
     let vc2 = SortCardDiaryViewController()
@@ -143,7 +157,11 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectedDate = date
         cell.setDate(date: date)
         cell.addPageVC(date: date, cell: cell)
+        cell.vc1.nav = self.navigationController ?? UINavigationController()
+        cell.vc2.nav = self.navigationController ?? UINavigationController()
         
+//        cell.vc.createPageViewController(vc1: vc1, vc2: vc2)
+//        cell.vc.configurePageViewController()
         cell.vc.setViewControllers([cell.vc1], direction: .forward, animated: false)
         
         return cell

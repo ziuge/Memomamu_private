@@ -20,6 +20,8 @@ class SortCardTodoViewController: BaseViewController {
         }
     }
     
+    var nav = UINavigationController()
+    
     func fetchRealm(date: String) {
         todos = repository.fetchTodo(date: date)
         tableView.reloadData()
@@ -96,7 +98,7 @@ class SortCardTodoViewController: BaseViewController {
         
         backgroundView.snp.makeConstraints { make in
             make.left.equalTo(view.safeAreaLayoutGuide).offset(spacing)
-            make.right.equalTo(view.safeAreaLayoutGuide)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(0)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
         }
@@ -120,11 +122,14 @@ class SortCardTodoViewController: BaseViewController {
     }
     
     @objc func goTodo(sender: UIButton) {
+//        print(#function)
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
 //        UIApplication.shared.windows.first?.rootViewController = vc
 //        UIApplication.shared.windows.first?.makeKeyAndVisible()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        print(self.nav)
+        self.nav.pushViewController(vc, animated: true)
+
     }
 }
 

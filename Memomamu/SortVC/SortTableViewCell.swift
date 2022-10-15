@@ -91,7 +91,9 @@ class SortTableViewCell: BaseTableViewCell {
         vc2.selectedDate = date
         vc.vc1 = vc1
         vc.vc2 = vc2
+//        self.inputViewController?.addChild(vc)
         containerView.addSubview(vc.view)
+//        vc.didMove(toParent: self.parentContainerViewController())
         vc.selectedDate = date
         vc.view.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalTo(cell.containerView)

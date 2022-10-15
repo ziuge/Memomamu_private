@@ -123,11 +123,13 @@ class CardTodoViewController: BaseViewController {
     }
 
     @objc func goTodo() {
+        print(#function)
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
         
 //        UIApplication.shared.windows.first?.rootViewController = vc
 //        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        print(self.navigationController)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
