@@ -36,6 +36,7 @@
 		DE22096E28C9CB5300612BB1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */; };
 		DE22097028C9CBA000612BB1 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096F28C9CBA000612BB1 /* Todo.swift */; };
 		DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */; };
+		DE80CEFB28FAE3C20060F195 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = DE80CEFA28FAE3C20060F195 /* SideMenu */; };
 		DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8908DA28F6EE8A00651982 /* SettingViewController.swift */; };
 		DE8908E628F7D46000651982 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8908E528F7D46000651982 /* Diary.swift */; };
 		DE8908EB28F7DAC000651982 /* DungGeunMo.otf in Resources */ = {isa = PBXBuildFile; fileRef = DE8908E828F7D49400651982 /* DungGeunMo.otf */; };
@@ -121,6 +122,7 @@
 				DEE9C09328F58CF500EAF7EA /* FirebaseCrashlytics in Frameworks */,
 				DE01627728E3DC200067A46D /* Realm in Frameworks */,
 				DE01627928E3DC200067A46D /* RealmSwift in Frameworks */,
+				DE80CEFB28FAE3C20060F195 /* SideMenu in Frameworks */,
 				DE22096A28C9BA5600612BB1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +310,7 @@
 				DEE9C09028F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */,
 				DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */,
 				DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */,
+				DE80CEFA28FAE3C20060F195 /* SideMenu */,
 			);
 			productName = Memomamu;
 			productReference = DE22093F28C9B32400612BB1 /* Memomamu.app */;
@@ -345,6 +348,7 @@
 				DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DEE9C08F28F58CF400EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DE80CEF928FAE3C10060F195 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = DE22094028C9B32400612BB1 /* Products */;
 			projectDirPath = "";
@@ -704,6 +708,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		DE80CEF928FAE3C10060F195 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		DE8CE76428D84A4B008F8319 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -742,6 +754,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		DE80CEFA28FAE3C20060F195 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE80CEF928FAE3C10060F195 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
 		};
 		DE8CE76528D84A4B008F8319 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

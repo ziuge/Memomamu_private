@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import FirebaseCore
 import FirebaseMessaging
+import SideMenu
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
+        // MARK: Firebase
         FirebaseApp.configure()
         
         if #available(iOS 10.0, *) {
@@ -41,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Messaging.messaging().delegate = self
         
+        // MARK: NavigationBar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithTransparentBackground()
         navigationBarAppearance.backgroundColor = Constants.Color.background

@@ -8,6 +8,7 @@
 import UIKit
 import FSCalendar
 import RealmSwift
+import SideMenu
 
 class CalendarViewController: BaseViewController {
     
@@ -97,7 +98,8 @@ class CalendarViewController: BaseViewController {
         
         addPageVC()
         setPageConstraints()
-        print(self.navigationController)
+        
+        setupSideMenu()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -144,6 +146,14 @@ class CalendarViewController: BaseViewController {
         }
     }
     
+    func setupSideMenu() {
+        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
+        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
+    }
+    
     @objc func openSort() {
         let vc = SortViewController()
         let nav = UINavigationController(rootViewController: vc)
@@ -153,8 +163,26 @@ class CalendarViewController: BaseViewController {
     
     @objc func openSetting() {
         let vc = SettingViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
+//        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+        let menu = SideMenuNavigationController(rootViewController: vc)
+
+        present(menu, animated: true)
+        
+//        transitionFromLeft(vc: vc)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+//    func transitionFromLeft(vc: UIViewController) {
+//        let customTransition = vc
+//        let animation = CATransition()
+//        animation.duration = 0.5
+//        animation.type = CATransitionType.push
+//        animation.subtype = CATransitionSubtype.fromLeft
+//        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        view.window?.layer.add(animation, forKey: "SwitchToView")
+//        present(customTransition, animated: false)
+//    }
 }
 
 // MARK: - CalendarVC Delegate, DataSource
