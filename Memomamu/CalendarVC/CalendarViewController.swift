@@ -100,6 +100,8 @@ class CalendarViewController: BaseViewController {
         setPageConstraints()
         
         setupSideMenu()
+        
+        calendar(calendar, didSelect: Date(), at: FSCalendarMonthPosition.current)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -198,6 +200,8 @@ extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCa
         vc1.fetchRealm()
         vc2.selectedDate = date
         vc2.fetchRealm()
+        vc1.nav = self.navigationController ?? UINavigationController()
+        vc2.nav = self.navigationController ?? UINavigationController()
     }
     
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {

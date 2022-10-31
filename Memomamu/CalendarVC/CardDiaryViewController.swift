@@ -29,6 +29,8 @@ class CardDiaryViewController: BaseViewController {
         }
     }
     
+    var nav = UINavigationController()
+    
     // MARK: UI
     var titleLabel: UILabel = {
         let view = UILabel()
@@ -71,6 +73,7 @@ class CardDiaryViewController: BaseViewController {
         return view
     }()
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchRealm()
@@ -128,7 +131,7 @@ class CardDiaryViewController: BaseViewController {
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
         vc.isDiarySelected = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.nav.pushViewController(vc, animated: true)
     }
 }
 

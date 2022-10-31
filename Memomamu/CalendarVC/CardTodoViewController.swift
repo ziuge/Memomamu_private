@@ -20,6 +20,8 @@ class CardTodoViewController: BaseViewController {
         }
     }
     
+    var nav = UINavigationController()
+    
     func fetchRealm() {
         todos = repository.fetchTodo(date: selectedDate)
         tableView.reloadData()
@@ -129,8 +131,8 @@ class CardTodoViewController: BaseViewController {
         
 //        UIApplication.shared.windows.first?.rootViewController = vc
 //        UIApplication.shared.windows.first?.makeKeyAndVisible()
-        print(self.navigationController)
-        self.navigationController?.pushViewController(vc, animated: true)
+        print(self.nav)
+        self.nav.pushViewController(vc, animated: true)
     }
 }
 
