@@ -8,7 +8,8 @@
 import UIKit
 import FSCalendar
 import RealmSwift
-import SideMenu
+//import SideMenu
+import Hero
 
 class CalendarViewController: BaseViewController {
     
@@ -99,9 +100,10 @@ class CalendarViewController: BaseViewController {
         addPageVC()
         setPageConstraints()
         
-        setupSideMenu()
+//        setupSideMenu()
         
         calendar(calendar, didSelect: Date(), at: FSCalendarMonthPosition.current)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -121,11 +123,11 @@ class CalendarViewController: BaseViewController {
             make.height.width.equalTo(40)
         }
         
-        settingButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
-            make.height.width.equalTo(40)
-        }
+//        settingButton.snp.makeConstraints { make in
+//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+//            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
+//            make.height.width.equalTo(40)
+//        }
     }
     
     let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
@@ -148,13 +150,13 @@ class CalendarViewController: BaseViewController {
         }
     }
     
-    func setupSideMenu() {
-        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
-        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
-    }
+//    func setupSideMenu() {
+//        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
+//        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+//        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+//        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
+//    }
     
     @objc func openSort() {
         let vc = SortViewController()
@@ -165,14 +167,12 @@ class CalendarViewController: BaseViewController {
     
     @objc func openSetting() {
         let vc = SettingViewController()
-//        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-//        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-        let menu = SideMenuNavigationController(rootViewController: vc)
 
-        present(menu, animated: true)
+        vc.hero.isEnabled = true
+        vc.hero.modalAnimationType = .selectBy(presenting: .pull(direction: .right), dismissing: .push(direction: .left))
         
-//        transitionFromLeft(vc: vc)
-//        self.navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true)
+        
     }
     
 //    func transitionFromLeft(vc: UIViewController) {

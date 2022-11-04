@@ -38,6 +38,9 @@ class WriteViewController: BaseViewController {
         if isDiarySelected == true {
             vc.setViewControllers([vc.vc2], direction: .forward, animated: true)
         }
+        
+        self.navigationController?.navigationBar.tintColor = Constants.Color.text
+        self.navigationController?.navigationBar.topItem?.title = ""
     }
     
     override func configure() {

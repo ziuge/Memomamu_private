@@ -35,6 +35,7 @@
 		DE22096C28C9BAB400612BB1 /* WriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096B28C9BAB400612BB1 /* WriteTableViewCell.swift */; };
 		DE22096E28C9CB5300612BB1 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */; };
 		DE22097028C9CBA000612BB1 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096F28C9CBA000612BB1 /* Todo.swift */; };
+		DE27189B291022AF0072B412 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = DE27189A291022AF0072B412 /* Hero */; };
 		DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */; };
 		DE80CEFB28FAE3C20060F195 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = DE80CEFA28FAE3C20060F195 /* SideMenu */; };
 		DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8908DA28F6EE8A00651982 /* SettingViewController.swift */; };
@@ -123,6 +124,7 @@
 				DE01627728E3DC200067A46D /* Realm in Frameworks */,
 				DE01627928E3DC200067A46D /* RealmSwift in Frameworks */,
 				DE80CEFB28FAE3C20060F195 /* SideMenu in Frameworks */,
+				DE27189B291022AF0072B412 /* Hero in Frameworks */,
 				DE22096A28C9BA5600612BB1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +313,7 @@
 				DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */,
 				DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */,
 				DE80CEFA28FAE3C20060F195 /* SideMenu */,
+				DE27189A291022AF0072B412 /* Hero */,
 			);
 			productName = Memomamu;
 			productReference = DE22093F28C9B32400612BB1 /* Memomamu.app */;
@@ -349,6 +352,7 @@
 				DE01627528E3DC200067A46D /* XCRemoteSwiftPackageReference "realm-swift" */,
 				DEE9C08F28F58CF400EAF7EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				DE80CEF928FAE3C10060F195 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				DE271899291022AE0072B412 /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = DE22094028C9B32400612BB1 /* Products */;
 			projectDirPath = "";
@@ -708,6 +712,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		DE271899291022AE0072B412 /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.2;
+			};
+		};
 		DE80CEF928FAE3C10060F195 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
@@ -754,6 +766,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DE22096828C9BA5600612BB1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		DE27189A291022AF0072B412 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DE271899291022AE0072B412 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
 		};
 		DE80CEFA28FAE3C20060F195 /* SideMenu */ = {
 			isa = XCSwiftPackageProductDependency;

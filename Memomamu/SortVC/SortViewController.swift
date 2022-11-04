@@ -86,7 +86,7 @@ class SortViewController: BaseViewController {
         
         settingButton.addTarget(self, action: #selector(openSetting), for: .touchUpInside)
         calendarButton.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
-        print(self.navigationController)
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -106,14 +106,14 @@ class SortViewController: BaseViewController {
             make.height.width.equalTo(40)
         }
         
-        settingButton.snp.makeConstraints { make in
-            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
-            make.height.width.equalTo(40)
-        }
+//        settingButton.snp.makeConstraints { make in
+//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+//            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
+//            make.height.width.equalTo(40)
+//        }
         
         tableView.snp.makeConstraints { make in
-//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(view.frame.height * 0.12)
+
             make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(60)
             make.trailing.leading.equalTo(view)
             make.bottom.equalTo(view)
