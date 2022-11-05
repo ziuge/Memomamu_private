@@ -106,6 +106,11 @@ class CalendarViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchEverything()
+        calendar.reloadData()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         self.dismiss(animated: true)
     }
