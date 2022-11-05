@@ -38,7 +38,7 @@ class WriteTableViewCell: BaseTableViewCell {
         let view = UIButton()
         view.backgroundColor = Constants.Color.background.withAlphaComponent(0.7)
         view.setTitleColor(Constants.Color.paper, for: .normal)
-        view.setTitle("완료", for: .normal)
+        view.setTitle(NSLocalizedString("FinishedButton", comment: "Finish"), for: .normal)
         view.titleLabel?.font = Constants.Font.content
         
         return view
@@ -47,24 +47,27 @@ class WriteTableViewCell: BaseTableViewCell {
         let view = UIButton()
         view.backgroundColor = Constants.Color.background.withAlphaComponent(0.7)
         view.setTitleColor(Constants.Color.paper, for: .normal)
-        view.setTitle("연기", for: .normal)
+        view.setTitle(NSLocalizedString("DelayedButton", comment: "Delayed"), for: .normal)
         view.titleLabel?.font = Constants.Font.content
+        view.intrinsicContentSize.width
         return view
     }()
     let unfinishedButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = Constants.Color.background.withAlphaComponent(0.7)
         view.setTitleColor(Constants.Color.paper, for: .normal)
-        view.setTitle("미완료", for: .normal)
+        view.setTitle(NSLocalizedString("UnfinishedButton", comment: "Unfinished"), for: .normal)
         view.titleLabel?.font = Constants.Font.content
+        view.intrinsicContentSize.width
         return view
     }()
     let deleteButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = Constants.Color.text
         view.setTitleColor(Constants.Color.paper, for: .normal)
-        view.setTitle("삭제", for: .normal)
+        view.setTitle(NSLocalizedString("DeleteButton", comment: "Delete"), for: .normal)
         view.titleLabel?.font = Constants.Font.content
+        view.intrinsicContentSize.width
         return view
     }()
 //    var stackView: UIStackView = {
@@ -136,9 +139,7 @@ class WriteTableViewCell: BaseTableViewCell {
         }
         
         todoTextView.snp.makeConstraints { make in
-//            make.topMargin.equalTo(contentView).offset(16)
             make.bottomMargin.equalTo(contentView).offset(-18)
-//            make.centerY.equalTo(contentView)
             make.top.equalTo(checkButton.snp.top).offset(-4)
             make.leadingMargin.equalTo(checkButton.snp.trailing).offset(15)
             make.trailingMargin.equalTo(contentView).offset(-52)
@@ -147,34 +148,35 @@ class WriteTableViewCell: BaseTableViewCell {
         changeCheckView.snp.makeConstraints { make in
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(todoTextView.snp.leading)
+            make.trailing.equalTo(todoTextView.snp.trailing).offset(20)
             make.height.equalTo(26)
-            make.width.equalTo(208)
+            
         }
 
         finishedButton.snp.makeConstraints { make in
             make.height.equalTo(26)
-            make.width.equalTo(40)
+//            make.width.equalTo(40)
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(todoTextView.snp.leading)
         }
         
         delayedButton.snp.makeConstraints { make in
             make.height.equalTo(26)
-            make.width.equalTo(40)
+//            make.width.equalTo(40)
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(finishedButton.snp.trailing).offset(8)
         }
         
         unfinishedButton.snp.makeConstraints { make in
             make.height.equalTo(26)
-            make.width.equalTo(54)
+//            make.width.equalTo(54)
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(delayedButton.snp.trailing).offset(8)
         }
         
         deleteButton.snp.makeConstraints { make in
             make.height.equalTo(26)
-            make.width.equalTo(40)
+//            make.width.equalTo(40)
             make.top.equalTo(todoTextView.snp.bottom)
             make.leading.equalTo(unfinishedButton.snp.trailing).offset(8)
         }

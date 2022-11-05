@@ -257,7 +257,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         let cell: WriteTableViewCell = tableView.cellForRow(at: [0, sender.tag]) as! WriteTableViewCell
         cell.changeCheckView.isHidden = false
         repository.addTodo(item: Todo(date: nextDay(string: selectedDate), orderDate: Date(), todo: todos[sender.tag].todo, check: 0, color: 0))
-        showToast(message: "내일 할 일에 추가했어요!")
+        showToast(message: NSLocalizedString("AddToTomorrow", comment: "AddToTomorrow"))
         fetchRealm()
     }
     @objc func changeCheckUnfinished(sender: UIButton) {

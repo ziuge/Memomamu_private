@@ -10,3 +10,12 @@
 "WriteDiary" = "How was your day?                                                       ";
 "EmptySortTable" = "Add your diary";
 "fontName" = "DungGeunMo";
+
+// Buttons
+"FinishedButton" = " Done ";
+"DelayedButton" = " Delay ";
+"UnfinishedButton" = " Undone ";
+"DeleteButton" = " × ";
+
+// Toast
+"AddToTomorrow" = "Added to tomorrow's list!";

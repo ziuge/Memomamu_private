@@ -10,3 +10,12 @@
 "WriteDiary" = "오늘 하루를 작성해보세요 :)                                                       ";
 "EmptySortTable" = "아직 할 일이 없어요 ;(";
 "fontName" = "DungGeunMo";
+
+// Buttons
+"FinishedButton" = " 완료 ";
+"DelayedButton" = " 연기 ";
+"UnfinishedButton" = " 미완료 ";
+"DeleteButton" = " 삭제 ";
+
+// Toast
+"AddToTomorrow" = "내일 할 일에 추가했어요!";

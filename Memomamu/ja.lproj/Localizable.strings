@@ -10,3 +10,12 @@
 "WriteDiary" = "今日はどうでしたか?                                                       ";
 "EmptySortTable" = "まだ空いてます ;(";
 "fontName" = "BestTen-CRT";
+
+// Buttons
+"FinishedButton" = " 完了 ";
+"DelayedButton" = " 延期 ";
+"UnfinishedButton" = " 未完了 ";
+"DeleteButton" = " 削除 ";
+
+// Toast
+"AddToTomorrow" = "明日のリストに追加しました!";
