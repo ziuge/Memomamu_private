@@ -56,7 +56,7 @@ class SortTableViewCell: BaseTableViewCell {
     
     func setDate(date: String) {
         let rawDate = stringToDate(string: date)
-        self.dateView.dateLabel.text = dateToString(date: rawDate)
+        dateView.dateLabel.text = dateToString(date: rawDate)
     }
     
     override func configure() {

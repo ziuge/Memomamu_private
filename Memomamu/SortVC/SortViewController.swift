@@ -127,8 +127,15 @@ class SortViewController: BaseViewController {
     
     @objc func openCalendar() {
         let vc = CalendarViewController()
-        UIApplication.shared.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        let nav = UINavigationController(rootViewController: vc)
+//        UIApplication.shared.windows.first?.rootViewController = UINavigationController(rootViewController: vc)
+//        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
     }
     
     @objc func openSetting() {
