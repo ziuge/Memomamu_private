@@ -48,7 +48,7 @@ class SortDateView: BaseView {
     }
     
     override func configure() {
-        self.backgroundColor = Constants.Color.background
+        backgroundColor = Constants.Color.background
         [backgroundView, dateLabel, shadowImage].forEach {
             self.addSubview($0)
         }

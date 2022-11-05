@@ -91,8 +91,8 @@ class CalendarViewController: BaseViewController {
         fetchEverything()
         makeCalendar()
 
-        self.calendar.select(Date(), scrollToDate: false)
-        self.calendar.accessibilityIdentifier = "calendar"
+        calendar.select(Date(), scrollToDate: false)
+        calendar.accessibilityIdentifier = "calendar"
         
         sortButton.addTarget(self, action: #selector(openSort), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(openSetting), for: .touchUpInside)
@@ -166,8 +166,14 @@ class CalendarViewController: BaseViewController {
     @objc func openSort() {
         let vc = SortViewController()
         let nav = UINavigationController(rootViewController: vc)
-        UIApplication.shared.windows.first?.rootViewController = nav
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        UIApplication.shared.windows.first?.rootViewController = nav
+//        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
     }
     
     @objc func openSetting() {

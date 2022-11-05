@@ -27,7 +27,7 @@ class CalendarCell: FSCalendarCell {
         let selectionLayer = CAShapeLayer()
         selectionLayer.fillColor = UIColor.black.cgColor
         selectionLayer.actions = ["hidden": NSNull()]
-        self.contentView.layer.insertSublayer(selectionLayer, below: self.titleLabel!.layer)
+        contentView.layer.insertSublayer(selectionLayer, below: self.titleLabel!.layer)
         self.selectionLayer = selectionLayer
         
 //        self.shapeLayer.isHidden = true
