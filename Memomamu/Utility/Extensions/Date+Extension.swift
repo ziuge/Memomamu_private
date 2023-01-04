@@ -36,7 +36,7 @@ extension UIViewController {
         formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
         formatter.locale = Locale(identifier: "en_US")
         let string = formatter.string(from: rawDate)
-        print(#function, string)
+//        print(#function, string)
         return string
     }
 }

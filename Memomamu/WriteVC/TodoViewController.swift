@@ -13,7 +13,7 @@ class TodoViewController: BaseViewController {
     var selectedDate: String = DateFormatter.dateOnly.string(from: Date())
     var arrIndexPath = [IndexPath]() {
         didSet {
-            print(arrIndexPath)
+//            print(arrIndexPath)
         }
     }
     

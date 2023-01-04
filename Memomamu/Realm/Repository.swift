@@ -27,12 +27,12 @@ class Repository: ContentRepositoryType {
     }
     
     func fetchTodo(date: String) -> Results<Todo> {
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         return localRealm.objects(Todo.self).filter("date == %@", date).sorted(byKeyPath: "orderDate", ascending: true)
     }
     
     func fetchDiary(date: String) -> Diary? {
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
         guard let diary = localRealm.objects(Diary.self).filter("date == %@", date).first else { return nil }
         
         return diary

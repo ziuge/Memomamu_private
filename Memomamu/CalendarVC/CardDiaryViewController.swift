@@ -131,7 +131,7 @@ class CardDiaryViewController: BaseViewController {
     }
     
     @objc func goTodo() {
-        print(#function)
+//        print(#function)
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
         vc.isDiarySelected = true

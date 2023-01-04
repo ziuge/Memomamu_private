@@ -122,7 +122,6 @@ class SortCardTodoViewController: BaseViewController {
     }
     
     @objc func goTodo(sender: UIButton) {
-//        print(#function)
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
 //        UIApplication.shared.windows.first?.rootViewController = vc
