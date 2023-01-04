@@ -89,7 +89,7 @@ class CalendarViewController: BaseViewController {
         super.viewDidLoad()
         
         fetchEverything()
-        makeCalendar()
+//        makeCalendar()
 
         calendar.select(Date(), scrollToDate: false)
         calendar.accessibilityIdentifier = "calendar"
@@ -117,6 +117,7 @@ class CalendarViewController: BaseViewController {
     
     override func configure() {
         view.backgroundColor = Constants.Color.background
+        makeCalendar()
         [sortButton, settingButton].forEach {
             view.addSubview($0)
         }

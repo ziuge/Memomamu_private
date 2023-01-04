@@ -81,6 +81,10 @@ class CardDiaryViewController: BaseViewController {
         clickButton.addTarget(self, action: #selector(goTodo), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchRealm()
+    }
+    
     override func configure() {
         view.addSubview(backgroundView)
         [titleLabel, diaryImageView, diaryTextView, diaryNilLabel].forEach {

@@ -79,6 +79,10 @@ class CardTodoViewController: BaseViewController {
         clickButton.addTarget(self, action: #selector(goTodo), for: .touchUpInside)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchRealm()
+    }
+    
     override func configure() {
         view.addSubview(backgroundView)
         [tableView, titleLabel, todoNilLabel].forEach {
