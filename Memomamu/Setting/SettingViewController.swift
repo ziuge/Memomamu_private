@@ -22,8 +22,10 @@ enum SettingOptions: Int, CaseIterable {
 class SettingViewController: BaseViewController {
     
     // MARK: UI
-    var logoImageView: UIImageView = {
-        let view = UIImageView(image: UIImage(named: "Frame"))
+    var logoImageView: UIButton = {
+//        let view = UIImageView(image: UIImage(named: "Frame"))
+        let view = UIButton()
+        view.setImage(UIImage(named: "Frame"), for: .normal)
         return view
     }()
     lazy var tableView: UITableView = {
@@ -39,6 +41,8 @@ class SettingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.background
+        
+        logoImageView.addTarget(self, action: #selector(logoButtonClicked), for: .touchUpInside)
     }
     
     override func configure() {
@@ -46,7 +50,6 @@ class SettingViewController: BaseViewController {
             view.addSubview($0)
         }
     }
-    
     override func setConstraints() {
         let spacing = 16
         
@@ -56,12 +59,14 @@ class SettingViewController: BaseViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
             make.leading.equalTo(view).offset(spacing * 2)
         }
-        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(logoImageView.snp.bottom).offset(spacing * 2)
             make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-        
+    }
+    
+    @objc func logoButtonClicked() {
+        self.dismiss(animated: true)
     }
     
 }
@@ -89,5 +94,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         return 52
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.dismiss(animated: true)
+    }
     
 }

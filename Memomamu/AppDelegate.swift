@@ -104,7 +104,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     // 토큰 갱신 모니터링: 토큰 정보가 언제 바뀔까?
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-      print("Firebase registration token: \(String(describing: fcmToken))")
+//      print("Firebase registration token: \(String(describing: fcmToken))")
 
       let dataDict: [String: String] = ["token": fcmToken ?? ""]
       NotificationCenter.default.post(

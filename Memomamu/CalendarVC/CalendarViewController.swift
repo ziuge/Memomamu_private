@@ -13,6 +13,10 @@ import Hero
 
 class CalendarViewController: BaseViewController {
     
+    let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    let vc1 = CardTodoViewController()
+    let vc2 = CardDiaryViewController()
+    
     // MARK: Realm
     let repository = Repository()
     var todos: Results<Todo>?
@@ -85,6 +89,7 @@ class CalendarViewController: BaseViewController {
         return view
     }()
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -128,17 +133,12 @@ class CalendarViewController: BaseViewController {
             make.trailingMargin.equalTo(view.safeAreaLayoutGuide).offset(-26)
             make.height.width.equalTo(40)
         }
-        
-//        settingButton.snp.makeConstraints { make in
-//            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
-//            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
-//            make.height.width.equalTo(40)
-//        }
+        settingButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.leadingMargin.equalTo(view.safeAreaLayoutGuide).offset(26)
+            make.height.width.equalTo(40)
+        }
     }
-    
-    let vc = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    let vc1 = CardTodoViewController()
-    let vc2 = CardDiaryViewController()
     
     func addPageVC() {
         vc.vc1 = vc1
@@ -179,12 +179,12 @@ class CalendarViewController: BaseViewController {
     
     @objc func openSetting() {
         let vc = SettingViewController()
-
+        vc.modalPresentationStyle = .overFullScreen
         vc.hero.isEnabled = true
         vc.hero.modalAnimationType = .selectBy(presenting: .pull(direction: .right), dismissing: .push(direction: .left))
         
-        present(vc, animated: true)
-        
+        present(vc, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 //    func transitionFromLeft(vc: UIViewController) {
