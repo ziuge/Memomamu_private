@@ -11,6 +11,7 @@ import RealmSwift
 class CardTodoViewController: BaseViewController {
     
     var selectedDate = DateFormatter.dateOnly.string(from: Date())
+    var nav = UINavigationController()
     
     // MARK: Realm
     let repository = Repository()
@@ -19,8 +20,6 @@ class CardTodoViewController: BaseViewController {
             tableView.reloadData()
         }
     }
-    
-    var nav = UINavigationController()
     
     func fetchRealm() {
         todos = repository.fetchTodo(date: selectedDate)
@@ -93,7 +92,6 @@ class CardTodoViewController: BaseViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
     }
-    
     override func setConstraints() {
         let spacing = 40
         
@@ -129,14 +127,9 @@ class CardTodoViewController: BaseViewController {
     }
 
     @objc func goTodo() {
-//        print(#function)
         let vc = WriteViewController()
         vc.selectedDate = self.selectedDate
-        
-//        UIApplication.shared.windows.first?.rootViewController = vc
-//        UIApplication.shared.windows.first?.makeKeyAndVisible()
-//        print(self.nav)
-        self.nav.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

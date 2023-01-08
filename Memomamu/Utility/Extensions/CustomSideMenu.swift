@@ -13,8 +13,13 @@ class CustomSideMenuNavigationController: SideMenuNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.menuWidth = self.view.frame.width * 0.8
-        self.presentationStyle = .viewSlideOutMenuPartialIn
+        self.menuWidth = self.view.frame.width
+//        self.presentationStyle = .viewSlideOutMenuPartialIn
+        
+        self.presentationStyle = .menuSlideIn
+        self.presentationStyle.backgroundColor = .black
+        self.presentationStyle.presentingEndAlpha = 0.7
+        
     }
     
 }

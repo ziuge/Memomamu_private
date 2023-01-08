@@ -37,6 +37,9 @@
 		DE22097028C9CBA000612BB1 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE22096F28C9CBA000612BB1 /* Todo.swift */; };
 		DE27189B291022AF0072B412 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = DE27189A291022AF0072B412 /* Hero */; };
 		DE5EB48A296A9AB70023A49F /* CustomSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EB489296A9AB70023A49F /* CustomSideMenu.swift */; };
+		DE5EB48C296AA58F0023A49F /* SetNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EB48B296AA58F0023A49F /* SetNotificationViewController.swift */; };
+		DE5EB48E296AA5990023A49F /* SetFontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EB48D296AA5990023A49F /* SetFontViewController.swift */; };
+		DE5EB490296AA5A20023A49F /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EB48F296AA5A20023A49F /* SetThemeViewController.swift */; };
 		DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */; };
 		DE80CEFB28FAE3C20060F195 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = DE80CEFA28FAE3C20060F195 /* SideMenu */; };
 		DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8908DA28F6EE8A00651982 /* SettingViewController.swift */; };
@@ -89,6 +92,9 @@
 		DE22096D28C9CB5300612BB1 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		DE22096F28C9CBA000612BB1 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		DE5EB489296A9AB70023A49F /* CustomSideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenu.swift; sourceTree = "<group>"; };
+		DE5EB48B296AA58F0023A49F /* SetNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNotificationViewController.swift; sourceTree = "<group>"; };
+		DE5EB48D296AA5990023A49F /* SetFontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFontViewController.swift; sourceTree = "<group>"; };
+		DE5EB48F296AA5A20023A49F /* SetThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
 		DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
 		DE8908DA28F6EE8A00651982 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		DE8908E528F7D46000651982 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
@@ -253,6 +259,9 @@
 			isa = PBXGroup;
 			children = (
 				DE8908DA28F6EE8A00651982 /* SettingViewController.swift */,
+				DE5EB48B296AA58F0023A49F /* SetNotificationViewController.swift */,
+				DE5EB48D296AA5990023A49F /* SetFontViewController.swift */,
+				DE5EB48F296AA5A20023A49F /* SetThemeViewController.swift */,
 				DEC3977B28F93E4100DA06AF /* SettingTableViewCell.swift */,
 			);
 			path = Setting;
@@ -411,11 +420,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEC3977C28F93E4100DA06AF /* SettingTableViewCell.swift in Sources */,
+				DE5EB48E296AA5990023A49F /* SetFontViewController.swift in Sources */,
 				DE01627228E32CFC0067A46D /* SortCardTodoViewController.swift in Sources */,
 				DE0314D728D4574400FC9561 /* CalendarViewController.swift in Sources */,
 				DE1F8EBA28D0820300877A49 /* TodoViewController.swift in Sources */,
 				DE0504B528CCBC3C00945FD8 /* PageViewController.swift in Sources */,
 				DEC3977628F9374A00DA06AF /* BaseViewController.swift in Sources */,
+				DE5EB490296AA5A20023A49F /* SetThemeViewController.swift in Sources */,
 				DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */,
 				DE01627B28E428910067A46D /* SortCardTodoTableViewCell.swift in Sources */,
 				DE0314E928D6BF9A00FC9561 /* TodoEnum.swift in Sources */,
@@ -430,6 +441,7 @@
 				DE01626D28E2E4470067A46D /* SortDateView.swift in Sources */,
 				DE01627428E32D1B0067A46D /* SortCardDiaryViewController.swift in Sources */,
 				DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */,
+				DE5EB48C296AA58F0023A49F /* SetNotificationViewController.swift in Sources */,
 				DEC3977028F84B2100DA06AF /* Toast+Extension.swift in Sources */,
 				DE22094328C9B32400612BB1 /* AppDelegate.swift in Sources */,
 				DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */,

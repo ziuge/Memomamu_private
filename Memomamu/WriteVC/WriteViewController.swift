@@ -47,7 +47,6 @@ class WriteViewController: BaseViewController {
         [containerView, dateLabel].forEach {
             view.addSubview($0)
         }
-        
     }
     override func setConstraints() {
         dateLabel.snp.makeConstraints { make in

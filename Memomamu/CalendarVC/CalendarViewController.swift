@@ -92,9 +92,7 @@ class CalendarViewController: BaseViewController {
     // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fetchEverything()
-//        makeCalendar()
 
         calendar.select(Date(), scrollToDate: false)
         calendar.accessibilityIdentifier = "calendar"
@@ -105,10 +103,7 @@ class CalendarViewController: BaseViewController {
         addPageVC()
         setPageConstraints()
         
-//        setupSideMenu()
-        
         calendar(calendar, didSelect: Date(), at: FSCalendarMonthPosition.current)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,15 +150,7 @@ class CalendarViewController: BaseViewController {
             make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-36)
         }
     }
-    
-    func setupSideMenu() {
-        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
-        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
-    }
-    
+
     @objc func openSort() {
         let vc = SortViewController()
         let nav = UINavigationController(rootViewController: vc)
@@ -187,7 +174,6 @@ class CalendarViewController: BaseViewController {
         SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
         SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
-        
         
         present(leftMenuNavigationController, animated: true, completion: nil)
 

@@ -46,8 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: NavigationBar
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithTransparentBackground()
-        navigationBarAppearance.backgroundColor = Constants.Color.background
-        
+        navigationBarAppearance.backgroundColor = .clear
+
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
