@@ -26,6 +26,7 @@ class SettingViewController: BaseViewController {
 //        let view = UIImageView(image: UIImage(named: "Frame"))
         let view = UIButton()
         view.setImage(UIImage(named: "Frame"), for: .normal)
+        view.setImage(UIImage(named: "Frame"), for: .highlighted)
         return view
     }()
     lazy var tableView: UITableView = {
@@ -38,9 +39,16 @@ class SettingViewController: BaseViewController {
         return view
     }()
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.background
+        
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+//        swipeRight.direction = .right
+//        view.addGestureRecognizer(swipeRight)
+////        self.didSwipe(swipeRight)
+//        self.activatedGestureRecognizer(gesture: swipeRight)
         
         logoImageView.addTarget(self, action: #selector(logoButtonClicked), for: .touchUpInside)
     }
@@ -69,6 +77,23 @@ class SettingViewController: BaseViewController {
         self.dismiss(animated: true)
     }
     
+    @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
+        print(#function)
+//        if sender.state == .ended {
+//            self.dismiss(animated: true)
+//        }
+        self.dismiss(animated: true)
+        
+    }
+    
+//    func activatedGestureRecognizer(gesture: UIGestureRecognizer) {
+//        print(#function)
+//        print(gesture.state.rawValue)
+//        if gesture.state == .ended {
+//            self.dismiss(animated: true)
+//        }
+//    }
+    
 }
 
 // MARK: TableView Delegate, DataSource
@@ -95,7 +120,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.dismiss(animated: true)
+        
     }
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 import RealmSwift
-//import SideMenu
+import SideMenu
 import Hero
 
 class CalendarViewController: BaseViewController {
@@ -156,19 +156,17 @@ class CalendarViewController: BaseViewController {
         }
     }
     
-//    func setupSideMenu() {
-//        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-//        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-//        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
-//        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
-//    }
+    func setupSideMenu() {
+        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
+        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
+    }
     
     @objc func openSort() {
         let vc = SortViewController()
         let nav = UINavigationController(rootViewController: vc)
-//        UIApplication.shared.windows.first?.rootViewController = nav
-//        UIApplication.shared.windows.first?.makeKeyAndVisible()
         
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
@@ -179,12 +177,20 @@ class CalendarViewController: BaseViewController {
     
     @objc func openSetting() {
         let vc = SettingViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        vc.hero.isEnabled = true
-        vc.hero.modalAnimationType = .selectBy(presenting: .pull(direction: .right), dismissing: .push(direction: .left))
+//        vc.modalPresentationStyle = .overFullScreen
+//        vc.hero.isEnabled = true
+//        vc.hero.modalAnimationType = .selectBy(presenting: .pull(direction: .right), dismissing: .push(direction: .left))
         
-        present(vc, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(vc, animated: true)
+//        let menu = SideMenuNavigationController(rootViewController: vc)
+        let leftMenuNavigationController = CustomSideMenuNavigationController(rootViewController: vc)
+        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
+        
+        
+        present(leftMenuNavigationController, animated: true, completion: nil)
+
     }
     
 //    func transitionFromLeft(vc: UIViewController) {
