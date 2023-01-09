@@ -23,6 +23,7 @@ enum Constants {
         static let content = UIFont(name: NSLocalizedString("fontName", comment: "폰트 이름"), size: 15)
         static let button = UIFont(name: NSLocalizedString("fontName", comment: "폰트 이름"), size: 15)
         static let smallContent = UIFont(name: NSLocalizedString("fontName", comment: "폰트 이름"), size: 14)
+        static let smallButton = UIFont(name: NSLocalizedString("fontName", comment: "폰트 이름"), size: 12)
     }
 }
 

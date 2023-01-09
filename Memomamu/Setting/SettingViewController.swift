@@ -48,6 +48,9 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.Color.background
         
+        self.navigationController?.navigationBar.tintColor = Constants.Color.text
+        self.navigationController?.navigationBar.topItem?.title = ""
+        
         logoImageView.addTarget(self, action: #selector(logoButtonClicked), for: .touchUpInside)
     }
     

@@ -169,14 +169,15 @@ class CalendarViewController: BaseViewController {
 //        vc.hero.modalAnimationType = .selectBy(presenting: .pull(direction: .right), dismissing: .push(direction: .left))
         
 //        let menu = SideMenuNavigationController(rootViewController: vc)
-        let leftMenuNavigationController = CustomSideMenuNavigationController(rootViewController: vc)
-        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
-        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
-        
-        present(leftMenuNavigationController, animated: true, completion: nil)
+//        let leftMenuNavigationController = CustomSideMenuNavigationController(rootViewController: vc)
+//        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+//        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view)
+//        SideMenuManager.default.leftMenuNavigationController?.pushStyle = .default
+//        
+//        present(leftMenuNavigationController, animated: true, completion: nil)
 
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 //    func transitionFromLeft(vc: UIViewController) {
