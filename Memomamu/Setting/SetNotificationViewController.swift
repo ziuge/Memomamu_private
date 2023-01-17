@@ -9,6 +9,10 @@ import UIKit
 
 class SetNotificationViewController: BaseViewController {
     
+    private var time: Date?
+    
+    let datePicker = UIDatePicker()
+    
     // MARK: UI
     var logoImageView: UIButton = {
         let view = UIButton()
@@ -35,8 +39,8 @@ class SetNotificationViewController: BaseViewController {
     var switchStack: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
-        view.distribution = .equalSpacing
-        view.spacing = 8
+        view.distribution = .fill
+        view.spacing = 12
         view.layoutMargins = UIEdgeInsets(top: .zero, left: 16, bottom: .zero, right: 16)
         view.isLayoutMarginsRelativeArrangement = true
         return view
@@ -44,13 +48,21 @@ class SetNotificationViewController: BaseViewController {
     var onButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "switchOn"), for: .normal)
-        view.setTitle("on", for: .normal)
+        view.setTitle(" on", for: .normal)
+        view.titleLabel?.font = Constants.Font.content
+        view.setTitleColor(Constants.Color.text, for: .normal)
         return view
     }()
     var offButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "switchOff"), for: .normal)
-        view.setTitle("off", for: .normal)
+        view.setTitle(" off", for: .normal)
+        view.titleLabel?.font = Constants.Font.content
+        view.setTitleColor(Constants.Color.text, for: .normal)
+        return view
+    }()
+    var emptyView: UIView = {
+        let view = UIView()
         return view
     }()
     
@@ -63,6 +75,7 @@ class SetNotificationViewController: BaseViewController {
     var setTimeStack: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
+        view.distribution = .fillEqually
         view.layoutMargins = UIEdgeInsets(top: .zero, left: 16, bottom: .zero, right: 16)
         view.isLayoutMarginsRelativeArrangement = true
         return view
@@ -74,10 +87,17 @@ class SetNotificationViewController: BaseViewController {
         view.font = Constants.Font.content
         return view
     }()
+    var setTimeTextField: UITextField = {
+        let view = UITextField()
+        view.backgroundColor = .black
+        view.text = "09:00"
+        view.font = Constants.Font.content
+        view.textColor = Constants.Color.text
+        return view
+    }()
     var setTimePicker: UIDatePicker = {
         let view = UIDatePicker()
         view.datePickerMode = .time
-        
         return view
     }()
     
@@ -119,7 +139,6 @@ class SetNotificationViewController: BaseViewController {
         return view
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -133,10 +152,10 @@ class SetNotificationViewController: BaseViewController {
         [switchStack, lineImage, setTimeStack, setEventStack].forEach {
             stack.addArrangedSubview($0)
         }
-        [onButton, offButton].forEach {
+        [onButton, offButton, emptyView].forEach {
             switchStack.addArrangedSubview($0)
         }
-        [setTimeLabel, setTimePicker].forEach {
+        [setTimeLabel, setTimeTextField].forEach {
             setTimeStack.addArrangedSubview($0)
         }
         [eventLabel, eventButtonStack].forEach {
@@ -176,6 +195,9 @@ class SetNotificationViewController: BaseViewController {
         offButton.snp.makeConstraints { make in
             
         }
+        emptyView.snp.makeConstraints { make in
+            
+        }
         lineImage.snp.makeConstraints { make in
             make.height.equalTo(1)
         }
@@ -185,7 +207,7 @@ class SetNotificationViewController: BaseViewController {
         setTimeLabel.snp.makeConstraints { make in
             
         }
-        setTimePicker.snp.makeConstraints { make in
+        setTimeTextField.snp.makeConstraints { make in
             
         }
         setEventStack.snp.makeConstraints { make in
@@ -203,7 +225,28 @@ class SetNotificationViewController: BaseViewController {
         declineButton.snp.makeConstraints { make in
             
         }
+
+    }
+    
+    private func showDatePicker() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
         
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(datePickerValueDidChange))
+        toolbar.setItems([doneButton], animated: true)
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .time
+        
+        setTimeTextField.inputAccessoryView = toolbar
+        setTimeTextField.inputView = datePicker
+    }
+    
+    @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        
+        setTimeTextField.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
     }
     
 }

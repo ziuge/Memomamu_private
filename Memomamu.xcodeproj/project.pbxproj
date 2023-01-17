@@ -56,10 +56,10 @@
 		DEC3977E28F93EDB00DA06AF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC3977D28F93EDB00DA06AF /* BaseTableViewCell.swift */; };
 		DEDD8F5628DAD0C500464FA7 /* CheckStatusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */; };
 		DEE0569D28DC5F0400E9C59C /* CardTodoTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */; };
-		DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */; };
 		DEE9C09128F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09028F58CF500EAF7EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		DEE9C09328F58CF500EAF7EA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */; };
 		DEE9C09528F58CF500EAF7EA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */; };
+		DEF7989E2976E7F4003F119D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DEF7989D2976E7F4003F119D /* .gitignore */; };
 		DEFBA15528F599B900A68E10 /* BestTen-CRT.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */; };
 		DEFBA15828F59D0F00A68E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA15A28F59D0F00A68E10 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
@@ -111,8 +111,8 @@
 		DEC3977D28F93EDB00DA06AF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DEDD8F5528DAD0C500464FA7 /* CheckStatusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckStatusButtonView.swift; sourceTree = "<group>"; };
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
-		DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memomamu.entitlements; sourceTree = "<group>"; };
+		DEF7989D2976E7F4003F119D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BestTen-CRT.otf"; sourceTree = "<group>"; };
 		DEFBA15928F59D0F00A68E10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEFBA15B28F59D1000A68E10 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -186,6 +186,7 @@
 		DE22093628C9B32400612BB1 = {
 			isa = PBXGroup;
 			children = (
+				DEF7989D2976E7F4003F119D /* .gitignore */,
 				DE22094128C9B32400612BB1 /* Memomamu */,
 				DE22094028C9B32400612BB1 /* Products */,
 			);
@@ -204,7 +205,6 @@
 			children = (
 				DE8908EA28F7DA1200651982 /* Resources */,
 				DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */,
-				DEE9C08428F1AFEC00EAF7EA /* GoogleService-Info.plist */,
 				DE0314E328D6BAF300FC9561 /* Model */,
 				DE0314E428D6BB4500FC9561 /* Realm */,
 				DE7838B028D1AEDB0093F034 /* Utility */,
@@ -380,10 +380,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF7989E2976E7F4003F119D /* .gitignore in Resources */,
 				DEB297B928EAF7190023148B /* Localizable.strings in Resources */,
 				DEFBA15828F59D0F00A68E10 /* InfoPlist.strings in Resources */,
 				DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */,
-				DEE9C08528F1AFED00EAF7EA /* GoogleService-Info.plist in Resources */,
 				DEFBA15528F599B900A68E10 /* BestTen-CRT.otf in Resources */,
 				DE8908EB28F7DAC000651982 /* DungGeunMo.otf in Resources */,
 				DE22094C28C9B32800612BB1 /* Assets.xcassets in Resources */,
