@@ -27,7 +27,7 @@ class Repository: ContentRepositoryType {
     }
     
     func fetchTodo(date: String) -> Results<Todo> {
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         return localRealm.objects(Todo.self).filter("date == %@", date).sorted(byKeyPath: "orderDate", ascending: true)
     }
     

@@ -40,6 +40,7 @@
 		DE5EB48C296AA58F0023A49F /* SetNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EB48B296AA58F0023A49F /* SetNotificationViewController.swift */; };
 		DE5EB48E296AA5990023A49F /* SetFontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EB48D296AA5990023A49F /* SetFontViewController.swift */; };
 		DE5EB490296AA5A20023A49F /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5EB48F296AA5A20023A49F /* SetThemeViewController.swift */; };
+		DE68BCA2299A5634008CC4C1 /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68BCA1299A5634008CC4C1 /* TeamDetailViewController.swift */; };
 		DE7EA27928E4A54A0010684B /* AttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */; };
 		DE80CEFB28FAE3C20060F195 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = DE80CEFA28FAE3C20060F195 /* SideMenu */; };
 		DE8908DB28F6EE8A00651982 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8908DA28F6EE8A00651982 /* SettingViewController.swift */; };
@@ -60,6 +61,7 @@
 		DEE9C09328F58CF500EAF7EA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09228F58CF500EAF7EA /* FirebaseCrashlytics */; };
 		DEE9C09528F58CF500EAF7EA /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DEE9C09428F58CF500EAF7EA /* FirebaseMessaging */; };
 		DEF7989E2976E7F4003F119D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DEF7989D2976E7F4003F119D /* .gitignore */; };
+		DEF798A02976E84B003F119D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DEF7989F2976E84B003F119D /* GoogleService-Info.plist */; };
 		DEFBA15528F599B900A68E10 /* BestTen-CRT.otf in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */; };
 		DEFBA15828F59D0F00A68E10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DEFBA15A28F59D0F00A68E10 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
@@ -95,6 +97,7 @@
 		DE5EB48B296AA58F0023A49F /* SetNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNotificationViewController.swift; sourceTree = "<group>"; };
 		DE5EB48D296AA5990023A49F /* SetFontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFontViewController.swift; sourceTree = "<group>"; };
 		DE5EB48F296AA5A20023A49F /* SetThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
+		DE68BCA1299A5634008CC4C1 /* TeamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailViewController.swift; sourceTree = "<group>"; };
 		DE7EA27828E4A54A0010684B /* AttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributedString+Extension.swift"; sourceTree = "<group>"; };
 		DE8908DA28F6EE8A00651982 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		DE8908E528F7D46000651982 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		DEE0569C28DC5F0400E9C59C /* CardTodoTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTodoTableVIewCell.swift; sourceTree = "<group>"; };
 		DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Memomamu.entitlements; sourceTree = "<group>"; };
 		DEF7989D2976E7F4003F119D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DEF7989F2976E84B003F119D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DEFBA15428F599B900A68E10 /* BestTen-CRT.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BestTen-CRT.otf"; sourceTree = "<group>"; };
 		DEFBA15928F59D0F00A68E10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DEFBA15B28F59D1000A68E10 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 			children = (
 				DE8908EA28F7DA1200651982 /* Resources */,
 				DEE9C09628F58D2800EAF7EA /* Memomamu.entitlements */,
+				DEF7989F2976E84B003F119D /* GoogleService-Info.plist */,
 				DE0314E328D6BAF300FC9561 /* Model */,
 				DE0314E428D6BB4500FC9561 /* Realm */,
 				DE7838B028D1AEDB0093F034 /* Utility */,
@@ -262,6 +267,7 @@
 				DE5EB48B296AA58F0023A49F /* SetNotificationViewController.swift */,
 				DE5EB48D296AA5990023A49F /* SetFontViewController.swift */,
 				DE5EB48F296AA5A20023A49F /* SetThemeViewController.swift */,
+				DE68BCA1299A5634008CC4C1 /* TeamDetailViewController.swift */,
 				DEC3977B28F93E4100DA06AF /* SettingTableViewCell.swift */,
 			);
 			path = Setting;
@@ -381,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEF7989E2976E7F4003F119D /* .gitignore in Resources */,
+				DEF798A02976E84B003F119D /* GoogleService-Info.plist in Resources */,
 				DEB297B928EAF7190023148B /* Localizable.strings in Resources */,
 				DEFBA15828F59D0F00A68E10 /* InfoPlist.strings in Resources */,
 				DE22094F28C9B32800612BB1 /* LaunchScreen.storyboard in Resources */,
@@ -438,6 +445,7 @@
 				DE22096628C9B94400612BB1 /* WriteViewController.swift in Sources */,
 				DE0314DE28D48C3B00FC9561 /* CardTodoViewController.swift in Sources */,
 				DE8CE76928D87C28008F8319 /* Formatter+Extension.swift in Sources */,
+				DE68BCA2299A5634008CC4C1 /* TeamDetailViewController.swift in Sources */,
 				DE01626D28E2E4470067A46D /* SortDateView.swift in Sources */,
 				DE01627428E32D1B0067A46D /* SortCardDiaryViewController.swift in Sources */,
 				DE0314E228D495FC00FC9561 /* SortViewController.swift in Sources */,

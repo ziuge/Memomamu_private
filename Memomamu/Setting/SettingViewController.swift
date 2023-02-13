@@ -104,10 +104,22 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let vc = SetNotificationViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let vc = SetNotificationViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else if indexPath.row == 1 {
+                let vc = SetFontViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = SetThemeViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else {
+            if indexPath.row == 1 {
+                let vc = TeamDetailViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
-    
 }
