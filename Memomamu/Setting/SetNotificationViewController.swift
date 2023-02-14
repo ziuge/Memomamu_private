@@ -89,8 +89,8 @@ class SetNotificationViewController: BaseViewController {
     }()
     var setTimeTextField: UITextField = {
         let view = UITextField()
-        view.backgroundColor = .black
-        view.text = "09:00"
+        view.backgroundColor = .clear
+        view.text = "09:00 AM"
         view.font = Constants.Font.content
         view.textColor = Constants.Color.text
         return view
@@ -141,7 +141,7 @@ class SetNotificationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        createDatePicker()
         self.navigationController?.navigationBar.topItem?.title = ""
     }
     
@@ -228,21 +228,21 @@ class SetNotificationViewController: BaseViewController {
 
     }
     
-    private func showDatePicker() {
+    func createDatePicker() {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(datePickerValueDidChange))
-        toolbar.setItems([doneButton], animated: true)
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneBtn], animated: true)
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .time
-        
         setTimeTextField.inputAccessoryView = toolbar
         setTimeTextField.inputView = datePicker
     }
     
-    @objc private func datePickerValueDidChange(_ datePicker: UIDatePicker){
+    @objc func donePressed() {
         let formatter = DateFormatter()
+        formatter.dateStyle = .none
         formatter.timeStyle = .short
         
         setTimeTextField.text = formatter.string(from: datePicker.date)
