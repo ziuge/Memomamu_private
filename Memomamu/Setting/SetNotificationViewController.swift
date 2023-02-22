@@ -11,6 +11,7 @@ class SetNotificationViewController: BaseViewController {
     
     private var time: Date?
     
+    let notificationCenter = UNUserNotificationCenter.current()
     let datePicker = UIDatePicker()
     
     // MARK: UI
@@ -47,7 +48,8 @@ class SetNotificationViewController: BaseViewController {
     }()
     var onButton: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(named: "switchOn"), for: .normal)
+        view.setImage(UIImage(named: "switchOff"), for: .normal)
+        view.setImage(UIImage(named: "switchOn"), for: .selected)
         view.setTitle(" on", for: .normal)
         view.titleLabel?.font = Constants.Font.content
         view.setTitleColor(Constants.Color.text, for: .normal)
@@ -56,6 +58,7 @@ class SetNotificationViewController: BaseViewController {
     var offButton: UIButton = {
         let view = UIButton()
         view.setImage(UIImage(named: "switchOff"), for: .normal)
+        view.setImage(UIImage(named: "switchOn"), for: .selected)
         view.setTitle(" off", for: .normal)
         view.titleLabel?.font = Constants.Font.content
         view.setTitleColor(Constants.Color.text, for: .normal)
@@ -139,10 +142,18 @@ class SetNotificationViewController: BaseViewController {
         return view
     }()
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        onButton.isSelected = false
+        offButton.isSelected = false
+        
         createDatePicker()
         self.navigationController?.navigationBar.topItem?.title = ""
+        
+        onButton.addTarget(self, action: #selector(onClicked), for: .touchUpInside)
+        offButton.addTarget(self, action: #selector(offClicked), for: .touchUpInside)
     }
     
     override func configure() {
@@ -239,7 +250,6 @@ class SetNotificationViewController: BaseViewController {
         setTimeTextField.inputAccessoryView = toolbar
         setTimeTextField.inputView = datePicker
     }
-    
     @objc func donePressed() {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
@@ -247,6 +257,48 @@ class SetNotificationViewController: BaseViewController {
         
         setTimeTextField.text = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
+    }
+    
+    @objc func onClicked() {
+        print(#function)
+        setNotification(hour: 22, min: 55)
+        if onButton.isSelected == false {
+            onButton.isSelected = true
+            offButton.isSelected = false
+        }
+    }
+    
+    @objc func offClicked() {
+        print(#function)
+        removeNotification(name: "morning")
+        if offButton.isSelected == false {
+            offButton.isSelected = true
+            onButton.isSelected = false
+        }
+    }
+    
+    func setNotification(hour: Int, min: Int) {
+        print(#function)
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "오늘의 todo를 작성하세요 :)"
+        notificationContent.body = "todo를 작성하며 하루를 시작해요"
+        
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        dateComponents.hour = hour
+        dateComponents.minute = min
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest(identifier: "morning", content: notificationContent, trigger: trigger)
+        
+        notificationCenter.add(request)
+    }
+    
+    func removeNotification(name: String) {
+        print(#function)
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [name])
     }
     
 }
