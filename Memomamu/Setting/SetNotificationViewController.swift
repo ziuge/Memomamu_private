@@ -261,7 +261,8 @@ class SetNotificationViewController: BaseViewController {
     
     @objc func onClicked() {
         print(#function)
-        setNotification(hour: 22, min: 55)
+        setNotification(hour: 22, min: 0, name: "am")
+        setNotification(hour: 10, min: 0, name: "pm")
         if onButton.isSelected == false {
             onButton.isSelected = true
             offButton.isSelected = false
@@ -270,27 +271,28 @@ class SetNotificationViewController: BaseViewController {
     
     @objc func offClicked() {
         print(#function)
-        removeNotification(name: "morning")
+        notificationCenter.removeAllPendingNotificationRequests()
         if offButton.isSelected == false {
             offButton.isSelected = true
             onButton.isSelected = false
         }
     }
     
-    func setNotification(hour: Int, min: Int) {
+    func setNotification(hour: Int, min: Int, name: String) {
         print(#function)
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "오늘의 todo를 작성하세요 :)"
+        notificationContent.title = name
         notificationContent.body = "todo를 작성하며 하루를 시작해요"
         
         var dateComponents = DateComponents()
         dateComponents.calendar = Calendar.current
         dateComponents.hour = hour
         dateComponents.minute = min
+        dateComponents.timeZone = Calendar.current.timeZone
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        let request = UNNotificationRequest(identifier: "morning", content: notificationContent, trigger: trigger)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: name, content: notificationContent, trigger: trigger)
         
         notificationCenter.add(request)
     }
