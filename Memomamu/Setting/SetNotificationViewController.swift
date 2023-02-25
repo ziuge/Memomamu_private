@@ -288,7 +288,7 @@ class SetNotificationViewController: BaseViewController {
         dateComponents.calendar = Calendar.current
         dateComponents.hour = hour
         dateComponents.minute = min
-        dateComponents.timeZone = Calendar.current.timeZone
+        dateComponents.timeZone = TimeZone.current
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
