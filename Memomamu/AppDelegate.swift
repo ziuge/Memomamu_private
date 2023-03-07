@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import FirebaseCore
 import FirebaseMessaging
+import RealmSwift
 //import SideMenu
 import UserNotifications
 
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Thread.sleep(forTimeInterval: 2.0)
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        aboutRealmMigration()
         
         // MARK: Firebase
         FirebaseApp.configure()
@@ -113,13 +115,25 @@ extension AppDelegate: MessagingDelegate {
       print("Firebase registration token: \(String(describing: fcmToken))")
 
       let dataDict: [String: String] = ["token": fcmToken ?? ""]
-      NotificationCenter.default.post(
-        name: Notification.Name("FCMToken"),
-        object: nil,
-        userInfo: dataDict
-      )
+//      NotificationCenter.default.post(
+//        name: Notification.Name("FCMToken"),
+//        object: nil,
+//        userInfo: dataDict
+//      )
       // TODO: If necessary send token to application server.
       // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 
+}
+
+// MARK: - Realm Migration
+extension AppDelegate {
+    func aboutRealmMigration() {
+        let config = Realm.Configuration.init(schemaVersion: 1) { migration, oldSchemaVersion in
+            // 컬럼/테이블 단순 추가/삭제의 경우에는 별도 코드 필요 없음
+            if oldSchemaVersion < 1 { }
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
+    }
 }

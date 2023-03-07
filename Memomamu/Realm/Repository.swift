@@ -27,7 +27,13 @@ class Repository: ContentRepositoryType {
     }
     
     func fetchTodo(date: String) -> Results<Todo> {
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(localRealm.configuration.fileURL!)
+        do {
+            let version = try schemaVersionAtURL(localRealm.configuration.fileURL!) // 이 URL에 들어있는 스키마의 버전을 알려줌
+            print("Schema Version: \(version)")
+        } catch {
+            print(error)
+        }
         return localRealm.objects(Todo.self).filter("date == %@", date).sorted(byKeyPath: "orderDate", ascending: true)
     }
     
@@ -59,7 +65,6 @@ class Repository: ContentRepositoryType {
             print(error)
         }
     }
-    
     
     func updateTodo(oldValue: Todo, newValue: String) {
         do {
